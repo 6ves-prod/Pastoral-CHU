@@ -1,0 +1,460 @@
+<!DOCTYPE html>
+<html lang="fr" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: { brand: '#a7f3a0', brandDark: '#22c55e', brandMuted: '#e6fde0', stone: '#f7f5f1' },
+          fontFamily: { sans: ['Inter', 'Helvetica Neue', 'Arial', 'sans-serif'] },
+          boxShadow: { soft: '0 25px 70px rgba(0,0,0,0.08)' }
+        }
+      }
+    }
+  </script>
+  <title>Pastoral CHU - Formations</title>
+</head>
+<body class="min-h-screen bg-gradient-to-b from-emerald-900 via-emerald-950 to-emerald-900 flex items-center justify-center py-4 px-4">
+  <main class="w-full max-w-7xl bg-stone rounded-3xl shadow-soft overflow-hidden">
+    <header class="px-8 py-8 flex flex-col gap-4 md:gap-6">
+      <div class="flex flex-col gap-4 md:flex-row md:items-center md:justify-between">
+        <div class="flex items-center gap-2 text-lg font-semibold">
+          <span class="w-3 h-3 rounded-full bg-black"></span>
+          <span>Pastoral CHU</span>
+        </div>
+        <nav class="flex flex-wrap items-center gap-6 text-base text-gray-700">
+          <a href="index.html" class="hover:text-black transition-colors duration-200 relative after:absolute after:bottom-0 after:left-0 after:w-0 after:h-0.5 after:bg-black after:transition-all after:duration-200 hover:after:w-full">Accueil</a>
+          <a href="actualites.html" class="hover:text-black transition-colors duration-200 relative after:absolute after:bottom-0 after:left-0 after:w-0 after:h-0.5 after:bg-black after:transition-all after:duration-200 hover:after:w-full">Actualités</a>
+          <div class="relative group">
+            <button class="font-semibold text-black inline-flex items-center gap-1 relative after:absolute after:bottom-0 after:left-0 after:w-full after:h-0.5 after:bg-black">
+              Services
+              <span class="text-xs transition-transform duration-200 group-hover:rotate-180">▼</span>
+            </button>
+            <div class="absolute top-full left-0 mt-2 bg-white text-gray-800 rounded-lg shadow-lg p-3 w-56 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-50 border border-gray-100">
+              <a href="services.html" class="block py-2 px-2 rounded-md hover:bg-brandMuted hover:text-black transition-colors duration-150">Nos services</a>
+              <a href="evenements.html" class="block py-2 px-2 rounded-md hover:bg-brandMuted hover:text-black transition-colors duration-150">Événements</a>
+              <a href="formations.html" class="block py-2 px-2 rounded-md hover:bg-brandMuted hover:text-black transition-colors duration-150">Formations</a>
+              <a href="ressources.html" class="block py-2 px-2 rounded-md hover:bg-brandMuted hover:text-black transition-colors duration-150">Ressources spirituelles</a>
+            </div>
+          </div>
+          <div class="relative group">
+            <button class="hover:text-black transition-colors duration-200 inline-flex items-center gap-1 relative after:absolute after:bottom-0 after:left-0 after:w-0 after:h-0.5 after:bg-black after:transition-all after:duration-200 group-hover:after:w-full">
+              Galerie
+              <span class="text-xs transition-transform duration-200 group-hover:rotate-180">▼</span>
+            </button>
+            <div class="absolute top-full left-0 mt-2 bg-white text-gray-800 rounded-lg shadow-lg p-3 w-52 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-50 border border-gray-100">
+              <a href="galerie.html" class="block py-2 px-2 rounded-md hover:bg-brandMuted hover:text-black transition-colors duration-150">Photothèque</a>
+              <a href="galerie.html" class="block py-2 px-2 rounded-md hover:bg-brandMuted hover:text-black transition-colors duration-150">Bibliothèque</a>
+            </div>
+          </div>
+          <div class="relative group">
+            <button class="hover:text-black transition-colors duration-200 inline-flex items-center gap-1 relative after:absolute after:bottom-0 after:left-0 after:w-0 after:h-0.5 after:bg-black after:transition-all after:duration-200 group-hover:after:w-full">
+              Qui sommes-nous
+              <span class="text-xs transition-transform duration-200 group-hover:rotate-180">▼</span>
+            </button>
+            <div class="absolute top-full left-0 mt-2 bg-white text-gray-800 rounded-lg shadow-lg p-3 w-60 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-50 border border-gray-100">
+              <a href="qui-sommes-nous.html" class="block py-2 px-2 rounded-md hover:bg-brandMuted hover:text-black transition-colors duration-150">Mission & Valeurs</a>
+              <a href="qui-sommes-nous.html" class="block py-2 px-2 rounded-md hover:bg-brandMuted hover:text-black transition-colors duration-150">Les pères & responsabilités</a>
+              <a href="qui-sommes-nous.html" class="block py-2 px-2 rounded-md hover:bg-brandMuted hover:text-black transition-colors duration-150">Collaborations CHU</a>
+              <a href="qui-sommes-nous.html" class="block py-2 px-2 rounded-md hover:bg-brandMuted hover:text-black transition-colors duration-150">Contacts</a>
+            </div>
+          </div>
+          <div class="relative group">
+            <button class="hover:text-black transition-colors duration-200 inline-flex items-center gap-1 relative after:absolute after:bottom-0 after:left-0 after:w-0 after:h-0.5 after:bg-black after:transition-all after:duration-200 group-hover:after:w-full">
+              La bible et vous
+              <span class="text-xs transition-transform duration-200 group-hover:rotate-180">▼</span>
+            </button>
+            <div class="absolute top-full left-0 mt-2 bg-white text-gray-800 rounded-lg shadow-lg p-3 w-56 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-50 border border-gray-100">
+              <a href="bible.html" class="block py-2 px-2 rounded-md hover:bg-brandMuted hover:text-black transition-colors duration-150">Questions bibliques</a>
+              <a href="bible.html" class="block py-2 px-2 rounded-md hover:bg-brandMuted hover:text-black transition-colors duration-150">Que veulent dire ces versets ?</a>
+              <a href="bible.html" class="block py-2 px-2 rounded-md hover:bg-brandMuted hover:text-black transition-colors duration-150">Cours biblique</a>
+            </div>
+          </div>
+          <a href="contact.html" class="hover:text-black transition-colors duration-200 relative after:absolute after:bottom-0 after:left-0 after:w-0 after:h-0.5 after:bg-black after:transition-all after:duration-200 hover:after:w-full">Contact</a>
+        </nav>
+      </div>
+      
+      <div class="relative h-64 w-full overflow-hidden rounded-2xl shadow-soft">
+        <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=1400&q=80" alt="Formations pastorales" class="h-full w-full object-cover">
+        <div class="absolute inset-0 bg-black/40"></div>
+        <div class="absolute inset-0 flex items-center px-6">
+          <div class="text-white space-y-2">
+            <p class="text-sm uppercase tracking-wide">Accompagnement & Apprentissage</p>
+            <h1 class="text-3xl md:text-4xl font-semibold">Formations & Enseignements</h1>
+            <p class="text-sm max-w-xl text-white/80">Développer les compétences d'écoute et d'accompagnement spirituel</p>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <section id="formations-disponibles" class="px-8 py-14 md:px-12">
+      <div class="flex items-center gap-2 text-sm text-gray-600 mb-6">
+        <span class="h-px w-8 bg-gray-400"></span>
+        <span>Formations proposées</span>
+      </div>
+      
+      <div class="grid gap-6 lg:grid-cols-2">
+        <div class="bg-brandMuted rounded-xl p-6 shadow-soft border border-green-100">
+          <div class="flex items-start gap-4 mb-4">
+            <div class="w-12 h-12 bg-brand rounded-lg flex items-center justify-center">
+              <span class="text-xl">🤝</span>
+            </div>
+            <div>
+              <h3 class="text-lg font-semibold text-gray-900">Formation à l'accompagnement</h3>
+              <p class="text-sm text-gray-600">Formation de base · 6 sessions de 2h</p>
+            </div>
+          </div>
+          <p class="text-sm text-gray-800 mb-4 leading-relaxed">
+            Apprendre les bases de l'écoute active et de l'accompagnement spirituel en milieu hospitalier. 
+            Cette formation s'adresse aux bénévoles et au personnel soignant souhaitant développer 
+            leurs compétences relationnelles et spirituelles.
+          </p>
+          <div class="space-y-2 text-xs text-gray-700 mb-4">
+            <div class="flex items-center gap-2">
+              <span class="w-2 h-2 bg-brandDark rounded-full"></span>
+              <span>Techniques d'écoute et de présence</span>
+            </div>
+            <div class="flex items-center gap-2">
+              <span class="w-2 h-2 bg-brandDark rounded-full"></span>
+              <span>Gestion des émotions et du stress</span>
+            </div>
+            <div class="flex items-center gap-2">
+              <span class="w-2 h-2 bg-brandDark rounded-full"></span>
+              <span>Dimension spirituelle de la souffrance</span>
+            </div>
+            <div class="flex items-center gap-2">
+              <span class="w-2 h-2 bg-brandDark rounded-full"></span>
+              <span>Pratique de l'accompagnement</span>
+            </div>
+          </div>
+          <div class="flex flex-wrap gap-3 text-xs">
+            <span class="bg-white px-3 py-1 rounded-full border">📅 Prochain cycle : Janvier 2025</span>
+            <span class="bg-white px-3 py-1 rounded-full border">👥 Max 12 participants</span>
+          </div>
+        </div>
+        
+        <div class="bg-white rounded-xl p-6 shadow-soft border border-gray-100">
+          <div class="flex items-start gap-4 mb-4">
+            <div class="w-12 h-12 bg-blue-100 rounded-lg flex items-center justify-center">
+              <span class="text-xl">📖</span>
+            </div>
+            <div>
+              <h3 class="text-lg font-semibold text-gray-900">Théologie de la santé</h3>
+              <p class="text-sm text-gray-600">Formation avancée · 4 sessions de 3h</p>
+            </div>
+          </div>
+          <p class="text-sm text-gray-700 mb-4 leading-relaxed">
+            Approfondissement théologique sur les questions de la maladie, de la souffrance 
+            et de la guérison dans la tradition chrétienne. Pour les accompagnants expérimentés 
+            et les professionnels de la pastorale de la santé.
+          </p>
+          <div class="space-y-2 text-xs text-gray-600 mb-4">
+            <div class="flex items-center gap-2">
+              <span class="w-2 h-2 bg-blue-400 rounded-full"></span>
+              <span>Souffrance et mystère pascal</span>
+            </div>
+            <div class="flex items-center gap-2">
+              <span class="w-2 h-2 bg-blue-400 rounded-full"></span>
+              <span>Anthropologie chrétienne de la maladie</span>
+            </div>
+            <div class="flex items-center gap-2">
+              <span class="w-2 h-2 bg-blue-400 rounded-full"></span>
+              <span>Sacrements et pastorale des malades</span>
+            </div>
+            <div class="flex items-center gap-2">
+              <span class="w-2 h-2 bg-blue-400 rounded-full"></span>
+              <span>Éthique biomédicale</span>
+            </div>
+          </div>
+          <div class="flex flex-wrap gap-3 text-xs">
+            <span class="bg-brandMuted px-3 py-1 rounded-full border border-green-200">📅 Février - Mars 2025</span>
+            <span class="bg-brandMuted px-3 py-1 rounded-full border border-green-200">🎓 Prérequis : Formation de base</span>
+          </div>
+        </div>
+        
+        <div class="bg-purple-50 rounded-xl p-6 border border-purple-100">
+          <div class="flex items-start gap-4 mb-4">
+            <div class="w-12 h-12 bg-purple-200 rounded-lg flex items-center justify-center">
+              <span class="text-xl">👨‍⚕️</span>
+            </div>
+            <div>
+              <h3 class="text-lg font-semibold text-gray-900">Formation pour soignants</h3>
+              <p class="text-sm text-gray-600">Programme spécialisé · 3 sessions de 2h30</p>
+            </div>
+          </div>
+          <p class="text-sm text-gray-700 mb-4 leading-relaxed">
+            Formation adaptée aux professionnels de santé pour intégrer la dimension spirituelle 
+            dans leur pratique quotidienne, tout en respectant la laïcité et la diversité 
+            des convictions des patients.
+          </p>
+          <div class="space-y-2 text-xs text-gray-600 mb-4">
+            <div class="flex items-center gap-2">
+              <span class="w-2 h-2 bg-purple-400 rounded-full"></span>
+              <span>Spiritualité et laïcité à l'hôpital</span>
+            </div>
+            <div class="flex items-center gap-2">
+              <span class="w-2 h-2 bg-purple-400 rounded-full"></span>
+              <span>Repérer les besoins spirituels</span>
+            </div>
+            <div class="flex items-center gap-2">
+              <span class="w-2 h-2 bg-purple-400 rounded-full"></span>
+              <span>Communiquer avec les familles</span>
+            </div>
+            <div class="flex items-center gap-2">
+              <span class="w-2 h-2 bg-purple-400 rounded-full"></span>
+              <span>Prendre soin de soi comme soignant</span>
+            </div>
+          </div>
+          <div class="flex flex-wrap gap-3 text-xs">
+            <span class="bg-white px-3 py-1 rounded-full border">📅 Cycle continu</span>
+            <span class="bg-white px-3 py-1 rounded-full border">⭐ Recommandée par la direction</span>
+          </div>
+        </div>
+        
+        <div class="bg-yellow-50 rounded-xl p-6 border border-yellow-100">
+          <div class="flex items-start gap-4 mb-4">
+            <div class="w-12 h-12 bg-yellow-200 rounded-lg flex items-center justify-center">
+              <span class="text-xl">🧘</span>
+            </div>
+            <div>
+              <h3 class="text-lg font-semibold text-gray-900">Art de la présence</h3>
+              <p class="text-sm text-gray-600">Atelier pratique · 1 journée intensive</p>
+            </div>
+          </div>
+          <p class="text-sm text-gray-700 mb-4 leading-relaxed">
+            Atelier expérientiel centré sur le développement de la présence authentique 
+            et bienveillante. Combine enseignements, exercices pratiques et temps de silence. 
+            Ouvert à tous, croyants et non-croyants.
+          </p>
+          <div class="space-y-2 text-xs text-gray-600 mb-4">
+            <div class="flex items-center gap-2">
+              <span class="w-2 h-2 bg-yellow-400 rounded-full"></span>
+              <span>Exercices de présence mindfulness</span>
+            </div>
+            <div class="flex items-center gap-2">
+              <span class="w-2 h-2 bg-yellow-400 rounded-full"></span>
+              <span>Communication non-violente</span>
+            </div>
+            <div class="flex items-center gap-2">
+              <span class="w-2 h-2 bg-yellow-400 rounded-full"></span>
+              <span>Gestion du stress et burn-out</span>
+            </div>
+            <div class="flex items-center gap-2">
+              <span class="w-2 h-2 bg-yellow-400 rounded-full"></span>
+              <span>Temps de silence et de méditation</span>
+            </div>
+          </div>
+          <div class="flex flex-wrap gap-3 text-xs">
+            <span class="bg-white px-3 py-1 rounded-full border">📅 Samedi 15 février 2025</span>
+            <span class="bg-white px-3 py-1 rounded-full border">🌍 Ouvert à tous publics</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="parcours-benevoles" class="px-8 py-14 md:px-12 bg-white">
+      <div class="flex items-center gap-2 text-sm text-gray-600 mb-6">
+        <span class="h-px w-8 bg-gray-400"></span>
+        <span>Parcours de formation des bénévoles</span>
+      </div>
+      
+      <div class="max-w-4xl mx-auto">
+        <h2 class="text-2xl font-semibold text-gray-900 mb-6">Devenir accompagnant bénévole</h2>
+        
+        <div class="relative">
+          <div class="absolute left-4 top-8 bottom-8 w-0.5 bg-brand"></div>
+          
+          <div class="space-y-8">
+            <div class="flex gap-6">
+              <div class="w-8 h-8 bg-brand rounded-full flex items-center justify-center text-white font-semibold text-sm relative z-10">1</div>
+              <div class="flex-1">
+                <h3 class="font-semibold text-gray-900 mb-2">Journée de découverte</h3>
+                <p class="text-sm text-gray-700 mb-3">
+                  Présentation de la mission pastorale, visite des lieux, rencontre avec l'équipe. 
+                  Temps de discernement pour vérifier la motivation et l'adéquation avec la mission.
+                </p>
+                <div class="text-xs text-gray-600 flex gap-4">
+                  <span>⏱️ 1 journée</span>
+                  <span>👥 Rencontre individuelle incluse</span>
+                </div>
+              </div>
+            </div>
+            
+            <div class="flex gap-6">
+              <div class="w-8 h-8 bg-brand rounded-full flex items-center justify-center text-white font-semibold text-sm relative z-10">2</div>
+              <div class="flex-1">
+                <h3 class="font-semibold text-gray-900 mb-2">Formation initiale</h3>
+                <p class="text-sm text-gray-700 mb-3">
+                  Formation complète à l'accompagnement : écoute, présence, gestion des situations difficiles, 
+                  aspects pratiques du bénévolat hospitalier, déontologie et secret professionnel.
+                </p>
+                <div class="text-xs text-gray-600 flex gap-4">
+                  <span>⏱️ 6 sessions de 2h</span>
+                  <span>📋 Attestation de formation</span>
+                </div>
+              </div>
+            </div>
+            
+            <div class="flex gap-6">
+              <div class="w-8 h-8 bg-brand rounded-full flex items-center justify-center text-white font-semibold text-sm relative z-10">3</div>
+              <div class="flex-1">
+                <h3 class="font-semibold text-gray-900 mb-2">Accompagnement supervisé</h3>
+                <p class="text-sm text-gray-700 mb-3">
+                  Période d'intégration progressive avec accompagnement par un bénévole expérimenté. 
+                  Visites en binôme, debriefing régulier, ajustements personnalisés.
+                </p>
+                <div class="text-xs text-gray-600 flex gap-4">
+                  <span>⏱️ 3 mois</span>
+                  <span>🤝 Parrainage par un ancien</span>
+                </div>
+              </div>
+            </div>
+            
+            <div class="flex gap-6">
+              <div class="w-8 h-8 bg-brand rounded-full flex items-center justify-center text-white font-semibold text-sm relative z-10">4</div>
+              <div class="flex-1">
+                <h3 class="font-semibold text-gray-900 mb-2">Engagement et formation continue</h3>
+                <p class="text-sm text-gray-700 mb-3">
+                  Engagement pour une durée minimale, formations complémentaires régulières, 
+                  groupes de supervision, retraites spirituelles annuelles.
+                </p>
+                <div class="text-xs text-gray-600 flex gap-4">
+                  <span>⏱️ Engagement 2 ans minimum</span>
+                  <span>🎓 Formation continue obligatoire</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="conferences" class="px-8 py-14 md:px-12">
+      <div class="flex items-center gap-2 text-sm text-gray-600 mb-6">
+        <span class="h-px w-8 bg-gray-400"></span>
+        <span>Conférences & Séminaires</span>
+      </div>
+      
+      <div class="space-y-6">
+        <div class="bg-brandMuted rounded-xl p-6 shadow-soft border border-green-100">
+          <div class="flex flex-col md:flex-row md:items-start gap-4">
+            <div class="bg-white rounded-lg p-3 text-center min-w-[100px]">
+              <div class="text-xs text-gray-600 uppercase">Mars</div>
+              <div class="text-2xl font-bold text-gray-900">22</div>
+              <div class="text-xs text-gray-600">2025</div>
+              <div class="text-xs text-gray-600 mt-1">19h00</div>
+            </div>
+            <div class="flex-1">
+              <h3 class="text-lg font-semibold text-gray-900 mb-2">
+                Conférence : "Spiritualité et médecine moderne"
+              </h3>
+              <p class="text-sm text-gray-800 mb-3">
+                Conférence débat avec le Dr. Martin Dubois, chef de service cardiologie et le Père Emmanuel 
+                sur l'articulation entre science médicale et dimension spirituelle du soin.
+              </p>
+              <div class="flex flex-wrap gap-3 text-xs text-gray-700">
+                <span class="flex items-center gap-1">📍 Amphithéâtre du CHU</span>
+                <span class="flex items-center gap-1">👥 Ouvert au public</span>
+                <span class="flex items-center gap-1">🎫 Entrée libre</span>
+              </div>
+            </div>
+          </div>
+        </div>
+        
+        <div class="bg-white rounded-xl p-6 shadow-soft border border-gray-100">
+          <div class="flex flex-col md:flex-row md:items-start gap-4">
+            <div class="bg-blue-50 rounded-lg p-3 text-center min-w-[100px] border border-blue-200">
+              <div class="text-xs text-gray-600 uppercase">Avr</div>
+              <div class="text-2xl font-bold text-gray-900">18</div>
+              <div class="text-xs text-gray-600">2025</div>
+              <div class="text-xs text-gray-600 mt-1">14h00</div>
+            </div>
+            <div class="flex-1">
+              <h3 class="text-lg font-semibold text-gray-900 mb-2">
+                Séminaire : "Accompagner les familles en deuil"
+              </h3>
+              <p class="text-sm text-gray-700 mb-3">
+                Séminaire de formation pour les professionnels et bénévoles sur l'accompagnement 
+                du deuil, animé par Sœur Marie-Claire et une psychologue spécialisée.
+              </p>
+              <div class="flex flex-wrap gap-3 text-xs text-gray-600">
+                <span class="flex items-center gap-1">📍 Salle de formation</span>
+                <span class="flex items-center gap-1">👥 Professionnels uniquement</span>
+                <span class="flex items-center gap-1">📝 Inscription obligatoire</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="inscription-formation" class="px-8 py-14 md:px-12 bg-white">
+      <div class="max-w-2xl mx-auto text-center">
+        <h2 class="text-2xl font-semibold text-gray-900 mb-4">S'inscrire aux formations</h2>
+        <p class="text-gray-700 mb-6">
+          Toutes nos formations sont gratuites et ouvertes selon les prérequis indiqués. 
+          Les inscriptions se font par téléphone ou email avec un entretien préalable.
+        </p>
+        
+        <div class="grid gap-4 md:grid-cols-2 mb-6">
+          <div class="bg-brandMuted rounded-xl p-5 border border-green-100">
+            <h3 class="font-semibold text-gray-900 mb-3">Inscriptions & Renseignements</h3>
+            <div class="space-y-2 text-sm">
+              <div>📧 <a href="mailto:formations@chu.exemple" class="underline">formations@chu.exemple</a></div>
+              <div>📞 01 23 45 67 89 (poste 2158)</div>
+              <div>🏥 Bureau formation - Pastorale CHU</div>
+            </div>
+          </div>
+          
+          <div class="bg-white rounded-xl p-5 border border-gray-200">
+            <h3 class="font-semibold text-gray-900 mb-3">Conditions & Prérequis</h3>
+            <div class="space-y-2 text-sm text-gray-700">
+              <div>• Engagement sur la durée complète</div>
+              <div>• Entretien de motivation obligatoire</div>
+              <div>• Respect du secret professionnel</div>
+              <div>• Assiduité aux formations</div>
+            </div>
+          </div>
+        </div>
+        
+        <div class="bg-yellow-50 rounded-xl p-6 border border-yellow-200">
+          <h3 class="font-semibold text-gray-900 mb-3">Prochaines sessions d'information</h3>
+          <div class="grid gap-3 md:grid-cols-2 text-sm">
+            <div class="bg-white rounded-lg p-3 border">
+              <div class="font-semibold">Mercredi 8 janvier 2025</div>
+              <div class="text-gray-600">18h30 - Présentation générale</div>
+            </div>
+            <div class="bg-white rounded-lg p-3 border">
+              <div class="font-semibold">Samedi 18 janvier 2025</div>
+              <div class="text-gray-600">10h00 - Journée porte ouverte</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <footer class="px-8 py-6 md:px-12 text-sm text-gray-700">
+      <div class="flex flex-col gap-4 md:flex-row md:items-center md:justify-between">
+        <div>
+          <p class="font-semibold text-gray-900">Pastoral CHU</p>
+          <p>Chapelle du CHU · Bâtiment A</p>
+          <p>pastorale@chu.exemple · 01 23 45 67 89</p>
+        </div>
+        <div class="flex gap-3">
+          <a href="actualites.html" class="underline">Actualités</a>
+          <a href="galerie.html" class="underline">Galerie</a>
+          <a href="qui-sommes-nous.html" class="underline">Qui sommes-nous</a>
+          <a href="bible.html" class="underline">La Bible et vous</a>
+        </div>
+      </div>
+      <p class="text-center text-xs text-gray-500 mt-4">© Pastorale du CHU</p>
+    </footer>
+  </main>
+</body>
+</html>

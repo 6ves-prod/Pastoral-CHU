@@ -1,0 +1,337 @@
+<!DOCTYPE html>
+<html lang="fr" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: { brand: '#a7f3a0', brandDark: '#22c55e', brandMuted: '#e6fde0', stone: '#f7f5f1' },
+          fontFamily: { sans: ['Inter', 'Helvetica Neue', 'Arial', 'sans-serif'] },
+          boxShadow: { soft: '0 25px 70px rgba(0,0,0,0.08)' }
+        }
+      }
+    }
+  </script>
+  <title>Pastoral CHU - Kit de réconfort pour les familles</title>
+</head>
+<body class="min-h-screen bg-gradient-to-b from-emerald-900 via-emerald-950 to-emerald-900 flex items-center justify-center py-4 px-4">
+  <main class="w-full max-w-7xl bg-stone rounded-3xl shadow-soft overflow-hidden">
+    <header class="px-8 py-8 flex flex-col gap-4 md:gap-6">
+      <div class="flex flex-col gap-4 md:flex-row md:items-center md:justify-between">
+        <div class="flex items-center gap-2 text-lg font-semibold">
+          <span class="w-3 h-3 rounded-full bg-black"></span>
+          <span>Pastoral CHU</span>
+        </div>
+        <nav class="flex flex-wrap items-center gap-6 text-base text-gray-700">
+          <a href="index.html" class="hover:text-black transition-colors duration-200 relative after:absolute after:bottom-0 after:left-0 after:w-0 after:h-0.5 after:bg-black after:transition-all after:duration-200 hover:after:w-full">Accueil</a>
+          <a href="actualites.html" class="font-semibold text-black relative after:absolute after:bottom-0 after:left-0 after:w-full after:h-0.5 after:bg-black">Actualités</a>
+          <div class="relative group">
+            <button class="hover:text-black transition-colors duration-200 inline-flex items-center gap-1 relative after:absolute after:bottom-0 after:left-0 after:w-0 after:h-0.5 after:bg-black after:transition-all after:duration-200 group-hover:after:w-full">
+              Services
+              <span class="text-xs transition-transform duration-200 group-hover:rotate-180">▼</span>
+            </button>
+            <div class="absolute top-full left-0 mt-2 bg-white text-gray-800 rounded-lg shadow-lg p-3 w-56 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-50 border border-gray-100">
+              <a href="services.html" class="block py-2 px-2 rounded-md hover:bg-brandMuted hover:text-black transition-colors duration-150">Nos services</a>
+              <a href="evenements.html" class="block py-2 px-2 rounded-md hover:bg-brandMuted hover:text-black transition-colors duration-150">Événements</a>
+              <a href="formations.html" class="block py-2 px-2 rounded-md hover:bg-brandMuted hover:text-black transition-colors duration-150">Formations</a>
+              <a href="ressources.html" class="block py-2 px-2 rounded-md hover:bg-brandMuted hover:text-black transition-colors duration-150">Ressources spirituelles</a>
+            </div>
+          </div>
+          <div class="relative group">
+            <button class="hover:text-black transition-colors duration-200 inline-flex items-center gap-1 relative after:absolute after:bottom-0 after:left-0 after:w-0 after:h-0.5 after:bg-black after:transition-all after:duration-200 group-hover:after:w-full">
+              Galerie
+              <span class="text-xs transition-transform duration-200 group-hover:rotate-180">▼</span>
+            </button>
+            <div class="absolute top-full left-0 mt-2 bg-white text-gray-800 rounded-lg shadow-lg p-3 w-52 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-50 border border-gray-100">
+              <a href="galerie.html" class="block py-2 px-2 rounded-md hover:bg-brandMuted hover:text-black transition-colors duration-150">Photothèque</a>
+              <a href="galerie.html" class="block py-2 px-2 rounded-md hover:bg-brandMuted hover:text-black transition-colors duration-150">Bibliothèque</a>
+            </div>
+          </div>
+          <div class="relative group">
+            <button class="hover:text-black transition-colors duration-200 inline-flex items-center gap-1 relative after:absolute after:bottom-0 after:left-0 after:w-0 after:h-0.5 after:bg-black after:transition-all after:duration-200 group-hover:after:w-full">
+              Qui sommes-nous
+              <span class="text-xs transition-transform duration-200 group-hover:rotate-180">▼</span>
+            </button>
+            <div class="absolute top-full left-0 mt-2 bg-white text-gray-800 rounded-lg shadow-lg p-3 w-60 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-50 border border-gray-100">
+              <a href="qui-sommes-nous.html" class="block py-2 px-2 rounded-md hover:bg-brandMuted hover:text-black transition-colors duration-150">Mission & Valeurs</a>
+              <a href="qui-sommes-nous.html" class="block py-2 px-2 rounded-md hover:bg-brandMuted hover:text-black transition-colors duration-150">Les pères & responsabilités</a>
+              <a href="qui-sommes-nous.html" class="block py-2 px-2 rounded-md hover:bg-brandMuted hover:text-black transition-colors duration-150">Collaborations CHU</a>
+              <a href="qui-sommes-nous.html" class="block py-2 px-2 rounded-md hover:bg-brandMuted hover:text-black transition-colors duration-150">Contacts</a>
+            </div>
+          </div>
+          <div class="relative group">
+            <button class="hover:text-black transition-colors duration-200 inline-flex items-center gap-1 relative after:absolute after:bottom-0 after:left-0 after:w-0 after:h-0.5 after:bg-black after:transition-all after:duration-200 group-hover:after:w-full">
+              La bible et vous
+              <span class="text-xs transition-transform duration-200 group-hover:rotate-180">▼</span>
+            </button>
+            <div class="absolute top-full left-0 mt-2 bg-white text-gray-800 rounded-lg shadow-lg p-3 w-56 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-50 border border-gray-100">
+              <a href="bible-reponses.html" class="block py-2 px-2 rounded-md hover:bg-brandMuted hover:text-black transition-colors duration-150">Questions bibliques</a>
+              <a href="bible-decouvrir.html" class="block py-2 px-2 rounded-md hover:bg-brandMuted hover:text-black transition-colors duration-150">Que veulent dire ces versets ?</a>
+              <a href="bible-mediter.html" class="block py-2 px-2 rounded-md hover:bg-brandMuted hover:text-black transition-colors duration-150">Cours biblique</a>
+            </div>
+          </div>
+          <a href="contact.html" class="hover:text-black transition-colors duration-200 relative after:absolute after:bottom-0 after:left-0 after:w-0 after:h-0.5 after:bg-black after:transition-all after:duration-200 hover:after:w-full">Contact</a>
+        </nav>
+      </div>
+      
+      <div class="relative h-64 w-full overflow-hidden rounded-2xl shadow-soft">
+        <img src="https://images.unsplash.com/photo-1559526324-c1f59bcd28d5?auto=format&fit=crop&w=1400&q=80" alt="Kit de réconfort" class="h-full w-full object-cover">
+        <div class="absolute inset-0 bg-black/40"></div>
+        <div class="absolute inset-0 flex items-center px-6">
+          <div class="text-white space-y-2">
+            <p class="text-sm uppercase tracking-wide">Collecte solidaire</p>
+            <h1 class="text-3xl md:text-4xl font-semibold">Kit de réconfort pour les familles</h1>
+            <p class="text-sm max-w-xl text-white/80">Objectif : 150 kits (chapelet, carnet de prière, bougie)</p>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <section class="px-8 py-14 md:px-12">
+      <div class="max-w-4xl mx-auto">
+        <div class="flex items-center gap-2 text-sm text-gray-600 mb-6">
+          <span class="h-px w-8 bg-gray-400"></span>
+          <span>90/150 kits réunis · 60% atteint</span>
+        </div>
+
+        <div class="grid gap-8 lg:grid-cols-3">
+          <div class="lg:col-span-2 space-y-8">
+            <div>
+              <h2 class="text-2xl font-semibold text-gray-900 mb-4">À propos de cette collecte</h2>
+              <p class="text-gray-700 mb-6">
+                Face aux épreuves que traversent les familles lors d'une hospitalisation, nous proposons des kits de réconfort 
+                spirituel. Ces petits cadeaux, distribués gratuitement, apportent une présence chaleureuse et un soutien 
+                dans les moments difficiles.
+              </p>
+              
+              <div class="bg-brandMuted rounded-xl p-6 border border-green-100 mb-6">
+                <h3 class="font-semibold text-gray-900 mb-3">Progression actuelle</h3>
+                <div class="space-y-4">
+                  <div>
+                    <div class="flex items-center justify-between mb-2">
+                      <span class="text-sm font-semibold text-gray-700">90 kits sur 150</span>
+                      <span class="text-sm text-gray-600">60%</span>
+                    </div>
+                    <div class="h-4 w-full bg-gray-200 rounded-full overflow-hidden">
+                      <div class="h-full bg-brandDark rounded-full transition-all duration-300" style="width: 60%"></div>
+                    </div>
+                  </div>
+                  <div class="text-sm text-gray-700">
+                    <span class="font-semibold">Encore 60 kits</span> à réunir pour atteindre notre objectif
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div>
+              <h3 class="text-xl font-semibold text-gray-900 mb-4">Contenu d'un kit de réconfort</h3>
+              
+              <div class="grid gap-4 md:grid-cols-3 mb-6">
+                <div class="bg-white rounded-xl p-5 border border-gray-200 text-center">
+                  <div class="w-12 h-12 bg-brand rounded-full flex items-center justify-center mx-auto mb-3">
+                    <span class="text-xl">📿</span>
+                  </div>
+                  <h4 class="font-semibold text-gray-900 mb-2">Chapelet ou croix</h4>
+                  <p class="text-sm text-gray-600">Support de prière et de méditation pour les moments difficiles</p>
+                </div>
+                
+                <div class="bg-white rounded-xl p-5 border border-gray-200 text-center">
+                  <div class="w-12 h-12 bg-brand rounded-full flex items-center justify-center mx-auto mb-3">
+                    <span class="text-xl">📖</span>
+                  </div>
+                  <h4 class="font-semibold text-gray-900 mb-2">Carnet de prière</h4>
+                  <p class="text-sm text-gray-600">Petits textes spirituels et prières adaptés à l'hospitalisation</p>
+                </div>
+                
+                <div class="bg-white rounded-xl p-5 border border-gray-200 text-center">
+                  <div class="w-12 h-12 bg-brand rounded-full flex items-center justify-center mx-auto mb-3">
+                    <span class="text-xl">🕯️</span>
+                  </div>
+                  <h4 class="font-semibold text-gray-900 mb-2">Bougie parfumée</h4>
+                  <p class="text-sm text-gray-600">Élément de douceur et de recueillement pour la chambre</p>
+                </div>
+              </div>
+
+              <div class="bg-blue-50 border border-blue-200 rounded-xl p-6">
+                <h4 class="font-semibold text-blue-900 mb-3">Exemple de prières incluses</h4>
+                <div class="text-sm text-blue-800 italic space-y-2">
+                  <p>"Seigneur, dans cette épreuve, je remets entre tes mains mes inquiétudes..."</p>
+                  <p>"Marie, mère de consolation, intercède pour nous qui traversons cette vallée de larmes..."</p>
+                  <p>"Que la paix du Christ habite nos cœurs et apaise nos craintes..."</p>
+                </div>
+              </div>
+            </div>
+
+            <div>
+              <h3 class="text-xl font-semibold text-gray-900 mb-4">Comment ces kits sont distribués</h3>
+              
+              <div class="space-y-4">
+                <div class="flex items-start gap-4 p-4 bg-gray-50 rounded-lg">
+                  <div class="w-8 h-8 bg-brand rounded-full flex items-center justify-center flex-shrink-0 mt-1">
+                    <span class="text-white font-semibold text-sm">1</span>
+                  </div>
+                  <div>
+                    <h4 class="font-semibold text-gray-900 mb-1">Identification des besoins</h4>
+                    <p class="text-sm text-gray-700">
+                      Les équipes soignantes et l'aumônerie identifient les familles qui pourraient bénéficier 
+                      de ces kits de réconfort.
+                    </p>
+                  </div>
+                </div>
+
+                <div class="flex items-start gap-4 p-4 bg-gray-50 rounded-lg">
+                  <div class="w-8 h-8 bg-brand rounded-full flex items-center justify-center flex-shrink-0 mt-1">
+                    <span class="text-white font-semibold text-sm">2</span>
+                  </div>
+                  <div>
+                    <h4 class="font-semibold text-gray-900 mb-1">Proposition respectueuse</h4>
+                    <p class="text-sm text-gray-700">
+                      Les kits sont proposés avec délicatesse, en respectant les convictions et croyances de chacun. 
+                      Aucune obligation d'accepter.
+                    </p>
+                  </div>
+                </div>
+
+                <div class="flex items-start gap-4 p-4 bg-gray-50 rounded-lg">
+                  <div class="w-8 h-8 bg-brand rounded-full flex items-center justify-center flex-shrink-0 mt-1">
+                    <span class="text-white font-semibold text-sm">3</span>
+                  </div>
+                  <div>
+                    <h4 class="font-semibold text-gray-900 mb-1">Accompagnement personnalisé</h4>
+                    <p class="text-sm text-gray-700">
+                      La remise du kit peut être accompagnée d'un temps d'écoute ou de prière, 
+                      selon le souhait de la famille.
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="bg-yellow-50 border border-yellow-200 rounded-xl p-6">
+              <h3 class="text-lg font-semibold text-yellow-900 mb-3">Témoignage</h3>
+              <p class="text-yellow-800 italic mb-3">
+                "Recevoir ce petit kit lors de l'hospitalisation de ma mère a été un vrai réconfort. 
+                La bougie parfumée a apaisé l'atmosphère de la chambre, et le carnet de prière 
+                m'a donné des mots quand je n'arrivais plus à prier. Un geste simple mais qui fait tant de bien."
+              </p>
+              <p class="text-yellow-700 text-sm font-semibold">— Marie, famille accompagnée</p>
+            </div>
+          </div>
+
+          <div class="space-y-6">
+            <div class="bg-brand rounded-xl p-6 shadow-soft">
+              <h3 class="text-lg font-semibold text-gray-900 mb-4">Comment contribuer</h3>
+              
+              <div class="space-y-4 mb-6">
+                <div>
+                  <h4 class="font-semibold text-gray-900 mb-2">Don en nature</h4>
+                  <p class="text-sm text-gray-800 mb-3">
+                    Vous pouvez déposer directement les éléments au local pastoral :
+                  </p>
+                  <ul class="text-sm text-gray-700 space-y-1">
+                    <li>• Chapelets ou petites croix</li>
+                    <li>• Bougies parfumées (petite taille)</li>
+                    <li>• Carnets de prière (format poche)</li>
+                  </ul>
+                </div>
+
+                <div>
+                  <h4 class="font-semibold text-gray-900 mb-2">Don financier</h4>
+                  <p class="text-sm text-gray-800 mb-2">
+                    Coût approximatif d'un kit : 12€
+                  </p>
+                  <p class="text-xs text-gray-700">
+                    Votre don nous permet d'acheter les éléments manquants
+                  </p>
+                </div>
+              </div>
+              
+              <div class="space-y-3">
+                <a href="#" class="block w-full bg-black text-white px-6 py-3 rounded-full font-semibold text-center shadow hover:scale-[1.02] transition">
+                  Faire un don financier
+                </a>
+                <a href="#" class="block w-full bg-white text-gray-900 px-6 py-3 rounded-full font-semibold text-center border border-gray-300 hover:bg-gray-50 transition">
+                  Organiser une collecte
+                </a>
+              </div>
+            </div>
+
+            <div class="bg-white rounded-xl p-6 border border-gray-200">
+              <h3 class="text-lg font-semibold text-gray-900 mb-4">Lieu de dépôt</h3>
+              <div class="space-y-3 text-sm">
+                <div>
+                  <p class="font-semibold text-gray-900">Local pastoral</p>
+                  <p class="text-gray-700">Rez-de-chaussée · Bâtiment A</p>
+                  <p class="text-gray-700">Porte à gauche de la chapelle</p>
+                </div>
+                <div>
+                  <p class="font-semibold text-gray-900">Horaires d'accueil</p>
+                  <p class="text-gray-700">Lundi-Vendredi : 8h-18h</p>
+                  <p class="text-gray-700">Samedi : 8h-12h</p>
+                </div>
+                <div>
+                  <p class="font-semibold text-gray-900">Contact</p>
+                  <p class="text-gray-700">📞 01 23 45 67 89</p>
+                  <p class="text-gray-700">📧 pastorale@chu.exemple</p>
+                </div>
+              </div>
+            </div>
+
+            <div class="bg-green-50 border border-green-200 rounded-xl p-6">
+              <h3 class="text-lg font-semibold text-green-900 mb-3">Merci aux donateurs</h3>
+              <div class="text-green-800 text-sm space-y-2">
+                <p>• Paroisse Saint-Martin : 25 kits</p>
+                <p>• Communauté des Béatitudes : 15 chapelets</p>
+                <p>• Mouvement chrétien des retraités : 20 bougies</p>
+                <p>• Dons individuels : 30 carnets de prière</p>
+              </div>
+              <p class="text-green-700 text-sm font-semibold mt-3">
+                Votre générosité fait la différence !
+              </p>
+            </div>
+
+            <div class="bg-blue-50 border border-blue-200 rounded-xl p-6">
+              <h3 class="text-lg font-semibold text-blue-900 mb-3">Autres collectes</h3>
+              <p class="text-blue-800 text-sm mb-4">
+                Découvrez nos autres actions solidaires en cours et à venir.
+              </p>
+              <a href="actualites.html" class="inline-flex items-center gap-1 text-sm font-semibold text-blue-800 underline">
+                Voir toutes les collectes
+                <span aria-hidden="true">→</span>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <footer class="px-8 py-6 md:px-12 text-sm text-gray-700">
+      <div class="flex flex-col gap-4 md:flex-row md:items-center md:justify-between">
+        <div>
+          <p class="font-semibold text-gray-900">Pastoral CHU</p>
+          <p>Chapelle du CHU · Bâtiment A</p>
+          <p>pastorale@chu.exemple · 01 23 45 67 89</p>
+        </div>
+        <div class="flex flex-wrap gap-3">
+          <a href="actualites.html" class="underline">Actualités</a>
+          <a href="services.html" class="underline">Services</a>
+          <a href="evenements.html" class="underline">Événements</a>
+          <a href="formations.html" class="underline">Formations</a>
+          <a href="galerie.html" class="underline">Galerie</a>
+          <a href="qui-sommes-nous.html" class="underline">Qui sommes-nous</a>
+          <a href="bible-reponses.html" class="underline">La Bible et vous</a>
+          <a href="ressources.html" class="underline">Ressources</a>
+          <a href="contact.html" class="underline">Contact</a>
+        </div>
+      </div>
+      <p class="text-center text-xs text-gray-500 mt-4">© Pastorale du CHU</p>
+    </footer>
+  </main>
+</body>
+</html>

@@ -1,0 +1,380 @@
+<!DOCTYPE html>
+<html lang="fr" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: { brand: '#a7f3a0', brandDark: '#22c55e', brandMuted: '#e6fde0', stone: '#f7f5f1' },
+          fontFamily: { sans: ['Inter', 'Helvetica Neue', 'Arial', 'sans-serif'] },
+          boxShadow: { soft: '0 25px 70px rgba(0,0,0,0.08)' }
+        }
+      }
+    }
+  </script>
+  <title>Pastoral CHU - Témoignages</title>
+</head>
+<body class="min-h-screen bg-gradient-to-b from-emerald-900 via-emerald-950 to-emerald-900 flex items-center justify-center py-4 px-4">
+  <main class="w-full max-w-7xl bg-stone rounded-3xl shadow-soft overflow-hidden">
+    <header class="px-8 py-8 flex flex-col gap-4 md:gap-6">
+      <div class="flex flex-col gap-4 md:flex-row md:items-center md:justify-between">
+        <div class="flex items-center gap-2 text-lg font-semibold">
+          <span class="w-3 h-3 rounded-full bg-black"></span>
+          <span>Pastoral CHU</span>
+        </div>
+        <nav class="flex flex-wrap items-center gap-6 text-base text-gray-700">
+          <a href="index.html" class="hover:text-black transition-colors duration-200 relative after:absolute after:bottom-0 after:left-0 after:w-0 after:h-0.5 after:bg-black after:transition-all after:duration-200 hover:after:w-full">Accueil</a>
+          <a href="actualites.html" class="hover:text-black transition-colors duration-200 relative after:absolute after:bottom-0 after:left-0 after:w-0 after:h-0.5 after:bg-black after:transition-all after:duration-200 hover:after:w-full">Actualités</a>
+          <div class="relative group">
+            <button class="font-semibold text-black inline-flex items-center gap-1 relative after:absolute after:bottom-0 after:left-0 after:w-full after:h-0.5 after:bg-black">
+              Services
+              <span class="text-xs transition-transform duration-200 group-hover:rotate-180">▼</span>
+            </button>
+            <div class="absolute top-full left-0 mt-2 bg-white text-gray-800 rounded-lg shadow-lg p-3 w-56 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-50 border border-gray-100">
+              <a href="services.html" class="block py-2 px-2 rounded-md hover:bg-brandMuted hover:text-black transition-colors duration-150">Nos services</a>
+              <a href="evenements.html" class="block py-2 px-2 rounded-md hover:bg-brandMuted hover:text-black transition-colors duration-150">Événements</a>
+              <a href="formations.html" class="block py-2 px-2 rounded-md hover:bg-brandMuted hover:text-black transition-colors duration-150">Formations</a>
+              <a href="ressources.html" class="block py-2 px-2 rounded-md hover:bg-brandMuted hover:text-black transition-colors duration-150">Ressources spirituelles</a>
+            </div>
+          </div>
+          <div class="relative group">
+            <button class="hover:text-black transition-colors duration-200 inline-flex items-center gap-1 relative after:absolute after:bottom-0 after:left-0 after:w-0 after:h-0.5 after:bg-black after:transition-all after:duration-200 group-hover:after:w-full">
+              Galerie
+              <span class="text-xs transition-transform duration-200 group-hover:rotate-180">▼</span>
+            </button>
+            <div class="absolute top-full left-0 mt-2 bg-white text-gray-800 rounded-lg shadow-lg p-3 w-52 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-50 border border-gray-100">
+              <a href="galerie.html" class="block py-2 px-2 rounded-md hover:bg-brandMuted hover:text-black transition-colors duration-150">Photothèque</a>
+              <a href="galerie.html" class="block py-2 px-2 rounded-md hover:bg-brandMuted hover:text-black transition-colors duration-150">Bibliothèque</a>
+            </div>
+          </div>
+          <div class="relative group">
+            <button class="hover:text-black transition-colors duration-200 inline-flex items-center gap-1 relative after:absolute after:bottom-0 after:left-0 after:w-0 after:h-0.5 after:bg-black after:transition-all after:duration-200 group-hover:after:w-full">
+              Qui sommes-nous
+              <span class="text-xs transition-transform duration-200 group-hover:rotate-180">▼</span>
+            </button>
+            <div class="absolute top-full left-0 mt-2 bg-white text-gray-800 rounded-lg shadow-lg p-3 w-60 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-50 border border-gray-100">
+              <a href="qui-sommes-nous.html" class="block py-2 px-2 rounded-md hover:bg-brandMuted hover:text-black transition-colors duration-150">Mission & Valeurs</a>
+              <a href="qui-sommes-nous.html" class="block py-2 px-2 rounded-md hover:bg-brandMuted hover:text-black transition-colors duration-150">Les pères & responsabilités</a>
+              <a href="qui-sommes-nous.html" class="block py-2 px-2 rounded-md hover:bg-brandMuted hover:text-black transition-colors duration-150">Collaborations CHU</a>
+              <a href="qui-sommes-nous.html" class="block py-2 px-2 rounded-md hover:bg-brandMuted hover:text-black transition-colors duration-150">Contacts</a>
+            </div>
+          </div>
+          <div class="relative group">
+            <button class="hover:text-black transition-colors duration-200 inline-flex items-center gap-1 relative after:absolute after:bottom-0 after:left-0 after:w-0 after:h-0.5 after:bg-black after:transition-all after:duration-200 group-hover:after:w-full">
+              La bible et vous
+              <span class="text-xs transition-transform duration-200 group-hover:rotate-180">▼</span>
+            </button>
+            <div class="absolute top-full left-0 mt-2 bg-white text-gray-800 rounded-lg shadow-lg p-3 w-56 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-50 border border-gray-100">
+              <a href="bible.html" class="block py-2 px-2 rounded-md hover:bg-brandMuted hover:text-black transition-colors duration-150">Questions bibliques</a>
+              <a href="bible.html" class="block py-2 px-2 rounded-md hover:bg-brandMuted hover:text-black transition-colors duration-150">Que veulent dire ces versets ?</a>
+              <a href="bible.html" class="block py-2 px-2 rounded-md hover:bg-brandMuted hover:text-black transition-colors duration-150">Cours biblique</a>
+            </div>
+          </div>
+          <a href="contact.html" class="hover:text-black transition-colors duration-200 relative after:absolute after:bottom-0 after:left-0 after:w-0 after:h-0.5 after:bg-black after:transition-all after:duration-200 hover:after:w-full">Contact</a>
+        </nav>
+      </div>
+      
+      <div class="relative h-64 w-full overflow-hidden rounded-2xl shadow-soft">
+        <img src="https://images.unsplash.com/photo-1559757175-0eb30cd8c063?auto=format&fit=crop&w=1400&q=80" alt="Témoignages" class="h-full w-full object-cover">
+        <div class="absolute inset-0 bg-black/40"></div>
+        <div class="absolute inset-0 flex items-center px-6">
+          <div class="text-white space-y-2">
+            <p class="text-sm uppercase tracking-wide">Paroles de vie</p>
+            <h1 class="text-3xl md:text-4xl font-semibold">Témoignages & Vécus</h1>
+            <p class="text-sm max-w-xl text-white/80">Des histoires d'espérance et de rencontres au cœur du CHU</p>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <section id="temoignages-patients" class="px-8 py-14 md:px-12">
+      <div class="flex items-center gap-2 text-sm text-gray-600 mb-6">
+        <span class="h-px w-8 bg-gray-400"></span>
+        <span>Témoignages de patients</span>
+      </div>
+      
+      <div class="space-y-6">
+        <article class="bg-brandMuted rounded-xl p-6 shadow-soft border border-green-100 relative overflow-hidden">
+          <div class="absolute top-0 right-0 w-16 h-16 bg-white/20 rounded-bl-full"></div>
+          <div class="relative z-10">
+            <div class="flex items-start gap-4 mb-4">
+              <div class="w-12 h-12 bg-white rounded-full flex items-center justify-center font-semibold text-gray-800">
+                M.
+              </div>
+              <div>
+                <h3 class="font-semibold text-gray-900">Marie, 67 ans</h3>
+                <p class="text-sm text-gray-700">Patiente en cardiologie</p>
+              </div>
+            </div>
+            <blockquote class="text-gray-800 leading-relaxed italic mb-4">
+              "Quand le Père Emmanuel est venu me voir avant mon opération, j'avais très peur. Il m'a simplement écoutée, 
+              sans me juger, sans minimiser mes craintes. Sa présence silencieuse et priante m'a apportée une paix que 
+              je n'espérais plus. Il m'a rappelé que Dieu était là, avec moi, dans cette épreuve. L'opération s'est bien 
+              passée et je garde une reconnaissance immense pour ce moment de grâce."
+            </blockquote>
+            <div class="text-xs text-gray-600">Témoignage recueilli en novembre 2024</div>
+          </div>
+        </article>
+        
+        <article class="bg-white rounded-xl p-6 shadow-soft border border-gray-100">
+          <div class="flex items-start gap-4 mb-4">
+            <div class="w-12 h-12 bg-blue-100 rounded-full flex items-center justify-center font-semibold text-gray-800">
+              J.
+            </div>
+            <div>
+              <h3 class="font-semibold text-gray-900">Jean-Pierre, 52 ans</h3>
+              <p class="text-sm text-gray-600">Patient en oncologie</p>
+            </div>
+          </div>
+          <blockquote class="text-gray-700 leading-relaxed italic mb-4">
+            "Le diagnostic de cancer a bouleversé ma vie. Je me sentais abandonné, en colère contre Dieu. 
+            Sœur Marie-Claire venait me voir régulièrement, même quand j'étais désagréable. Elle ne cherchait 
+            pas à me consoler avec des mots faciles. Elle était juste là, fidèle. Petit à petit, j'ai retrouvé 
+            la prière et l'espérance. Aujourd'hui en rémission, je participe à la chorale de l'hôpital."
+          </blockquote>
+          <div class="text-xs text-gray-500">Témoignage recueilli en octobre 2024</div>
+        </article>
+        
+        <article class="bg-yellow-50 rounded-xl p-6 shadow-soft border border-yellow-100">
+          <div class="flex items-start gap-4 mb-4">
+            <div class="w-12 h-12 bg-yellow-200 rounded-full flex items-center justify-center font-semibold text-gray-800">
+              C.
+            </div>
+            <div>
+              <h3 class="font-semibold text-gray-900">Claire, 34 ans</h3>
+              <p class="text-sm text-gray-600">Maman en maternité</p>
+            </div>
+          </div>
+          <blockquote class="text-gray-700 leading-relaxed italic mb-4">
+            "Notre petite fille est née prématurément et a dû rester en réanimation. Nous étions dévastés. 
+            Le diacre nous a proposé de la baptiser et nous avons accepté. Cette célébration simple, 
+            entourés du personnel soignant, nous a donné la force de continuer à espérer. 
+            Notre fille va bien aujourd'hui et nous gardons une foi renforcée par cette épreuve."
+          </blockquote>
+          <div class="text-xs text-gray-500">Témoignage recueilli en septembre 2024</div>
+        </article>
+      </div>
+    </section>
+
+    <section id="temoignages-familles" class="px-8 py-14 md:px-12 bg-white">
+      <div class="flex items-center gap-2 text-sm text-gray-600 mb-6">
+        <span class="h-px w-8 bg-gray-400"></span>
+        <span>Témoignages de familles</span>
+      </div>
+      
+      <div class="grid gap-6 md:grid-cols-2">
+        <article class="bg-stone rounded-xl p-6 shadow-soft">
+          <div class="flex items-start gap-4 mb-4">
+            <div class="w-12 h-12 bg-purple-100 rounded-full flex items-center justify-center font-semibold text-gray-800">
+              F.
+            </div>
+            <div>
+              <h3 class="font-semibold text-gray-900">Famille Dubois</h3>
+              <p class="text-sm text-gray-600">Accompagnement en fin de vie</p>
+            </div>
+          </div>
+          <blockquote class="text-gray-700 leading-relaxed italic mb-4">
+            "Papa nous quittait après une longue maladie. Le Père François nous a accompagnés 
+            dans ses derniers moments. Il a su trouver les mots justes, organiser une petite 
+            célébration d'adieu qui correspondait à papa. Sa présence nous a permis de vivre 
+            ce passage dans la dignité et la paix."
+          </blockquote>
+          <div class="text-xs text-gray-500">— Sophie, fille d'un patient</div>
+        </article>
+        
+        <article class="bg-stone rounded-xl p-6 shadow-soft">
+          <div class="flex items-start gap-4 mb-4">
+            <div class="w-12 h-12 bg-green-100 rounded-full flex items-center justify-center font-semibold text-gray-800">
+              L.
+            </div>
+            <div>
+              <h3 class="font-semibold text-gray-900">Famille Martin</h3>
+              <p class="text-sm text-gray-600">Hospitalisation longue</p>
+            </div>
+          </div>
+          <blockquote class="text-gray-700 leading-relaxed italic mb-4">
+            "Notre fils de 12 ans était hospitalisé depuis deux mois. Toute la famille était épuisée. 
+            L'équipe pastorale nous a proposé un temps de partage et de prière. Cela nous a fait 
+            du bien de pouvoir exprimer nos angoisses sans tabou. Nous avons senti une vraie 
+            communion avec d'autres familles qui vivaient la même chose."
+          </blockquote>
+          <div class="text-xs text-gray-500">— Parents d'un jeune patient</div>
+        </article>
+      </div>
+    </section>
+
+    <section id="temoignages-soignants" class="px-8 py-14 md:px-12">
+      <div class="flex items-center gap-2 text-sm text-gray-600 mb-6">
+        <span class="h-px w-8 bg-gray-400"></span>
+        <span>Témoignages du personnel soignant</span>
+      </div>
+      
+      <div class="space-y-6">
+        <article class="bg-blue-50 rounded-xl p-6 shadow-soft border border-blue-100">
+          <div class="flex items-start gap-4 mb-4">
+            <div class="w-12 h-12 bg-blue-200 rounded-full flex items-center justify-center font-semibold text-gray-800">
+              Dr.
+            </div>
+            <div>
+              <h3 class="font-semibold text-gray-900">Dr. Sarah Lambert</h3>
+              <p class="text-sm text-gray-600">Chef de service oncologie</p>
+            </div>
+          </div>
+          <blockquote class="text-gray-700 leading-relaxed italic mb-4">
+            "La collaboration avec l'équipe pastorale enrichit considérablement notre prise en charge. 
+            Ils apportent une dimension humaine et spirituelle que nous, soignants, n'avons pas toujours 
+            le temps d'approfondir. Je vois la différence chez les patients qui bénéficient de cet 
+            accompagnement : ils semblent plus apaisés, mieux préparés à affronter les difficultés."
+          </blockquote>
+          <div class="text-xs text-gray-500">Témoignage médical</div>
+        </article>
+        
+        <article class="bg-green-50 rounded-xl p-6 shadow-soft border border-green-100">
+          <div class="flex items-start gap-4 mb-4">
+            <div class="w-12 h-12 bg-green-200 rounded-full flex items-center justify-center font-semibold text-gray-800">
+              A.
+            </div>
+            <div>
+              <h3 class="font-semibold text-gray-900">Anne-Sophie, infirmière</h3>
+              <p class="text-sm text-gray-600">Service de réanimation</p>
+            </div>
+          </div>
+          <blockquote class="text-gray-700 leading-relaxed italic mb-4">
+            "Travailler en réanimation, c'est côtoyer quotidiennement la souffrance et parfois la mort. 
+            Les groupes de parole organisés par la pastorale m'ont beaucoup aidée. Pouvoir exprimer mes doutes, 
+            mes questionnements sur le sens de ce que je fais, c'est essentiel. Je me sens moins seule 
+            et mieux armée pour accompagner les patients et leurs familles."
+          </blockquote>
+          <div class="text-xs text-gray-500">Équipe soignante</div>
+        </article>
+        
+        <article class="bg-purple-50 rounded-xl p-6 shadow-soft border border-purple-100">
+          <div class="flex items-start gap-4 mb-4">
+            <div class="w-12 h-12 bg-purple-200 rounded-full flex items-center justify-center font-semibold text-gray-800">
+              M.
+            </div>
+            <div>
+              <h3 class="font-semibold text-gray-900">Michel, aide-soignant</h3>
+              <p class="text-sm text-gray-600">Service gériatrie</p>
+            </div>
+          </div>
+          <blockquote class="text-gray-700 leading-relaxed italic mb-4">
+            "Quand je suis arrivé dans ce service, j'avais du mal à gérer l'émotionnel. 
+            Voir des personnes âgées en fin de vie, c'était dur. Le Père Emmanuel m'a proposé 
+            de participer à une formation sur l'accompagnement. J'ai appris à être présent 
+            autrement, à écouter vraiment. Maintenant, je me sens utile et en paix avec mon travail."
+          </blockquote>
+          <div class="text-xs text-gray-500">Personnel d'accompagnement</div>
+        </article>
+      </div>
+    </section>
+
+    <section id="moments-forts" class="px-8 py-14 md:px-12 bg-white">
+      <div class="flex items-center gap-2 text-sm text-gray-600 mb-6">
+        <span class="h-px w-8 bg-gray-400"></span>
+        <span>Moments forts & Rencontres</span>
+      </div>
+      
+      <div class="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+        <div class="bg-brandMuted rounded-xl p-5 border border-green-100">
+          <div class="w-10 h-10 bg-brand rounded-lg flex items-center justify-center mb-3">
+            <span class="text-xl">🎄</span>
+          </div>
+          <h3 class="font-semibold text-gray-900 mb-2">Noël 2023</h3>
+          <p class="text-sm text-gray-700 mb-3">
+            "La messe de minuit adaptée dans les services a touché plus de 200 patients. 
+            Voir leurs visages s'illuminer lors des chants était un vrai cadeau."
+          </p>
+          <div class="text-xs text-gray-600">— Sœur Marie-Claire</div>
+        </div>
+        
+        <div class="bg-white rounded-xl p-5 border border-gray-200">
+          <div class="w-10 h-10 bg-yellow-100 rounded-lg flex items-center justify-center mb-3">
+            <span class="text-xl">🤝</span>
+          </div>
+          <h3 class="font-semibold text-gray-900 mb-2">Mariage à l'hôpital</h3>
+          <p class="text-sm text-gray-700 mb-3">
+            "Célébrer le mariage de Thomas et Lucie dans sa chambre d'hôpital a été un moment 
+            de pure joie. L'amour était plus fort que la maladie."
+          </p>
+          <div class="text-xs text-gray-600">— Père François</div>
+        </div>
+        
+        <div class="bg-white rounded-xl p-5 border border-gray-200">
+          <div class="w-10 h-10 bg-blue-100 rounded-lg flex items-center justify-center mb-3">
+            <span class="text-xl">👶</span>
+          </div>
+          <h3 class="font-semibold text-gray-900 mb-2">Baptême en urgence</h3>
+          <p class="text-sm text-gray-700 mb-3">
+            "Baptiser le petit Gabriel au milieu des machines, entourés des soignants, 
+            restera gravé dans mon cœur. Il va bien aujourd'hui."
+          </p>
+          <div class="text-xs text-gray-600">— Diacre Paul</div>
+        </div>
+      </div>
+    </section>
+
+    <section id="partager-temoignage" class="px-8 py-14 md:px-12">
+      <div class="max-w-2xl mx-auto text-center">
+        <div class="flex items-center justify-center gap-2 text-sm text-gray-600 mb-6">
+          <span class="h-px w-8 bg-gray-400"></span>
+          <span>Partager votre témoignage</span>
+          <span class="h-px w-8 bg-gray-400"></span>
+        </div>
+        
+        <h2 class="text-2xl font-semibold text-gray-900 mb-4">Votre histoire nous intéresse</h2>
+        <p class="text-gray-700 mb-6">
+          Vous avez vécu une expérience marquante avec l'équipe pastorale du CHU ? 
+          Votre témoignage peut aider d'autres personnes et témoigner de l'action de Dieu dans notre hôpital.
+        </p>
+        
+        <div class="bg-brandMuted rounded-xl p-6 border border-green-100 max-w-lg mx-auto">
+          <h3 class="font-semibold text-gray-900 mb-4">Comment partager votre témoignage ?</h3>
+          <div class="space-y-3 text-sm text-left">
+            <div class="flex items-center gap-3">
+              <div class="w-6 h-6 bg-brand rounded-full flex items-center justify-center text-xs font-semibold">1</div>
+              <span>Contactez-nous par téléphone ou email</span>
+            </div>
+            <div class="flex items-center gap-3">
+              <div class="w-6 h-6 bg-brand rounded-full flex items-center justify-center text-xs font-semibold">2</div>
+              <span>Partagez votre histoire lors d'un entretien</span>
+            </div>
+            <div class="flex items-center gap-3">
+              <div class="w-6 h-6 bg-brand rounded-full flex items-center justify-center text-xs font-semibold">3</div>
+              <span>Nous publions votre témoignage anonymisé</span>
+            </div>
+          </div>
+        </div>
+        
+        <div class="mt-6 space-y-2 text-sm">
+          <div>📧 <a href="mailto:temoignages@chu.exemple" class="underline font-semibold">temoignages@chu.exemple</a></div>
+          <div>📞 01 23 45 67 89 (poste 2156)</div>
+        </div>
+      </div>
+    </section>
+
+    <footer class="px-8 py-6 md:px-12 text-sm text-gray-700">
+      <div class="flex flex-col gap-4 md:flex-row md:items-center md:justify-between">
+        <div>
+          <p class="font-semibold text-gray-900">Pastoral CHU</p>
+          <p>Chapelle du CHU · Bâtiment A</p>
+          <p>pastorale@chu.exemple · 01 23 45 67 89</p>
+        </div>
+        <div class="flex gap-3">
+          <a href="actualites.html" class="underline">Actualités</a>
+          <a href="galerie.html" class="underline">Galerie</a>
+          <a href="qui-sommes-nous.html" class="underline">Qui sommes-nous</a>
+          <a href="bible.html" class="underline">La Bible et vous</a>
+        </div>
+      </div>
+      <p class="text-center text-xs text-gray-500 mt-4">© Pastorale du CHU</p>
+    </footer>
+  </main>
+</body>
+</html>

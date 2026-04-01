@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<html lang="fr" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: { brand: '#a7f3a0', brandDark: '#22c55e', brandMuted: '#e6fde0', stone: '#f7f5f1' },
+          fontFamily: { sans: ['Inter', 'Helvetica Neue', 'Arial', 'sans-serif'] },
+          boxShadow: { soft: '0 25px 70px rgba(0,0,0,0.08)' }
+        }
+      }
+    }
+  </script>
+  <title>Pastoral CHU - Événements</title>
+</head>
+<body class="min-h-screen bg-gradient-to-b from-emerald-900 via-emerald-950 to-emerald-900 flex items-center justify-center py-4 px-4">
+  <main class="w-full max-w-7xl bg-stone rounded-3xl shadow-soft overflow-hidden">
+    <header class="px-8 py-8 flex flex-col gap-4 md:gap-6">
+      <div class="flex flex-col gap-4 md:flex-row md:items-center md:justify-between">
+        <div class="flex items-center gap-2 text-lg font-semibold">
+          <span class="w-3 h-3 rounded-full bg-black"></span>
+          <span>Pastoral CHU</span>
+        </div>
+        <nav class="flex flex-wrap items-center gap-6 text-base text-gray-700">
+          <a href="index.html" class="hover:text-black transition-colors duration-200 relative after:absolute after:bottom-0 after:left-0 after:w-0 after:h-0.5 after:bg-black after:transition-all after:duration-200 hover:after:w-full">Accueil</a>
+          <a href="actualites.html" class="font-semibold text-black relative after:absolute after:bottom-0 after:left-0 after:w-full after:h-0.5 after:bg-black">Actualités</a>
+          <div class="relative group">
+            <button class="hover:text-black transition-colors duration-200 inline-flex items-center gap-1 relative after:absolute after:bottom-0 after:left-0 after:w-0 after:h-0.5 after:bg-black after:transition-all after:duration-200 group-hover:after:w-full">
+              Services
+              <span class="text-xs transition-transform duration-200 group-hover:rotate-180">▼</span>
+            </button>
+            <div class="absolute top-full left-0 mt-2 bg-white text-gray-800 rounded-lg shadow-lg p-3 w-56 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-50 border border-gray-100">
+              <a href="services.html" class="block py-2 px-2 rounded-md hover:bg-brandMuted hover:text-black transition-colors duration-150">Nos services</a>
+              <a href="evenements.html" class="block py-2 px-2 rounded-md hover:bg-brandMuted hover:text-black transition-colors duration-150">Événements</a>
+              <a href="formations.html" class="block py-2 px-2 rounded-md hover:bg-brandMuted hover:text-black transition-colors duration-150">Formations</a>
+              <a href="ressources.html" class="block py-2 px-2 rounded-md hover:bg-brandMuted hover:text-black transition-colors duration-150">Ressources spirituelles</a>
+            </div>
+          </div>
+          <div class="relative group">
+            <button class="hover:text-black transition-colors duration-200 inline-flex items-center gap-1 relative after:absolute after:bottom-0 after:left-0 after:w-0 after:h-0.5 after:bg-black after:transition-all after:duration-200 group-hover:after:w-full">
+              Galerie
+              <span class="text-xs transition-transform duration-200 group-hover:rotate-180">▼</span>
+            </button>
+            <div class="absolute top-full left-0 mt-2 bg-white text-gray-800 rounded-lg shadow-lg p-3 w-52 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-50 border border-gray-100">
+              <a href="galerie.html" class="block py-2 px-2 rounded-md hover:bg-brandMuted hover:text-black transition-colors duration-150">Photothèque</a>
+              <a href="galerie.html" class="block py-2 px-2 rounded-md hover:bg-brandMuted hover:text-black transition-colors duration-150">Bibliothèque</a>
+            </div>
+          </div>
+          <div class="relative group">
+            <button class="hover:text-black transition-colors duration-200 inline-flex items-center gap-1 relative after:absolute after:bottom-0 after:left-0 after:w-0 after:h-0.5 after:bg-black after:transition-all after:duration-200 group-hover:after:w-full">
+              Qui sommes-nous
+              <span class="text-xs transition-transform duration-200 group-hover:rotate-180">▼</span>
+            </button>
+            <div class="absolute top-full left-0 mt-2 bg-white text-gray-800 rounded-lg shadow-lg p-3 w-60 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-50 border border-gray-100">
+              <a href="qui-sommes-nous.html" class="block py-2 px-2 rounded-md hover:bg-brandMuted hover:text-black transition-colors duration-150">Mission & Valeurs</a>
+              <a href="qui-sommes-nous.html" class="block py-2 px-2 rounded-md hover:bg-brandMuted hover:text-black transition-colors duration-150">Les pères & responsabilités</a>
+              <a href="qui-sommes-nous.html" class="block py-2 px-2 rounded-md hover:bg-brandMuted hover:text-black transition-colors duration-150">Collaborations CHU</a>
+              <a href="qui-sommes-nous.html" class="block py-2 px-2 rounded-md hover:bg-brandMuted hover:text-black transition-colors duration-150">Contacts</a>
+            </div>
+          </div>
+          <div class="relative group">
+            <button class="hover:text-black transition-colors duration-200 inline-flex items-center gap-1 relative after:absolute after:bottom-0 after:left-0 after:w-0 after:h-0.5 after:bg-black after:transition-all after:duration-200 group-hover:after:w-full">
+              La bible et vous
+              <span class="text-xs transition-transform duration-200 group-hover:rotate-180">▼</span>
+            </button>
+            <div class="absolute top-full left-0 mt-2 bg-white text-gray-800 rounded-lg shadow-lg p-3 w-56 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-50 border border-gray-100">
+              <a href="bible.html" class="block py-2 px-2 rounded-md hover:bg-brandMuted hover:text-black transition-colors duration-150">Questions bibliques</a>
+              <a href="bible.html" class="block py-2 px-2 rounded-md hover:bg-brandMuted hover:text-black transition-colors duration-150">Que veulent dire ces versets ?</a>
+              <a href="bible.html" class="block py-2 px-2 rounded-md hover:bg-brandMuted hover:text-black transition-colors duration-150">Cours biblique</a>
+            </div>
+          </div>
+          <a href="contact.html" class="hover:text-black transition-colors duration-200 relative after:absolute after:bottom-0 after:left-0 after:w-0 after:h-0.5 after:bg-black after:transition-all after:duration-200 hover:after:w-full">Contact</a>
+        </nav>
+      </div>
+      <div class="relative h-40 w-full overflow-hidden rounded-2xl shadow-soft">
+        <img src="https://images.unsplash.com/photo-1469474968028-56623f02e42e?auto=format&fit=crop&w=1400&q=80" alt="Actualités pastorale" class="h-full w-full object-cover">
+        <div class="absolute inset-0 bg-black/30"></div>
+        <div class="absolute inset-0 flex items-center px-6">
+          <div class="text-white">
+            <p class="text-sm uppercase tracking-wide">Actualités</p>
+            <h1 class="text-3xl font-semibold">Évènements & annonces</h1>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <section id="evenements-a-venir" class="px-8 py-14 md:px-12">
+      <div class="flex items-center gap-2 text-sm text-gray-600 mb-6">
+        <span class="h-px w-8 bg-gray-400"></span>
+        <span>Prochains événements</span>
+      </div>
+      
+      <div class="space-y-6">
+        <div class="bg-brand rounded-xl p-6 shadow-soft relative overflow-hidden">
+          <div class="absolute top-0 right-0 w-20 h-20 bg-white/20 rounded-bl-full"></div>
+          <div class="flex flex-col md:flex-row md:items-start gap-4 relative z-10">
+            <div class="bg-white rounded-lg p-3 text-center min-w-[80px]">
+              <div class="text-xs text-gray-600 uppercase">Déc</div>
+              <div class="text-2xl font-bold text-gray-900">25</div>
+              <div class="text-xs text-gray-600">2024</div>
+            </div>
+            <div class="flex-1">
+              <h3 class="text-xl font-semibold text-gray-900 mb-2">Messe de Noël</h3>
+              <p class="text-gray-800 mb-3">Célébration de la Nativité dans la chapelle du CHU avec chants et animation spéciale pour les patients.</p>
+              <div class="flex flex-wrap gap-4 text-sm text-gray-700">
+                <span class="flex items-center gap-1">🕙 10h00</span>
+                <span class="flex items-center gap-1">📍 Chapelle CHU</span>
+                <span class="flex items-center gap-1">👥 Ouverte à tous</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="bg-white rounded-xl p-6 shadow-soft border border-gray-100">
+          <div class="flex flex-col md:flex-row md:items-start gap-4">
+            <div class="bg-brandMuted rounded-lg p-3 text-center min-w-[80px] border border-green-200">
+              <div class="text-xs text-gray-600 uppercase">Jan</div>
+              <div class="text-2xl font-bold text-gray-900">15</div>
+              <div class="text-xs text-gray-600">2025</div>
+            </div>
+            <div class="flex-1">
+              <h3 class="text-xl font-semibold text-gray-900 mb-2">Soirée de formation</h3>
+              <p class="text-gray-700 mb-3">« L'accompagnement spirituel en milieu hospitalier » - Formation pour les bénévoles et le personnel.</p>
+              <div class="flex flex-wrap gap-4 text-sm text-gray-600">
+                <span class="flex items-center gap-1">🕕 18h30 - 20h30</span>
+                <span class="flex items-center gap-1">📍 Salle de conférence B</span>
+                <span class="flex items-center gap-1">📝 Inscription requise</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="bg-white rounded-xl p-6 shadow-soft border border-gray-100">
+          <div class="flex flex-col md:flex-row md:items-start gap-4">
+            <div class="bg-brandMuted rounded-lg p-3 text-center min-w-[80px] border border-green-200">
+              <div class="text-xs text-gray-600 uppercase">Fév</div>
+              <div class="text-2xl font-bold text-gray-900">2</div>
+              <div class="text-xs text-gray-600">2025</div>
+            </div>
+            <div class="flex-1">
+              <h3 class="text-xl font-semibold text-gray-900 mb-2">Journée mondiale des malades</h3>
+              <p class="text-gray-700 mb-3">Célébration spéciale avec bénédictions et temps de prière pour tous les patients du CHU.</p>
+              <div class="flex flex-wrap gap-4 text-sm text-gray-600">
+                <span class="flex items-center gap-1">🕐 Toute la journée</span>
+                <span class="flex items-center gap-1">📍 Chapelle & Services</span>
+                <span class="flex items-center gap-1">🤝 Avec les équipes</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="evenements-reguliers" class="px-8 py-14 md:px-12 bg-white">
+      <div class="flex items-center gap-2 text-sm text-gray-600 mb-6">
+        <span class="h-px w-8 bg-gray-400"></span>
+        <span>Événements réguliers</span>
+      </div>
+      
+      <div class="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+        <div class="bg-brandMuted rounded-xl p-5 border border-green-100">
+          <div class="w-10 h-10 bg-brand rounded-lg flex items-center justify-center mb-3">
+            <span class="text-xl">⛪</span>
+          </div>
+          <h3 class="font-semibold text-gray-900 mb-2">Messes quotidiennes</h3>
+          <p class="text-sm text-gray-700 mb-3">Du lundi au vendredi à 12h15, dimanche à 10h00</p>
+          <div class="text-xs text-gray-600">Chapelle du CHU</div>
+        </div>
+        
+        <div class="bg-white rounded-xl p-5 border border-gray-200">
+          <div class="w-10 h-10 bg-blue-100 rounded-lg flex items-center justify-center mb-3">
+            <span class="text-xl">📖</span>
+          </div>
+          <h3 class="font-semibold text-gray-900 mb-2">Groupe biblique</h3>
+          <p class="text-sm text-gray-700 mb-3">Tous les mardis à 18h30, étude et partage autour des Écritures</p>
+          <div class="text-xs text-gray-600">Salle pastorale</div>
+        </div>
+        
+        <div class="bg-white rounded-xl p-5 border border-gray-200">
+          <div class="w-10 h-10 bg-purple-100 rounded-lg flex items-center justify-center mb-3">
+            <span class="text-xl">🕯️</span>
+          </div>
+          <h3 class="font-semibold text-gray-900 mb-2">Temps de silence</h3>
+          <p class="text-sm text-gray-700 mb-3">Jeudi 13h00 - 13h30, temps de prière silencieuse</p>
+          <div class="text-xs text-gray-600">Chapelle du CHU</div>
+        </div>
+        
+        <div class="bg-white rounded-xl p-5 border border-gray-200">
+          <div class="w-10 h-10 bg-yellow-100 rounded-lg flex items-center justify-center mb-3">
+            <span class="text-xl">👥</span>
+          </div>
+          <h3 class="font-semibold text-gray-900 mb-2">Groupe de parole</h3>
+          <p class="text-sm text-gray-700 mb-3">Dernier vendredi du mois à 17h00 pour le personnel</p>
+          <div class="text-xs text-gray-600">Salle de réunion C</div>
+        </div>
+        
+        <div class="bg-white rounded-xl p-5 border border-gray-200">
+          <div class="w-10 h-10 bg-green-100 rounded-lg flex items-center justify-center mb-3">
+            <span class="text-xl">🎵</span>
+          </div>
+          <h3 class="font-semibold text-gray-900 mb-2">Chorale hospitalière</h3>
+          <p class="text-sm text-gray-700 mb-3">Répétitions le mercredi à 19h00, ouverte à tous</p>
+          <div class="text-xs text-gray-600">Chapelle du CHU</div>
+        </div>
+        
+        <div class="bg-white rounded-xl p-5 border border-gray-200">
+          <div class="w-10 h-10 bg-red-100 rounded-lg flex items-center justify-center mb-3">
+            <span class="text-xl">🤲</span>
+          </div>
+          <h3 class="font-semibold text-gray-900 mb-2">Collecte solidaire</h3>
+          <p class="text-sm text-gray-700 mb-3">Premier dimanche du mois pour les familles en difficulté</p>
+          <div class="text-xs text-gray-600">Hall principal</div>
+        </div>
+      </div>
+    </section>
+
+    <section id="temps-forts" class="px-8 py-14 md:px-12">
+      <div class="flex items-center gap-2 text-sm text-gray-600 mb-6">
+        <span class="h-px w-8 bg-gray-400"></span>
+        <span>Temps forts liturgiques</span>
+      </div>
+      
+      <div class="grid gap-4 md:grid-cols-2">
+        <div class="bg-purple-50 rounded-xl p-6 border border-purple-200">
+          <h3 class="text-lg font-semibold text-gray-900 mb-3">Temps de l'Avent</h3>
+          <p class="text-sm text-gray-700 mb-4">Préparation à Noël avec des temps de prière spéciaux et des animations dans les services.</p>
+          <div class="space-y-2 text-xs">
+            <div class="flex items-center gap-2">
+              <span class="w-2 h-2 bg-purple-400 rounded-full"></span>
+              <span>Couronnes de l'Avent dans les services</span>
+            </div>
+            <div class="flex items-center gap-2">
+              <span class="w-2 h-2 bg-purple-400 rounded-full"></span>
+              <span>Chants de Noël avec la chorale</span>
+            </div>
+            <div class="flex items-center gap-2">
+              <span class="w-2 h-2 bg-purple-400 rounded-full"></span>
+              <span>Distribution de calendriers de l'Avent</span>
+            </div>
+          </div>
+        </div>
+        
+        <div class="bg-yellow-50 rounded-xl p-6 border border-yellow-200">
+          <h3 class="text-lg font-semibold text-gray-900 mb-3">Semaine Sainte</h3>
+          <p class="text-sm text-gray-700 mb-4">Célébrations de la Passion avec chemin de croix et veillée pascale adaptés au milieu hospitalier.</p>
+          <div class="space-y-2 text-xs">
+            <div class="flex items-center gap-2">
+              <span class="w-2 h-2 bg-yellow-400 rounded-full"></span>
+              <span>Chemin de croix dans les couloirs</span>
+            </div>
+            <div class="flex items-center gap-2">
+              <span class="w-2 h-2 bg-yellow-400 rounded-full"></span>
+              <span>Célébration du Jeudi Saint</span>
+            </div>
+            <div class="flex items-center gap-2">
+              <span class="w-2 h-2 bg-yellow-400 rounded-full"></span>
+              <span>Veillée pascale simplifiée</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="inscription" class="px-8 py-14 md:px-12 bg-white">
+      <div class="max-w-2xl mx-auto text-center">
+        <h2 class="text-2xl font-semibold text-gray-900 mb-4">Participer aux événements</h2>
+        <p class="text-gray-700 mb-6">Rejoignez-nous pour nos célébrations et événements. Certaines activités nécessitent une inscription préalable.</p>
+        
+        <div class="bg-brandMuted rounded-xl p-6 border border-green-100">
+          <h3 class="font-semibold text-gray-900 mb-3">Contact et inscriptions</h3>
+          <div class="space-y-2 text-sm">
+            <div>📧 <a href="mailto:evenements@chu.exemple" class="underline">evenements@chu.exemple</a></div>
+            <div>📞 01 23 45 67 89 (poste 2156)</div>
+            <div>🏥 Bureau pastoral - Bâtiment A, niveau 0</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <footer class="px-8 py-6 md:px-12 text-sm text-gray-700">
+      <div class="flex flex-col gap-4 md:flex-row md:items-center md:justify-between">
+        <div>
+          <p class="font-semibold text-gray-900">Pastoral CHU</p>
+          <p>Chapelle du CHU · Bâtiment A</p>
+          <p>pastorale@chu.exemple · 01 23 45 67 89</p>
+        </div>
+        <div class="flex flex-wrap gap-3">
+          <a href="actualites.html" class="underline">Actualités</a>
+          <a href="services.html" class="underline">Services</a>
+          <a href="evenements.html" class="underline">Événements</a>
+          <a href="formations.html" class="underline">Formations</a>
+          <a href="galerie.html" class="underline">Galerie</a>
+          <a href="qui-sommes-nous.html" class="underline">Qui sommes-nous</a>
+          <a href="bible-reponses.html" class="underline">La Bible et vous</a>
+          <a href="ressources.html" class="underline">Ressources</a>
+          <a href="contact.html" class="underline">Contact</a>
+        </div>
+      </div>
+      <p class="text-center text-xs text-gray-500 mt-4">© Pastorale du CHU</p>
+    </footer>
+  </main>
+</body>
+</html>
