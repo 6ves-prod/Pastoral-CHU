@@ -1,0 +1,260 @@
+{% extends "partial/base.html" %}
+
+{% block header %}
+    <div class="relative h-96 w-full overflow-hidden rounded-2xl shadow-soft">
+        <img src="https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?auto=format&fit=crop&w=1400&q=80" alt="Pastorale" class="h-full w-full object-cover">
+        <div class="absolute inset-0 bg-black/30"></div>
+        <div class="absolute inset-0">
+        <div class="flex h-full items-center px-6 transition-opacity duration-700 opacity-100" data-slide>
+            <div class="text-white space-y-2">
+            <p class="text-sm uppercase tracking-wide">Pastorale hospitalière</p>
+            <h1 class="text-3xl md:text-4xl font-semibold">Présence & Espérance au CHU</h1>
+            <p class="text-sm max-w-xl text-white/80">Accompagnement spirituel des patients, familles et soignants, chaque jour.</p>
+            </div>
+        </div>
+        <div class="flex h-full items-center px-6 transition-opacity duration-700 opacity-0 pointer-events-none" data-slide>
+            <div class="text-white space-y-2">
+            <p class="text-sm uppercase tracking-wide">Accueil & écoute</p>
+            <h1 class="text-3xl md:text-4xl font-semibold">Une présence bienveillante</h1>
+            <p class="text-sm max-w-xl text-white/80">Confidences, prière et soutien dans les moments d'épreuve.</p>
+            </div>
+        </div>
+        <div class="flex h-full items-center px-6 transition-opacity duration-700 opacity-0 pointer-events-none" data-slide>
+            <div class="text-white space-y-2">
+            <p class="text-sm uppercase tracking-wide">Sacrements & liturgie</p>
+            <h1 class="text-3xl md:text-4xl font-semibold">La joie de l'Évangile</h1>
+            <p class="text-sm max-w-xl text-white/80">Messes, bénédictions et sacrements au cœur du CHU.</p>
+            </div>
+        </div>
+        </div>
+        <div class="absolute bottom-4 left-0 right-0 flex items-center justify-center gap-2">
+        <button class="h-2.5 w-2.5 rounded-full bg-white/70 hover:bg-white transition" data-dot></button>
+        <button class="h-2.5 w-2.5 rounded-full bg-white/40 hover:bg-white transition" data-dot></button>
+        <button class="h-2.5 w-2.5 rounded-full bg-white/40 hover:bg-white transition" data-dot></button>
+        </div>
+    </div>
+{% endblock %}
+
+{% block content %}
+    <section id="sections" class="px-8 pb-14 md:px-12">
+        <div class="flex flex-col gap-6">
+        <div class="flex items-center gap-2 text-sm text-gray-600">
+            <span class="h-px w-8 bg-gray-400"></span>
+            <span>Pastorale hospitalière</span>
+        </div>
+        <h1 class="text-4xl md:text-5xl font-semibold leading-tight text-gray-900">
+            Un lieu d'écoute, de prière et de service
+        </h1>
+        <p class="text-gray-600 max-w-3xl">
+            Accueil, accompagnement spirituel, célébrations, actions solidaires et formation pour les patients, les familles et les soignants du CHU.
+        </p>
+
+        <div class="grid gap-4 md:grid-cols-2">
+            <div class="bg-brand rounded-xl p-6 shadow-soft relative overflow-hidden">
+            <img src="https://images.unsplash.com/photo-1529156069898-49953e39b3ac?auto=format&fit=crop&w=600&q=80" alt="Chapelle" class="absolute top-0 right-0 w-32 h-32 object-cover opacity-20 rounded-bl-full">
+            <h3 class="text-lg font-semibold text-gray-900 relative z-10">Homélie / Parole du jour</h3>
+            <p class="text-sm text-gray-800 mt-2 relative z-10">« Heureux les artisans de paix, car ils seront appelés fils de Dieu. »</p>
+            <p class="text-xs text-gray-700 mt-3 relative z-10">Père Emmanuel · Chapelle CHU · 08:30</p>
+            <a href="ressources.html" class="inline-flex items-center gap-1 text-sm font-semibold mt-3 underline relative z-10">
+                Voir la méditation
+                <span aria-hidden="true">→</span>
+            </a>
+            </div>
+            <div class="bg-white rounded-xl p-6 shadow-soft border border-gray-100 relative overflow-hidden">
+            <img src="https://images.unsplash.com/photo-1509099836639-18ba02e2e1ba?auto=format&fit=crop&w=600&q=80" alt="Pastorale" class="absolute top-0 right-0 w-32 h-32 object-cover opacity-10 rounded-bl-full">
+            <h3 class="text-lg font-semibold text-gray-900 relative z-10">Sections en un regard</h3>
+            <ul class="mt-3 text-sm text-gray-700 space-y-2 relative z-10">
+                <li class="flex items-center gap-2"><span class="h-2 w-2 rounded-full bg-brandDark"></span> <a href="galerie.html" class="hover:text-black underline">Galerie</a> : vie pastorale en images</li>
+                <li class="flex items-center gap-2"><span class="h-2 w-2 rounded-full bg-brandDark"></span> <a href="actualites.html" class="hover:text-black underline">Actualités</a> : événements, annonces, collectes</li>
+                <li class="flex items-center gap-2"><span class="h-2 w-2 rounded-full bg-brandDark"></span> <a href="services.html" class="hover:text-black underline">Services</a> : accompagnement et sacrements</li>
+                <li class="flex items-center gap-2"><span class="h-2 w-2 rounded-full bg-brandDark"></span> <a href="formations.html" class="hover:text-black underline">Formations</a> : apprentissage et développement</li>
+                <li class="flex items-center gap-2"><span class="h-2 w-2 rounded-full bg-brandDark"></span> <a href="temoignages.html" class="hover:text-black underline">Témoignages</a> : récits d'espérance et de foi</li>
+            </ul>
+            </div>
+        </div>
+        </div>
+    </section>
+
+    <!-- Homélie du jour -->
+    <section id="homelie" class="max-h-[800px] md:max-h-[1200px] lg:max-h-[750px] px-8 py-20 md:px-12 bg-white">
+        <div class="flex flex-row h-full gap-4">
+        <div class="flex flex-col gap-4 md:flex-col md:items-start md:gap-8">
+        <div class="md:w-full">
+            <p class="text-sm text-gray-600 flex items-center gap-2">
+            <span class="h-px w-8 bg-gray-400"></span>
+            Homélie du jour
+            </p>
+            <h2 class="text-4xl font-semibold text-gray-900 mt-2">Parole pour aujourd'hui</h2>
+            <p class="text-gray-700 mt-2">Méditation courte pour nourrir la prière au cœur du soin.</p>
+        </div>
+        <div class="md:flex-1 grid gap-4 md:grid-cols-2">
+            <article class="bg-brandMuted rounded-xl p-5 shadow-soft border border-green-100">
+            <p class="text-xs uppercase tracking-wide text-gray-700">Évangile</p>
+            <h3 class="text-lg font-semibold text-gray-900 mt-1">Mt 5, 1-12</h3>
+            <p class="text-sm text-gray-800 mt-2">« Réjouissez-vous, soyez dans l'allégresse : votre récompense est grande dans les cieux. »</p>
+            <p class="text-xs text-gray-700 mt-3">Parole du jour · 08:30</p>
+            </article>
+            <article class="bg-white rounded-xl p-5 shadow-soft border border-gray-100">
+            <p class="text-xs uppercase tracking-wide text-gray-700">Homélie audio</p>
+            <h3 class="text-lg font-semibold text-gray-900 mt-1">Père Emmanuel</h3>
+            <p class="text-sm text-gray-800 mt-2">Paix intérieure et mission de soin : se laisser guider par l'Esprit.</p>
+            <button class="mt-4 inline-flex items-center gap-2 rounded-full bg-black text-white px-4 py-2 text-sm font-semibold shadow hover:scale-[1.01] transition">
+                Écouter
+                <span class="flex h-5 w-5 items-center justify-center rounded-full bg-white text-black text-xs">❯</span>
+            </button>
+            </article>
+        </div>
+        </div>
+        <div class="md:w-2/5 rounded-xl shadow-soft border border-green-100 overflow-hidden">
+            <img src="https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?auto=format&fit=crop&w=1400&q=80" alt="Pastorale" class="h-full w-full object-cover">
+        </div>
+        </div>
+    </section>
+
+    <!-- Galerie -->
+    <section id="galerie" class="max-h-[800px] md:max-h-[1200px] lg:max-h-[750px] px-8 py-14 md:px-12 flex flex-col gap-6">
+        <div class="flex items-center gap-2 text-sm text-gray-600">
+        <span class="h-px w-8 bg-gray-400"></span>
+        <span>Galerie</span>
+        </div>
+        <h2 class="text-2xl md:text-4xl font-semibold text-gray-900">Moments de vie pastorale</h2>
+        <div class="h-96 grid grid-cols-2 md:grid-cols-4 md:grid-rows-2 gap-3">
+        <img src="https://images.unsplash.com/photo-1529156069898-49953e39b3ac?auto=format&fit=crop&w=400&q=80" alt="Chapelle" class="h-full row-span-2 w-full object-cover rounded-md grayscale">
+        <img src="https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?auto=format&fit=crop&w=400&q=80" alt="Enfants" class="h-full col-span-1 w-full object-cover rounded-md grayscale">
+        <img src="https://images.unsplash.com/photo-1469474968028-56623f02e42e?auto=format&fit=crop&w=400&q=80" alt="Service" class="h-full col-span-2 w-full object-cover rounded-md grayscale">
+        <img src="https://images.unsplash.com/photo-1469474968028-56623f02e42e?auto=format&fit=crop&w=400&q=80" alt="Service" class="h-full col-span-2 w-full object-cover rounded-md grayscale">
+        <div class="bg-brand rounded-md p-4 flex flex-col justify-between col-span-1">
+            <div>
+            <p class="text-2xl font-semibold text-gray-900">+150</p>
+            <p class="text-sm text-gray-800">Photos et documents disponibles</p>
+            </div>
+            <a href="galerie.html" class="inline-flex items-center gap-1 text-sm font-semibold underline text-gray-900">
+            Voir la galerie <span aria-hidden="true">→</span>
+            </a>
+        </div>
+        </div>
+    </section>
+
+    <!-- Message -->
+    <section id="message" class="px-8 py-14 md:px-12 bg-white">
+        <div class="grid gap-6 md:grid-cols-3">
+        <div class="md:col-span-2">
+            <div class="flex items-center gap-2 text-sm text-gray-600">
+            <span class="h-px w-8 bg-gray-400"></span>
+            <span>Message de la Pastorale</span>
+            </div>
+            <h2 class="text-2xl font-semibold text-gray-900 mt-2">Au cœur du soin, une présence</h2>
+            <p class="text-gray-700 mt-3">Notre mission est de porter la lumière de l'Évangile auprès de chaque personne accueillie au CHU : écoute, sacrements, prières, soutien des équipes et accompagnement des familles.</p>
+            <div class="mt-4 flex flex-wrap gap-3">
+            <span class="px-4 py-2 rounded-full border border-gray-300 text-sm font-semibold">Sacrements</span>
+            <span class="px-4 py-2 rounded-full border border-gray-300 text-sm font-semibold">Accompagnement</span>
+            <span class="px-4 py-2 rounded-full border border-gray-300 text-sm font-semibold">Formation</span>
+            <span class="px-4 py-2 rounded-full border border-gray-300 text-sm font-semibold">Solidarité</span>
+            </div>
+        </div>
+        <div class="bg-brandMuted rounded-xl p-5 shadow-soft border border-green-100 relative overflow-hidden">
+            <img src="https://images.unsplash.com/photo-1469474968028-56623f02e42e?auto=format&fit=crop&w=400&q=80" alt="Accompagnement" class="absolute top-0 right-0 w-24 h-24 object-cover opacity-20 rounded-bl-xl">
+            <p class="text-sm text-gray-800 relative z-10">« Merci pour votre présence discrète et réconfortante dans les moments difficiles. »</p>
+            <p class="text-xs text-gray-700 mt-3 font-semibold relative z-10">— Une famille accompagnée</p>
+        </div>
+        </div>
+    </section>
+
+    <!-- Témoignages -->
+    <section id="temoignages" class="px-8 py-14 md:px-12">
+        <div class="flex flex-col gap-6">
+        <div class="flex items-center gap-2 text-sm text-gray-600">
+            <span class="h-px w-8 bg-gray-400"></span>
+            <span>Témoignages</span>
+        </div>
+        <h2 class="text-2xl md:text-4xl font-semibold text-gray-900">Ils témoignent de leur expérience</h2>
+        
+        <div class="grid gap-6 md:grid-cols-3">
+            <article class="bg-white rounded-xl p-6 shadow-soft border border-gray-100">
+            <div class="flex items-center gap-3 mb-4">
+                <div class="w-10 h-10 bg-brandDark rounded-full flex items-center justify-center">
+                <span class="text-white font-semibold text-sm">M</span>
+                </div>
+                <div>
+                <p class="font-semibold text-gray-900">Marie, infirmière</p>
+                <p class="text-xs text-gray-600">Service cardiologie</p>
+                </div>
+            </div>
+            <p class="text-sm text-gray-700 leading-relaxed">
+                « La présence de l'aumônier dans notre service nous aide beaucoup. 
+                Il apporte une écoute différente aux patients et nous soutient dans les moments difficiles. »
+            </p>
+            </article>
+
+            <article class="bg-brandMuted rounded-xl p-6 shadow-soft border border-green-100">
+            <div class="flex items-center gap-3 mb-4">
+                <div class="w-10 h-10 bg-white rounded-full flex items-center justify-center">
+                <span class="text-brandDark font-semibold text-sm">J</span>
+                </div>
+                <div>
+                <p class="font-semibold text-gray-900">Jean, patient</p>
+                <p class="text-xs text-gray-600">Chirurgie orthopédique</p>
+                </div>
+            </div>
+            <p class="text-sm text-gray-700 leading-relaxed">
+                « Pendant mes trois semaines d'hospitalisation, j'ai trouvé un réconfort immense 
+                dans la chapelle et les visites du père Martin. Cela m'a aidé à guérir. »
+            </p>
+            </article>
+
+            <article class="bg-white rounded-xl p-6 shadow-soft border border-gray-100">
+            <div class="flex items-center gap-3 mb-4">
+                <div class="w-10 h-10 bg-brandDark rounded-full flex items-center justify-center">
+                <span class="text-white font-semibold text-sm">S</span>
+                </div>
+                <div>
+                <p class="font-semibold text-gray-900">Sophie, famille</p>
+                <p class="text-xs text-gray-600">Accompagnement en fin de vie</p>
+                </div>
+            </div>
+            <p class="text-sm text-gray-700 leading-relaxed">
+                « L'équipe pastorale nous a accompagnés avec une délicatesse remarquable 
+                lors des derniers moments de papa. Merci pour cette présence si précieuse. »
+            </p>
+            </article>
+        </div>
+
+        <div class="text-center mt-8">
+            <a href="temoignages.html" class="inline-flex items-center gap-2 rounded-full bg-black text-white px-6 py-3 text-sm font-semibold shadow hover:scale-[1.01] transition">
+            Lire tous les témoignages
+            <span class="flex h-5 w-5 items-center justify-center rounded-full bg-white text-black text-xs">❯</span>
+            </a>
+        </div>
+        </div>
+    </section>
+{% endblock %}
+
+{% block script %}
+    <script>
+        // Slider 3 textes pour le header
+        (() => {
+            const slides = Array.from(document.querySelectorAll('[data-slide]'));
+            const dots = Array.from(document.querySelectorAll('[data-dot]'));
+            if (!slides.length) return;
+            let current = 0;
+
+            const setSlide = (idx) => {
+            current = idx % slides.length;
+            slides.forEach((el, i) => {
+                const active = i === current;
+                el.classList.toggle('opacity-100', active);
+                el.classList.toggle('opacity-0', !active);
+                el.classList.toggle('pointer-events-none', !active);
+            });
+            dots.forEach((dot, i) => {
+                dot.classList.toggle('bg-white/70', i === current);
+                dot.classList.toggle('bg-white/40', i !== current);
+            });
+            };
+
+            dots.forEach((dot, i) => dot.addEventListener('click', () => setSlide(i)));
+            setInterval(() => setSlide(current + 1), 5000);
+            setSlide(0);
+        })();
+    </script>
+{% endblock %}
