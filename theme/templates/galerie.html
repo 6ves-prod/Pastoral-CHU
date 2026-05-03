@@ -1,0 +1,119 @@
+{% extends "partial/base.html" %}
+
+{% block header %}
+    <div class="relative h-40 w-full overflow-hidden rounded-2xl shadow-soft">
+        <img src="https://images.unsplash.com/photo-1509099836639-18ba02e2e1ba?auto=format&fit=crop&w=1400&q=80" alt="Galerie pastorale" class="h-full w-full object-cover">
+        <div class="absolute inset-0 bg-black/30"></div>
+        <div class="absolute inset-0 flex items-center px-6">
+        <div class="text-white">
+            <p class="text-sm uppercase tracking-wide">Galerie</p>
+            <h1 class="text-3xl font-semibold">Photothèque & Bibliothèque</h1>
+        </div>
+        </div>
+    </div>
+{% endblock %}
+
+{% block content %}
+    <section class="px-8 pb-14 md:px-12">
+        <div class="flex flex-col gap-6">
+            <div class="flex items-center gap-2 text-sm text-gray-600">
+            <span class="h-px w-8 bg-gray-400"></span>
+            <span>Galerie</span>
+            </div>
+            <h1 class="text-4xl md:text-5xl font-semibold leading-tight text-gray-900">Photothèque & Bibliothèque</h1>
+            <p class="text-gray-600 max-w-3xl">Moments de prière, célébrations, visites et ressources pastorales classées par thème.</p>
+        </div>
+        </section>
+
+        <section id="photos" class="px-8 py-14 md:px-12 bg-white">
+        <div class="flex flex-col gap-6">
+            <div class="flex items-center gap-2 text-sm text-gray-600">
+            <span class="h-px w-8 bg-gray-400"></span>
+            <span>Photothèque</span>
+            </div>
+            <h2 class="text-2xl md:text-4xl font-semibold text-gray-900">Moments de vie pastorale</h2>
+            <p class="text-gray-600 max-w-3xl">Retrouvez les célébrations, visites et temps forts de la pastorale hospitalière en images.</p>
+            <div class="grid gap-4 md:grid-cols-3">
+            <article class="rounded-xl overflow-hidden shadow-soft hover:shadow-lg transition-shadow cursor-pointer">
+                <img src="https://images.unsplash.com/photo-1529156069898-49953e39b3ac?auto=format&fit=crop&w=800&q=80" alt="Chapelle" class="h-48 w-full object-cover">
+                <div class="p-5 bg-white">
+                <p class="text-xs uppercase tracking-wide text-gray-700">Célébration</p>
+                <h3 class="text-lg font-semibold text-gray-900 mt-1">Messe à la chapelle du CHU</h3>
+                <p class="text-sm text-gray-700 mt-2">Célébrations dominicales et temps de prière communautaire.</p>
+                </div>
+            </article>
+            <article class="rounded-xl overflow-hidden shadow-soft hover:shadow-lg transition-shadow cursor-pointer">
+                <img src="https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?auto=format&fit=crop&w=800&q=80" alt="Enfants" class="h-48 w-full object-cover">
+                <div class="p-5 bg-white">
+                <p class="text-xs uppercase tracking-wide text-gray-700">Catéchèse</p>
+                <h3 class="text-lg font-semibold text-gray-900 mt-1">Atelier avec les enfants hospitalisés</h3>
+                <p class="text-sm text-gray-700 mt-2">Activités pastorales adaptées pour les plus jeunes.</p>
+                </div>
+            </article>
+            <article class="rounded-xl overflow-hidden shadow-soft hover:shadow-lg transition-shadow cursor-pointer">
+                <img src="https://images.unsplash.com/photo-1469474968028-56623f02e42e?auto=format&fit=crop&w=800&q=80" alt="Service" class="h-48 w-full object-cover">
+                <div class="p-5 bg-white">
+                <p class="text-xs uppercase tracking-wide text-gray-700">Visites</p>
+                <h3 class="text-lg font-semibold text-gray-900 mt-1">Accompagnement des patients</h3>
+                <p class="text-sm text-gray-700 mt-2">Présence bienveillante au chevet des malades.</p>
+                </div>
+            </article>
+            </div>
+        </div>
+        </section>
+
+        <section id="bibliotheque" class="px-8 py-14 md:px-12">
+        <div class="flex flex-col gap-6">
+            <div class="flex items-center gap-2 text-sm text-gray-600">
+            <span class="h-px w-8 bg-gray-400"></span>
+            <span>Bibliothèque</span>
+            </div>
+            <h2 class="text-2xl md:text-4xl font-semibold text-gray-900">Ressources pastorales</h2>
+            <p class="text-gray-600 max-w-3xl">Livrets de prière, guides d'accompagnement et ressources spirituelles pour tous les moments.</p>
+            <div class="grid gap-4 md:grid-cols-2">
+            <article class="bg-brandMuted rounded-xl p-6 shadow-soft border border-green-100 hover:shadow-lg transition-shadow">
+                <p class="text-xs uppercase tracking-wide text-gray-700">Livret</p>
+                <h3 class="text-lg font-semibold text-gray-900 mt-1">Prier au chevet</h3>
+                <p class="text-sm text-gray-800 mt-2">Prières courtes et psalmodies pour accompagner les patients dans leur épreuve.</p>
+                <a href="galerie.html" class="inline-flex items-center gap-1 text-sm font-semibold mt-4 underline text-gray-900">
+                Consulter
+                <span aria-hidden="true">→</span>
+                </a>
+            </article>
+            <article class="bg-white rounded-xl p-6 shadow-soft border border-gray-100 hover:shadow-lg transition-shadow">
+                <p class="text-xs uppercase tracking-wide text-gray-700">Guide</p>
+                <h3 class="text-lg font-semibold text-gray-900 mt-1">Accompagner en fin de vie</h3>
+                <p class="text-sm text-gray-800 mt-2">Parcours de présence, rites et soutien aux familles dans les moments difficiles.</p>
+                <a href="galerie.html" class="inline-flex items-center gap-1 text-sm font-semibold mt-4 underline">
+                Télécharger
+                <span aria-hidden="true">→</span>
+                </a>
+            </article>
+            <article class="bg-white rounded-xl p-6 shadow-soft border border-gray-100 hover:shadow-lg transition-shadow">
+                <p class="text-xs uppercase tracking-wide text-gray-700">Chant</p>
+                <h3 class="text-lg font-semibold text-gray-900 mt-1">Chants de consolation</h3>
+                <p class="text-sm text-gray-800 mt-2">Sélection audio de chants et prières pour les temps de méditation.</p>
+                <a href="galerie.html" class="inline-flex items-center gap-1 text-sm font-semibold mt-4 underline">
+                Écouter
+                <span aria-hidden="true">→</span>
+                </a>
+            </article>
+            <article class="bg-brand rounded-xl p-6 shadow-soft hover:shadow-lg transition-shadow">
+                <div>
+                <p class="text-3xl font-semibold text-gray-900">+50</p>
+                <p class="text-lg font-semibold text-gray-900 mt-1">ressources disponibles</p>
+                <p class="text-sm text-gray-800 mt-2">Classées par thème et par événement liturgique.</p>
+                </div>
+                <a href="galerie.html" class="inline-flex items-center gap-2 rounded-full bg-black text-white px-6 py-3 text-sm font-semibold shadow hover:scale-[1.01] transition mt-6">
+                Voir le catalogue
+                <span class="flex h-5 w-5 items-center justify-center rounded-full bg-white text-black text-xs">❯</span>
+                </a>
+            </article>
+            </div>
+        </div>
+    </section>
+{% endblock %}
+
+{% block script %}
+    
+{% endblock %}

@@ -1,0 +1,144 @@
+{% extends "partial/base.html" %}
+
+{% block header %}
+    <div class="relative h-64 w-full overflow-hidden rounded-2xl shadow-soft">
+        <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=1400&q=80" alt="Formations pastorales" class="h-full w-full object-cover">
+        <div class="absolute inset-0 bg-black/40"></div>
+        <div class="absolute inset-0 flex items-center px-6">
+            <div class="text-white space-y-2">
+                <p class="text-sm uppercase tracking-wide">Accompagnement & Apprentissage</p>
+                <h1 class="text-3xl md:text-4xl font-semibold">Formations & Enseignements</h1>
+                <p class="text-sm max-w-xl text-white/80">Développer les compétences d'écoute et d'accompagnement spirituel</p>
+            </div>
+        </div>
+    </div>
+{% endblock %}
+
+{% block content %}
+    <section class="px-8 pb-14 md:px-12">
+        <div class="flex flex-col gap-6">
+            <div class="flex items-center gap-2 text-sm text-gray-600">
+            <span class="h-px w-8 bg-gray-400"></span>
+            <span>Actualités</span>
+            </div>
+            <h1 class="text-4xl md:text-5xl font-semibold leading-tight text-gray-900">Évènements & annonces</h1>
+            <p class="text-gray-600 max-w-3xl">Retrouvez les temps forts, messages des pères et collectes solidaires.</p>
+        </div>
+    </section>
+
+        <!-- Événement mis en avant -->
+    <section class="px-8 py-14 md:px-12 bg-white">
+        <div class="grid gap-6 md:grid-cols-3">
+            <div class="md:col-span-2">
+            <div class="flex items-center gap-2 text-sm text-gray-600">
+                <span class="h-px w-8 bg-gray-400"></span>
+                <span>À venir</span>
+            </div>
+            <div class="rounded-xl overflow-hidden shadow-soft mt-4 mb-4">
+                <img src="https://images.unsplash.com/photo-1516450360452-9312f5e86fc7?auto=format&fit=crop&w=800&q=80" alt="Veillée de prière" class="w-full h-64 object-cover">
+            </div>
+            <h2 class="text-2xl md:text-4xl font-semibold text-gray-900 mt-2">Veillée de prière pour les soignants</h2>
+            <p class="text-gray-700 mt-3">Temps de louange, intercession et bénédiction dédié aux équipes soignantes. Un moment pour se ressourcer, partager et recevoir grâce à la prière commune.</p>
+            <div class="mt-4 flex flex-wrap gap-3">
+                <span class="px-4 py-2 rounded-full border border-gray-300 text-sm font-semibold">Vendredi 19h</span>
+                <span class="px-4 py-2 rounded-full border border-gray-300 text-sm font-semibold">Chapelle CHU</span>
+                <span class="px-4 py-2 rounded-full border border-gray-300 text-sm font-semibold">Tous publics</span>
+            </div>
+            <a href="participation-veillee.html" class="inline-flex items-center gap-2 rounded-full bg-black text-white px-6 py-3 text-sm font-semibold shadow hover:scale-[1.01] transition mt-6">
+                Participer
+                <span class="flex h-5 w-5 items-center justify-center rounded-full bg-white text-black text-xs">❯</span>
+            </a>
+            </div>
+            <div class="bg-brandMuted rounded-xl p-5 shadow-soft border border-green-100">
+            <p class="text-sm font-semibold text-gray-900">Prochaines dates</p>
+            <div class="mt-4 space-y-3">
+                <div>
+                <p class="text-xs text-gray-600">Messe dominicale</p>
+                <p class="text-sm font-semibold text-gray-900">Dimanche · 10h00</p>
+                <p class="text-xs text-gray-700">Chapelle centrale</p>
+                </div>
+                <div class="pt-3 border-t border-green-200">
+                <p class="text-xs text-gray-600">Confessions</p>
+                <p class="text-sm font-semibold text-gray-900">Samedi · 17h-18h30</p>
+                <p class="text-xs text-gray-700">Chapelle CHU</p>
+                </div>
+            </div>
+            </div>
+        </div>
+    </section>
+
+        <!-- Messages et collectes -->
+    <section class="px-8 py-14 md:px-12">
+        <div class="grid gap-6 md:grid-cols-2">
+            <article class="bg-brand rounded-xl p-6 shadow-soft relative overflow-hidden">
+            <img src="https://images.unsplash.com/photo-1516450360452-9312f5e86fc7?auto=format&fit=crop&w=400&q=80" alt="Message" class="absolute top-0 right-0 w-32 h-32 object-cover opacity-20 rounded-bl-full">
+            <p class="text-xs uppercase tracking-wide text-gray-800 relative z-10">Message d'un père</p>
+            <h3 class="text-lg font-semibold text-gray-900 mt-1 relative z-10">« Servir le Christ dans chaque patient »</h3>
+            <p class="text-sm text-gray-800 mt-2 relative z-10">Père Augustin partage une méditation sur la charité au cœur du soin et la présence du Christ dans la souffrance.</p>
+            <a href="actualites.html" class="inline-flex items-center gap-1 text-sm font-semibold mt-4 underline text-gray-900 relative z-10">
+                Lire le message
+                <span aria-hidden="true">→</span>
+            </a>
+            </article>
+            <article class="bg-white rounded-xl p-6 shadow-soft border border-gray-100">
+            <p class="text-xs uppercase tracking-wide text-gray-700">Collecte solidaire</p>
+            <h3 class="text-lg font-semibold text-gray-900 mt-1">Kit de réconfort pour les familles</h3>
+            <p class="text-sm text-gray-800 mt-2">Objectif : 150 kits (chapelet, carnet de prière, bougie). Dépôt au local pastoral.</p>
+            <div class="mt-4">
+                <div class="flex items-center justify-between mb-2">
+                <span class="text-xs font-semibold text-gray-700">90/150 kits réunis</span>
+                <span class="text-xs text-gray-600">60%</span>
+                </div>
+                <div class="h-3 w-full bg-gray-200 rounded-full overflow-hidden">
+                <div class="h-full bg-brandDark rounded-full transition-all duration-300" style="width: 60%"></div>
+                </div>
+                <a href="contribuer-kits.html" class="inline-flex items-center gap-1 text-sm font-semibold mt-4 underline">
+                Contribuer
+                <span aria-hidden="true">→</span>
+                </a>
+            </div>
+            </article>
+        </div>
+    </section>
+
+        <!-- Messages récents -->
+    <section class="px-8 py-14 md:px-12 bg-white">
+        <div class="flex flex-col gap-6">
+            <div class="flex items-center gap-2 text-sm text-gray-600">
+            <span class="h-px w-8 bg-gray-400"></span>
+            <span>Messages récents</span>
+            </div>
+            <h2 class="text-2xl md:text-4xl font-semibold text-gray-900">Actualités & témoignages</h2>
+            <div class="grid gap-4 md:grid-cols-3">
+            <article class="bg-white rounded-xl p-5 shadow-soft border border-gray-100 hover:shadow-lg transition-shadow">
+                <p class="text-xs uppercase tracking-wide text-gray-700">Article</p>
+                <h4 class="text-lg font-semibold text-gray-900 mt-1">La visitation en milieu hospitalier</h4>
+                <p class="text-sm text-gray-700 mt-2">Accompagner comme Marie : présence humble et fidèle au service des malades.</p>
+                <a href="article-visitation.html" class="inline-flex items-center gap-1 text-sm font-semibold mt-4 underline">
+                Lire l'article
+                <span aria-hidden="true">→</span>
+                </a>
+            </article>
+            <article class="bg-brandMuted rounded-xl p-5 shadow-soft border border-green-100 hover:shadow-lg transition-shadow">
+                <p class="text-xs uppercase tracking-wide text-gray-700">Témoignage</p>
+                <h4 class="text-lg font-semibold text-gray-900 mt-1">Un temps d'adoration qui apaise</h4>
+                <p class="text-sm text-gray-700 mt-2">« J'ai trouvé la paix à la chapelle du CHU pendant l'hospitalisation de ma mère. »</p>
+                <p class="text-xs text-gray-600 mt-3 font-semibold">— Famille accompagnée</p>
+            </article>
+            <article class="bg-white rounded-xl p-5 shadow-soft border border-gray-100 hover:shadow-lg transition-shadow">
+                <p class="text-xs uppercase tracking-wide text-gray-700">Formation</p>
+                <h4 class="text-lg font-semibold text-gray-900 mt-1">Formation des visiteurs hospitaliers</h4>
+                <p class="text-sm text-gray-700 mt-2">Cycle de 4 soirées : écoute, prière, accompagnement spirituel.</p>
+                <a href="inscription-formation.html" class="inline-flex items-center gap-1 text-sm font-semibold mt-4 underline">
+                S'inscrire
+                <span aria-hidden="true">→</span>
+                </a>
+            </article>
+            </div>
+        </div>
+    </section>
+{% endblock %}
+
+{% block script %}
+    
+{% endblock %}

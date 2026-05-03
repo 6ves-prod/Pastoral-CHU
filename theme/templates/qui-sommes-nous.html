@@ -1,0 +1,161 @@
+{% extends "partial/base.html" %}
+
+{% block header %}
+    <div class="relative h-40 w-full overflow-hidden rounded-2xl shadow-soft">
+        <img src="https://images.unsplash.com/photo-1517832207067-4c4d58f0cc94?auto=format&fit=crop&w=1400&q=80" alt="Qui sommes-nous" class="h-full w-full object-cover">
+        <div class="absolute inset-0 bg-black/30"></div>
+        <div class="absolute inset-0 flex items-center px-6">
+            <div class="text-white">
+                <p class="text-sm uppercase tracking-wide">À propos</p>
+                <h1 class="text-3xl font-semibold">Équipe pastorale du CHU</h1>
+            </div>
+        </div>
+    </div>
+{% endblock %}
+
+{% block content %}
+    <section class="px-8 pb-14 md:px-12">
+        <div class="flex flex-col gap-6">
+            <div class="flex items-center gap-2 text-sm text-gray-600">
+            <span class="h-px w-8 bg-gray-400"></span>
+            <span>À propos</span>
+            </div>
+            <h1 class="text-4xl md:text-5xl font-semibold leading-tight text-gray-900">Qui sommes-nous</h1>
+            <p class="text-gray-600 max-w-3xl">Une équipe pastorale au service des patients, des familles et des soignants du CHU, guidée par la charité, l'écoute et la présence.</p>
+        </div>
+    </section>
+
+    <section id="mission" class="px-8 py-14 md:px-12 bg-white">
+        <div class="grid gap-6 md:grid-cols-3">
+            <div class="relative">
+            <div class="rounded-xl overflow-hidden shadow-soft mb-4">
+                <img src="https://images.unsplash.com/photo-1529156069898-49953e39b3ac?auto=format&fit=crop&w=400&q=80" alt="Mission" class="w-full h-48 object-cover">
+            </div>
+            <p class="text-sm text-gray-600 flex items-center gap-2">
+                <span class="h-px w-8 bg-gray-400"></span>
+                Mission & Valeurs
+            </p>
+            <h2 class="text-2xl md:text-4xl font-semibold text-gray-900 mt-2">Présence, prière, soutien</h2>
+            </div>
+            <div class="md:col-span-2">
+            <p class="text-gray-700">Accueillir chacun avec bienveillance, offrir les sacrements, accompagner les moments décisifs de la vie, soutenir les équipes soignantes et développer la solidarité au sein du CHU.</p>
+            <div class="mt-4 flex flex-wrap gap-3">
+                <span class="px-4 py-2 rounded-full border border-gray-300 text-sm font-semibold">Écoute</span>
+                <span class="px-4 py-2 rounded-full border border-gray-300 text-sm font-semibold">Sacrements</span>
+                <span class="px-4 py-2 rounded-full border border-gray-300 text-sm font-semibold">Formation</span>
+                <span class="px-4 py-2 rounded-full border border-gray-300 text-sm font-semibold">Solidarité</span>
+            </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="equipe" class="px-8 py-14 md:px-12">
+        <div class="flex flex-col gap-6">
+            <div class="flex items-center gap-2 text-sm text-gray-600">
+            <span class="h-px w-8 bg-gray-400"></span>
+            <span>Équipe pastorale</span>
+            </div>
+            <h2 class="text-2xl md:text-4xl font-semibold text-gray-900">Notre équipe</h2>
+            <p class="text-gray-600 max-w-3xl">Une équipe dévouée de prêtres, employés et bénévoles au service des patients et de leurs familles.</p>
+            <div class="grid gap-4 md:grid-cols-2">
+            <article class="bg-brand rounded-xl p-6 shadow-soft hover:shadow-lg transition-shadow">
+                <p class="text-xs uppercase tracking-wide text-gray-800">Pères</p>
+                <h3 class="text-lg font-semibold text-gray-900 mt-1">P. Emmanuel · Responsable</h3>
+                <p class="text-sm text-gray-800 mt-2">Coordination sacramentelle, homélies, accompagnement des familles et direction pastorale.</p>
+            </article>
+            <article class="bg-white rounded-xl p-6 shadow-soft border border-gray-100 hover:shadow-lg transition-shadow">
+                <p class="text-xs uppercase tracking-wide text-gray-700">Pères</p>
+                <h3 class="text-lg font-semibold text-gray-900 mt-1">P. Augustin · Aumônier</h3>
+                <p class="text-sm text-gray-800 mt-2">Visites quotidiennes, confessions, bénédictions et préparation aux sacrements.</p>
+            </article>
+            <article class="bg-white rounded-xl p-6 shadow-soft border border-gray-100 hover:shadow-lg transition-shadow">
+                <p class="text-xs uppercase tracking-wide text-gray-700">Équipe</p>
+                <h3 class="text-lg font-semibold text-gray-900 mt-1">Responsable solidarité</h3>
+                <p class="text-sm text-gray-800 mt-2">Collectes, soutien matériel, coordination des bénévoles et actions caritatives.</p>
+            </article>
+            <article class="bg-brandMuted rounded-xl p-6 shadow-soft border border-green-100 hover:shadow-lg transition-shadow">
+                <p class="text-xs uppercase tracking-wide text-gray-700">Employés & bénévoles</p>
+                <h3 class="text-lg font-semibold text-gray-900 mt-1">Visiteurs hospitaliers</h3>
+                <p class="text-sm text-gray-800 mt-2">Équipe de présence quotidienne auprès des patients, formation continue et écoute.</p>
+            </article>
+            </div>
+        </div>
+    </section>
+
+    <section id="partenaires" class="px-8 py-14 md:px-12 bg-white">
+        <div class="flex flex-col gap-6">
+            <div class="flex items-center gap-2 text-sm text-gray-600">
+            <span class="h-px w-8 bg-gray-400"></span>
+            <span>Collaborations avec le CHU</span>
+            </div>
+            <h2 class="text-2xl md:text-4xl font-semibold text-gray-900">Partenariats</h2>
+            <p class="text-gray-600 max-w-3xl">Travail en collaboration avec les différents services du CHU pour un accompagnement global.</p>
+            <div class="grid gap-4 md:grid-cols-3">
+            <article class="bg-white rounded-xl p-5 shadow-soft border border-gray-100 hover:shadow-lg transition-shadow">
+                <p class="text-lg font-semibold text-gray-900">Pôle Soins Palliatifs</p>
+                <p class="text-sm text-gray-700 mt-2">Présence rituelle, accompagnement spirituel et soutien des familles en fin de vie.</p>
+            </article>
+            <article class="bg-white rounded-xl p-5 shadow-soft border border-gray-100 hover:shadow-lg transition-shadow">
+                <p class="text-lg font-semibold text-gray-900">Service de Psychologie</p>
+                <p class="text-sm text-gray-700 mt-2">Accompagnement croisé, groupes de parole et travail en complémentarité.</p>
+            </article>
+            <article class="bg-brand rounded-xl p-5 shadow-soft hover:shadow-lg transition-shadow">
+                <p class="text-lg font-semibold text-gray-900">Formation des soignants</p>
+                <p class="text-sm text-gray-800 mt-2">Interventions sur l'éthique, la spiritualité et l'approche globale du soin.</p>
+            </article>
+            </div>
+        </div>
+    </section>
+
+    <section id="contacts" class="px-8 py-14 md:px-12">
+        <div class="grid gap-6 md:grid-cols-2">
+            <div>
+            <div class="flex items-center gap-2 text-sm text-gray-600">
+                <span class="h-px w-8 bg-gray-400"></span>
+                <span>Contacts</span>
+            </div>
+            <h2 class="text-2xl md:text-4xl font-semibold text-gray-900 mt-2">Nous joindre</h2>
+            <p class="text-gray-600 mt-3 max-w-xl">Notre équipe est disponible pour vous accueillir et vous accompagner. N'hésitez pas à nous contacter.</p>
+            <div class="mt-4 space-y-2">
+                <p class="text-gray-700 font-medium">📍 Chapelle du CHU · Bâtiment A</p>
+                <p class="text-gray-700 font-medium">📞 01 23 45 67 89</p>
+                <p class="text-gray-700 font-medium">✉️ pastorale@chu.exemple</p>
+            </div>
+            </div>
+            <div class="bg-white rounded-xl p-6 shadow-soft border border-gray-100">
+            <p class="text-sm font-semibold text-gray-900">Horaires de présence</p>
+            <ul class="text-sm text-gray-800 mt-4 space-y-3">
+                <li class="flex items-center gap-3">
+                <span class="w-2 h-2 rounded-full bg-brandDark"></span>
+                <div>
+                    <p class="font-semibold">Lundi - Vendredi</p>
+                    <p class="text-gray-600">8h - 19h</p>
+                </div>
+                </li>
+                <li class="flex items-center gap-3">
+                <span class="w-2 h-2 rounded-full bg-brandDark"></span>
+                <div>
+                    <p class="font-semibold">Samedi</p>
+                    <p class="text-gray-600">9h - 12h</p>
+                </div>
+                </li>
+                <li class="flex items-center gap-3">
+                <span class="w-2 h-2 rounded-full bg-brandDark"></span>
+                <div>
+                    <p class="font-semibold">Messe dominicale</p>
+                    <p class="text-gray-600">Dimanche 10h</p>
+                </div>
+                </li>
+            </ul>
+            <button class="mt-6 w-full inline-flex items-center justify-center gap-2 rounded-full bg-black text-white px-6 py-3 text-sm font-semibold shadow hover:scale-[1.01] transition">
+                Prendre rendez-vous
+                <span class="flex h-5 w-5 items-center justify-center rounded-full bg-white text-black text-xs">❯</span>
+            </button>
+            </div>
+        </div>
+    </section>
+{% endblock %}
+
+{% block script %}
+    
+{% endblock %}

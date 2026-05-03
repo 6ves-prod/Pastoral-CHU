@@ -1,0 +1,219 @@
+{% extends "../partial/base.html" %}
+
+{% block header %}
+    <div class="relative h-64 w-full overflow-hidden rounded-2xl shadow-soft">
+        <img src="https://images.unsplash.com/photo-1481627834876-b7833e8f5570?auto=format&fit=crop&w=1400&q=80" alt="Questions bibliques" class="h-full w-full object-cover">
+        <div class="absolute inset-0 bg-black/40"></div>
+        <div class="absolute inset-0 flex items-center px-6">
+            <div class="text-white space-y-2">
+                <p class="text-sm uppercase tracking-wide">Questions & Réponses</p>
+                <h1 class="text-3xl md:text-4xl font-semibold">Lire les réponses bibliques</h1>
+                <p class="text-sm max-w-xl text-white/80">Réponses aux questions de foi et d'interprétation des Écritures</p>
+            </div>
+        </div>
+    </div>
+{% endblock %}
+
+{% block content %}
+    <section id="questions-frequentes" class="px-8 py-14 md:px-12">
+        <div class="flex items-center gap-2 text-sm text-gray-600 mb-6">
+            <span class="h-px w-8 bg-gray-400"></span>
+            <span>Questions fréquemment posées</span>
+        </div>
+        
+        <div class="space-y-6">
+            <article class="bg-brandMuted rounded-xl p-6 shadow-soft border border-green-100">
+            <div class="flex items-start gap-4 mb-4">
+                <div class="w-12 h-12 bg-brand rounded-lg flex items-center justify-center flex-shrink-0">
+                <span class="text-xl">❓</span>
+                </div>
+                <div>
+                <h3 class="text-lg font-semibold text-gray-900 mb-2">Que signifie "Dieu est amour" dans notre souffrance ?</h3>
+                <p class="text-xs text-gray-600 mb-3">Question de Marie · Service oncologie · Répondu par Père Emmanuel</p>
+                </div>
+            </div>
+            <div class="text-sm text-gray-800 leading-relaxed mb-4">
+                <p class="mb-3"><strong>Réponse :</strong> Cette question touche au cœur du mystère de la souffrance humaine. 
+                Quand saint Jean écrit "Dieu est amour" (1 Jn 4,8), il ne nie pas la réalité de la souffrance, mais révèle 
+                que même dans l'épreuve, Dieu demeure présent et fidèle.</p>
+                
+                <p class="mb-3">L'amour de Dieu ne nous épargne pas toujours la souffrance, mais il la transforme. 
+                Jésus lui-même a souffert sur la croix, montrant que Dieu n'est pas étranger à notre condition humaine. 
+                Il partage nos douleurs et nos larmes.</p>
+                
+                <p>Dans la maladie, l'amour de Dieu se manifeste par sa proximité, par la paix qu'il donne, 
+                par l'espérance qu'il maintient en nos cœurs, et souvent par l'amour des autres qui nous entourent 
+                et nous accompagnent.</p>
+            </div>
+            <div class="flex flex-wrap gap-2 text-xs">
+                <span class="bg-white px-2 py-1 rounded-full">1 Jean 4,8</span>
+                <span class="bg-white px-2 py-1 rounded-full">Matthieu 11,28</span>
+                <span class="bg-white px-2 py-1 rounded-full">Romains 8,28</span>
+            </div>
+            </article>
+
+            <article class="bg-white rounded-xl p-6 shadow-soft border border-gray-100">
+            <div class="flex items-start gap-4 mb-4">
+                <div class="w-12 h-12 bg-blue-100 rounded-lg flex items-center justify-center flex-shrink-0">
+                <span class="text-xl">❓</span>
+                </div>
+                <div>
+                <h3 class="text-lg font-semibold text-gray-900 mb-2">Comment prier quand on n'arrive plus à croire ?</h3>
+                <p class="text-xs text-gray-600 mb-3">Question de Jean · Famille d'un patient · Répondu par Sœur Marie-Claire</p>
+                </div>
+            </div>
+            <div class="text-sm text-gray-700 leading-relaxed mb-4">
+                <p class="mb-3"><strong>Réponse :</strong> Les périodes de doute et de sécheresse spirituelle font partie 
+                du cheminement de foi de beaucoup de croyants. Jésus lui-même a crié sur la croix : 
+                "Mon Dieu, pourquoi m'as-tu abandonné ?" (Mt 27,46).</p>
+                
+                <p class="mb-3">Quand les mots manquent, la prière peut être simplement un cri du cœur, un silence 
+                offert à Dieu, ou même la répétition d'une phrase simple comme "Jésus, j'ai confiance en toi". 
+                L'essentiel n'est pas de ressentir quelque chose, mais de persévérer dans la relation avec Dieu.</p>
+                
+                <p>Parfois, il est bon de prier avec les mots des autres : les Psaumes, le Notre Père, 
+                ou de demander à d'autres de prier pour nous quand nous ne pouvons plus le faire nous-mêmes.</p>
+            </div>
+            <div class="flex flex-wrap gap-2 text-xs">
+                <span class="bg-brandMuted px-2 py-1 rounded-full border border-green-200">Psaume 22</span>
+                <span class="bg-brandMuted px-2 py-1 rounded-full border border-green-200">Matthieu 6,9-13</span>
+                <span class="bg-brandMuted px-2 py-1 rounded-full border border-green-200">Romains 8,26</span>
+            </div>
+            </article>
+
+            <article class="bg-yellow-50 rounded-xl p-6 shadow-soft border border-yellow-100">
+            <div class="flex items-start gap-4 mb-4">
+                <div class="w-12 h-12 bg-yellow-200 rounded-lg flex items-center justify-center flex-shrink-0">
+                <span class="text-xl">❓</span>
+                </div>
+                <div>
+                <h3 class="text-lg font-semibold text-gray-900 mb-2">Que devient-on après la mort selon la Bible ?</h3>
+                <p class="text-xs text-gray-600 mb-3">Question de Famille Dubois · Soins palliatifs · Répondu par Père François</p>
+                </div>
+            </div>
+            <div class="text-sm text-gray-700 leading-relaxed mb-4">
+                <p class="mb-3"><strong>Réponse :</strong> La Bible nous enseigne que la mort n'est pas une fin, 
+                mais un passage vers la vie éternelle avec Dieu. Jésus a dit : "Je suis la résurrection et la vie. 
+                Celui qui croit en moi, même s'il meurt, vivra" (Jn 11,25).</p>
+                
+                <p class="mb-3">Saint Paul nous rappelle que "nous savons qu'après la destruction de notre demeure terrestre, 
+                nous avons un édifice construit par Dieu, une demeure éternelle dans les cieux" (2 Co 5,1). 
+                La mort du corps n'est donc pas la mort de la personne.</p>
+                
+                <p>L'espérance chrétienne affirme la résurrection des morts et la vie éternelle. 
+                Nos bien-aimés qui nous ont précédés vivent en Dieu, dans l'attente de la résurrection finale 
+                où nous serons tous réunis dans l'amour parfait de Dieu.</p>
+            </div>
+            <div class="flex flex-wrap gap-2 text-xs">
+                <span class="bg-white px-2 py-1 rounded-full">Jean 11,25</span>
+                <span class="bg-white px-2 py-1 rounded-full">2 Corinthiens 5,1</span>
+                <span class="bg-white px-2 py-1 rounded-full">1 Thessaloniciens 4,13</span>
+            </div>
+            </article>
+        </div>
+    </section>
+
+    <section id="poser-question" class="px-8 py-14 md:px-12 bg-white">
+        <div class="flex items-center gap-2 text-sm text-gray-600 mb-6">
+            <span class="h-px w-8 bg-gray-400"></span>
+            <span>Poser une question</span>
+        </div>
+        
+        <div class="max-w-2xl mx-auto">
+            <h2 class="text-2xl font-semibold text-gray-900 mb-4 text-center">Vous avez une question biblique ?</h2>
+            <p class="text-gray-700 text-center mb-6">
+            Notre équipe pastorale est là pour vous accompagner dans vos questionnements de foi. 
+            N'hésitez pas à nous faire part de vos interrogations sur les Écritures.
+            </p>
+            
+            <div class="bg-brandMuted rounded-xl p-6 border border-green-100">
+            <h3 class="font-semibold text-gray-900 mb-4">Comment nous contacter ?</h3>
+            <div class="space-y-3 text-sm">
+                <div class="flex items-center gap-3">
+                <div class="w-8 h-8 bg-brand rounded-full flex items-center justify-center">
+                    <span class="text-xs">📧</span>
+                </div>
+                <div>
+                    <div class="font-semibold">Email</div>
+                    <div class="text-gray-700">questions.bible@chu.exemple</div>
+                </div>
+                </div>
+                <div class="flex items-center gap-3">
+                <div class="w-8 h-8 bg-brand rounded-full flex items-center justify-center">
+                    <span class="text-xs">📞</span>
+                </div>
+                <div>
+                    <div class="font-semibold">Téléphone</div>
+                    <div class="text-gray-700">01 23 45 67 89 (poste 2159)</div>
+                </div>
+                </div>
+                <div class="flex items-center gap-3">
+                <div class="w-8 h-8 bg-brand rounded-full flex items-center justify-center">
+                    <span class="text-xs">🏥</span>
+                </div>
+                <div>
+                    <div class="font-semibold">Sur place</div>
+                    <div class="text-gray-700">Bureau pastoral - Bâtiment A, niveau 0</div>
+                </div>
+                </div>
+            </div>
+            
+            <div class="mt-4 p-3 bg-white rounded-lg border border-green-200">
+                <p class="text-xs text-gray-600">
+                <strong>Confidentialité :</strong> Toutes vos questions sont traitées avec la plus stricte confidentialité. 
+                Les réponses publiées le sont toujours de manière anonyme, après accord de la personne.
+                </p>
+            </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="archives" class="px-8 py-14 md:px-12">
+        <div class="flex items-center gap-2 text-sm text-gray-600 mb-6">
+            <span class="h-px w-8 bg-gray-400"></span>
+            <span>Archives des réponses</span>
+        </div>
+        
+        <div class="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
+            <div class="bg-white rounded-lg p-4 border border-gray-200 hover:border-green-200 transition-colors">
+            <h4 class="font-semibold text-gray-900 mb-2">Souffrance & Providence</h4>
+            <p class="text-xs text-gray-600 mb-2">15 questions · Dernière : 12/12/2024</p>
+            <p class="text-sm text-gray-700">Questions sur le sens de la souffrance et l'action de Dieu dans nos vies.</p>
+            </div>
+            
+            <div class="bg-white rounded-lg p-4 border border-gray-200 hover:border-green-200 transition-colors">
+            <h4 class="font-semibold text-gray-900 mb-2">Prière & Spiritualité</h4>
+            <p class="text-xs text-gray-600 mb-2">22 questions · Dernière : 10/12/2024</p>
+            <p class="text-sm text-gray-700">Conseils pour la vie de prière et l'approfondissement spirituel.</p>
+            </div>
+            
+            <div class="bg-white rounded-lg p-4 border border-gray-200 hover:border-green-200 transition-colors">
+            <h4 class="font-semibold text-gray-900 mb-2">Vie après la mort</h4>
+            <p class="text-xs text-gray-600 mb-2">8 questions · Dernière : 08/12/2024</p>
+            <p class="text-sm text-gray-700">Enseignements sur l'espérance chrétienne et la résurrection.</p>
+            </div>
+            
+            <div class="bg-white rounded-lg p-4 border border-gray-200 hover:border-green-200 transition-colors">
+            <h4 class="font-semibold text-gray-900 mb-2">Sacrements</h4>
+            <p class="text-xs text-gray-600 mb-2">12 questions · Dernière : 05/12/2024</p>
+            <p class="text-sm text-gray-700">Explications sur les sacrements et leur signification.</p>
+            </div>
+            
+            <div class="bg-white rounded-lg p-4 border border-gray-200 hover:border-green-200 transition-colors">
+            <h4 class="font-semibold text-gray-900 mb-2">Éthique & Morale</h4>
+            <p class="text-xs text-gray-600 mb-2">9 questions · Dernière : 02/12/2024</p>
+            <p class="text-sm text-gray-700">Réflexions sur les questions éthiques à la lumière de l'Évangile.</p>
+            </div>
+            
+            <div class="bg-white rounded-lg p-4 border border-gray-200 hover:border-green-200 transition-colors">
+            <h4 class="font-semibold text-gray-900 mb-2">Famille & Relations</h4>
+            <p class="text-xs text-gray-600 mb-2">7 questions · Dernière : 30/11/2024</p>
+            <p class="text-sm text-gray-700">Conseils pour vivre les relations humaines selon l'Évangile.</p>
+            </div>
+        </div>
+    </section>
+{% endblock %}
+
+{% block script %}
+    
+{% endblock %}

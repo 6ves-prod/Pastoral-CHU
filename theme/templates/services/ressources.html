@@ -1,0 +1,317 @@
+{% extends "../partial/base.html" %}
+
+{% block header %}
+    <div class="relative h-64 w-full overflow-hidden rounded-2xl shadow-soft">
+        <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=1400&q=80" alt="Ressources spirituelles" class="h-full w-full object-cover">
+        <div class="absolute inset-0 bg-black/40"></div>
+        <div class="absolute inset-0 flex items-center px-6">
+            <div class="text-white space-y-2">
+                <p class="text-sm uppercase tracking-wide">Ressources spirituelles</p>
+                <h1 class="text-3xl md:text-4xl font-semibold">Prières & Méditations</h1>
+                <p class="text-sm max-w-xl text-white/80">Textes, prières et ressources pour nourrir la foi et l'espérance</p>
+            </div>
+        </div>
+    </div>
+{% endblock %}
+
+{% block content %}
+    <section id="prieres" class="px-8 py-14 md:px-12">
+        <div class="flex items-center gap-2 text-sm text-gray-600 mb-6">
+            <span class="h-px w-8 bg-gray-400"></span>
+            <span>Prières quotidiennes</span>
+        </div>
+        
+        <div class="grid gap-6 md:grid-cols-2">
+            <div class="bg-brandMuted rounded-xl p-6 border border-green-100">
+            <h3 class="text-lg font-semibold text-gray-900 mb-4">Prière du matin</h3>
+            <div class="text-sm text-gray-800 leading-relaxed italic mb-4">
+                "Seigneur, en commençant cette journée,<br>
+                je confie entre tes mains tous ceux qui souffrent,<br>
+                tous ceux qui soignent, tous ceux qui accompagnent.<br>
+                Que ta lumière guide nos pas et nos gestes,<br>
+                que ta paix habite nos cœurs inquiets.<br>
+                Donne-nous la force d'être des instruments de ton amour.<br>
+                Amen."
+            </div>
+            <div class="text-xs text-gray-600">Prière composée par la Pastorale du CHU</div>
+            </div>
+            
+            <div class="bg-white rounded-xl p-6 shadow-soft border border-gray-100">
+            <h3 class="text-lg font-semibold text-gray-900 mb-4">Prière du soir</h3>
+            <div class="text-sm text-gray-700 leading-relaxed italic mb-4">
+                "Seigneur, la journée s'achève,<br>
+                merci pour ta présence fidèle à nos côtés.<br>
+                Nous te confions les joies et les peines de ce jour,<br>
+                les guérisons et les souffrances,<br>
+                les espoirs et les inquiétudes.<br>
+                Veille sur notre sommeil et donne-nous ta paix.<br>
+                Amen."
+            </div>
+            <div class="text-xs text-gray-600">Adaptée des Complies</div>
+            </div>
+            
+            <div class="bg-blue-50 rounded-xl p-6 border border-blue-100">
+            <h3 class="text-lg font-semibold text-gray-900 mb-4">Prière pour les malades</h3>
+            <div class="text-sm text-gray-800 leading-relaxed italic mb-4">
+                "Père de miséricorde,<br>
+                tu connais la souffrance de tes enfants.<br>
+                Donne à ceux qui sont malades<br>
+                la certitude de ton amour et de ta proximité.<br>
+                Accompagne les familles dans l'épreuve,<br>
+                soutiens les soignants dans leur dévouement.<br>
+                Que l'espérance chrétienne illumine nos cœurs.<br>
+                Par Jésus le Christ, notre Seigneur. Amen."
+            </div>
+            <div class="text-xs text-gray-600">Inspirée du rituel des sacrements</div>
+            </div>
+            
+            <div class="bg-purple-50 rounded-xl p-6 border border-purple-100">
+            <h3 class="text-lg font-semibold text-gray-900 mb-4">Prière pour les soignants</h3>
+            <div class="text-sm text-gray-800 leading-relaxed italic mb-4">
+                "Seigneur Jésus,<br>
+                toi qui as guéri les malades et consolé les affligés,<br>
+                bénis tous ceux qui se consacrent au soin.<br>
+                Donne-leur sagesse dans leurs décisions,<br>
+                compassion dans leurs gestes,<br>
+                force dans les moments difficiles.<br>
+                Qu'ils soient pour tous des signes de ton amour.<br>
+                Amen."
+            </div>
+            <div class="text-xs text-gray-600">Bénédiction des soignants</div>
+            </div>
+        </div>
+    </section>
+
+    <section id="meditations" class="px-8 py-14 md:px-12 bg-white">
+        <div class="flex items-center gap-2 text-sm text-gray-600 mb-6">
+            <span class="h-px w-8 bg-gray-400"></span>
+            <span>Méditations & Réflexions</span>
+        </div>
+        
+        <div class="space-y-6">
+            <article class="bg-stone rounded-xl p-6 shadow-soft">
+            <div class="flex items-start gap-4 mb-4">
+                <div class="w-12 h-12 bg-brand rounded-lg flex items-center justify-center flex-shrink-0">
+                <span class="text-xl">✝️</span>
+                </div>
+                <div>
+                <h3 class="text-lg font-semibold text-gray-900 mb-1">La compassion du Christ</h3>
+                <p class="text-xs text-gray-600">Méditation · Père Emmanuel · 5 min de lecture</p>
+                </div>
+            </div>
+            <p class="text-sm text-gray-700 leading-relaxed mb-4">
+                "Jésus parcourait toutes les villes et tous les villages... Voyant les foules, il fut saisi de compassion envers elles" (Mt 9,35-36). 
+                Cette compassion du Christ éclaire notre mission d'accompagnement. Dans chaque visage souffrant, nous sommes appelés à reconnaître 
+                le Christ lui-même, présent dans le mystère de la souffrance humaine...
+            </p>
+            <button class="text-sm font-semibold text-brandDark underline">Lire la suite →</button>
+            </article>
+            
+            <article class="bg-stone rounded-xl p-6 shadow-soft">
+            <div class="flex items-start gap-4 mb-4">
+                <div class="w-12 h-12 bg-blue-100 rounded-lg flex items-center justify-center flex-shrink-0">
+                <span class="text-xl">🕊️</span>
+                </div>
+                <div>
+                <h3 class="text-lg font-semibold text-gray-900 mb-1">L'espérance dans l'épreuve</h3>
+                <p class="text-xs text-gray-600">Réflexion · Sœur Marie-Claire · 3 min de lecture</p>
+                </div>
+            </div>
+            <p class="text-sm text-gray-700 leading-relaxed mb-4">
+                L'épreuve de la maladie peut ébranler nos certitudes et nous faire douter. Comment garder l'espérance ? 
+                Saint Paul nous dit : "L'espérance ne déçoit point, car l'amour de Dieu a été répandu dans nos cœurs" (Rm 5,5). 
+                Cette espérance n'est pas naive, elle s'enracine dans l'amour inconditionnel de Dieu...
+            </p>
+            <button class="text-sm font-semibold text-brandDark underline">Lire la suite →</button>
+            </article>
+            
+            <article class="bg-stone rounded-xl p-6 shadow-soft">
+            <div class="flex items-start gap-4 mb-4">
+                <div class="w-12 h-12 bg-yellow-100 rounded-lg flex items-center justify-center flex-shrink-0">
+                <span class="text-xl">🌟</span>
+                </div>
+                <div>
+                <h3 class="text-lg font-semibold text-gray-900 mb-1">La lumière de Noël à l'hôpital</h3>
+                <p class="text-xs text-gray-600">Méditation · Père François · 4 min de lecture</p>
+                </div>
+            </div>
+            <p class="text-sm text-gray-700 leading-relaxed mb-4">
+                À Noël, nous célébrons la venue de Dieu parmi nous, Emmanuel, "Dieu-avec-nous". Cette proximité divine prend 
+                un sens particulier dans les murs de l'hôpital. Car c'est là, dans la vulnérabilité et la souffrance, 
+                que se révèle le plus clairement l'amour de Dieu pour l'humanité...
+            </p>
+            <button class="text-sm font-semibold text-brandDark underline">Lire la suite →</button>
+            </article>
+        </div>
+    </section>
+
+    <section id="documents" class="px-8 py-14 md:px-12">
+        <div class="flex items-center gap-2 text-sm text-gray-600 mb-6">
+            <span class="h-px w-8 bg-gray-400"></span>
+            <span>Documents & Guides</span>
+        </div>
+        
+        <div class="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
+            <div class="bg-white rounded-xl p-5 shadow-soft border border-gray-100">
+            <div class="flex items-center gap-3 mb-3">
+                <div class="w-10 h-10 bg-red-100 rounded-lg flex items-center justify-center">
+                <span class="text-sm">📄</span>
+                </div>
+                <div>
+                <h4 class="font-semibold text-gray-900">Guide de l'accompagnement</h4>
+                <p class="text-xs text-gray-600">PDF · 2.1 MB</p>
+                </div>
+            </div>
+            <p class="text-sm text-gray-700 mb-3">Manuel pratique pour l'accompagnement spirituel en milieu hospitalier</p>
+            <button class="text-sm font-semibold text-brandDark underline">Télécharger</button>
+            </div>
+            
+            <div class="bg-white rounded-xl p-5 shadow-soft border border-gray-100">
+            <div class="flex items-center gap-3 mb-3">
+                <div class="w-10 h-10 bg-blue-100 rounded-lg flex items-center justify-center">
+                <span class="text-sm">🎵</span>
+                </div>
+                <div>
+                <h4 class="font-semibold text-gray-900">Recueil de chants</h4>
+                <p class="text-xs text-gray-600">PDF · 1.8 MB</p>
+                </div>
+            </div>
+            <p class="text-sm text-gray-700 mb-3">Chants liturgiques adaptés aux célébrations hospitalières</p>
+            <button class="text-sm font-semibold text-brandDark underline">Télécharger</button>
+            </div>
+            
+            <div class="bg-white rounded-xl p-5 shadow-soft border border-gray-100">
+            <div class="flex items-center gap-3 mb-3">
+                <div class="w-10 h-10 bg-green-100 rounded-lg flex items-center justify-center">
+                <span class="text-sm">📖</span>
+                </div>
+                <div>
+                <h4 class="font-semibold text-gray-900">Livret de prières</h4>
+                <p class="text-xs text-gray-600">PDF · 980 KB</p>
+                </div>
+            </div>
+            <p class="text-sm text-gray-700 mb-3">Collection de prières pour différents moments et situations</p>
+            <button class="text-sm font-semibold text-brandDark underline">Télécharger</button>
+            </div>
+            
+            <div class="bg-white rounded-xl p-5 shadow-soft border border-gray-100">
+            <div class="flex items-center gap-3 mb-3">
+                <div class="w-10 h-10 bg-purple-100 rounded-lg flex items-center justify-center">
+                <span class="text-sm">🎧</span>
+                </div>
+                <div>
+                <h4 class="font-semibold text-gray-900">Méditations audio</h4>
+                <p class="text-xs text-gray-600">MP3 · Playlist</p>
+                </div>
+            </div>
+            <p class="text-sm text-gray-700 mb-3">Méditations guidées pour la détente et la prière</p>
+            <button class="text-sm font-semibold text-brandDark underline">Écouter</button>
+            </div>
+            
+            <div class="bg-white rounded-xl p-5 shadow-soft border border-gray-100">
+            <div class="flex items-center gap-3 mb-3">
+                <div class="w-10 h-10 bg-yellow-100 rounded-lg flex items-center justify-center">
+                <span class="text-sm">📚</span>
+                </div>
+                <div>
+                <h4 class="font-semibold text-gray-900">Textes liturgiques</h4>
+                <p class="text-xs text-gray-600">PDF · 1.5 MB</p>
+                </div>
+            </div>
+            <p class="text-sm text-gray-700 mb-3">Lectures et prières pour les temps liturgiques</p>
+            <button class="text-sm font-semibold text-brandDark underline">Télécharger</button>
+            </div>
+            
+            <div class="bg-white rounded-xl p-5 shadow-soft border border-gray-100">
+            <div class="flex items-center gap-3 mb-3">
+                <div class="w-10 h-10 bg-indigo-100 rounded-lg flex items-center justify-center">
+                <span class="text-sm">💻</span>
+                </div>
+                <div>
+                <h4 class="font-semibold text-gray-900">App "Prière Hospitalière"</h4>
+                <p class="text-xs text-gray-600">Application mobile</p>
+                </div>
+            </div>
+            <p class="text-sm text-gray-700 mb-3">Application avec prières quotidiennes et lectionnaire</p>
+            <button class="text-sm font-semibold text-brandDark underline">Télécharger</button>
+            </div>
+        </div>
+    </section>
+
+    <section id="liens-utiles" class="px-8 py-14 md:px-12 bg-white">
+        <div class="flex items-center gap-2 text-sm text-gray-600 mb-6">
+            <span class="h-px w-8 bg-gray-400"></span>
+            <span>Liens & Références</span>
+        </div>
+        
+        <div class="grid gap-6 md:grid-cols-2">
+            <div>
+            <h3 class="text-lg font-semibold text-gray-900 mb-4">Sites web recommandés</h3>
+            <div class="space-y-3">
+                <a href="ressources.html" class="block bg-brandMuted rounded-lg p-4 border border-green-100 hover:border-green-200 transition-colors">
+                <div class="flex items-center gap-3">
+                    <div class="w-8 h-8 bg-brand rounded-lg flex items-center justify-center">
+                    <span class="text-sm">⛪</span>
+                    </div>
+                    <div>
+                    <div class="font-semibold text-gray-900">Vatican.va</div>
+                    <div class="text-xs text-gray-600">Textes officiels du Vatican</div>
+                    </div>
+                </div>
+                </a>
+                
+                <a href="ressources.html" class="block bg-white rounded-lg p-4 border border-gray-100 hover:border-gray-200 transition-colors">
+                <div class="flex items-center gap-3">
+                    <div class="w-8 h-8 bg-blue-100 rounded-lg flex items-center justify-center">
+                    <span class="text-sm">📖</span>
+                    </div>
+                    <div>
+                    <div class="font-semibold text-gray-900">Aelf.org</div>
+                    <div class="text-xs text-gray-600">Lectures liturgiques quotidiennes</div>
+                    </div>
+                </div>
+                </a>
+                
+                <a href="ressources.html" class="block bg-white rounded-lg p-4 border border-gray-100 hover:border-gray-200 transition-colors">
+                <div class="flex items-center gap-3">
+                    <div class="w-8 h-8 bg-purple-100 rounded-lg flex items-center justify-center">
+                    <span class="text-sm">🙏</span>
+                    </div>
+                    <div>
+                    <div class="font-semibold text-gray-900">Prionseneglise.fr</div>
+                    <div class="text-xs text-gray-600">Prières et méditations quotidiennes</div>
+                    </div>
+                </div>
+                </a>
+            </div>
+            </div>
+            
+            <div>
+            <h3 class="text-lg font-semibold text-gray-900 mb-4">Contacts spécialisés</h3>
+            <div class="space-y-3">
+                <div class="bg-white rounded-lg p-4 border border-gray-100">
+                <div class="font-semibold text-gray-900 mb-1">Pastorale de la Santé diocésaine</div>
+                <div class="text-sm text-gray-600 mb-2">Accompagnement et formation</div>
+                <div class="text-xs text-gray-500">📞 01 23 45 67 90</div>
+                </div>
+                
+                <div class="bg-white rounded-lg p-4 border border-gray-100">
+                <div class="font-semibold text-gray-900 mb-1">Service d'écoute téléphonique</div>
+                <div class="text-sm text-gray-600 mb-2">SOS Amitié · 24h/24</div>
+                <div class="text-xs text-gray-500">📞 09 72 39 40 50</div>
+                </div>
+                
+                <div class="bg-white rounded-lg p-4 border border-gray-100">
+                <div class="font-semibold text-gray-900 mb-1">Centre spirituel régional</div>
+                <div class="text-sm text-gray-600 mb-2">Retraites et accompagnement</div>
+                <div class="text-xs text-gray-500">📧 accueil@centre-spirituel.fr</div>
+                </div>
+            </div>
+            </div>
+        </div>
+    </section>
+{% endblock %}
+
+{% block script %}
+    
+{% endblock %}

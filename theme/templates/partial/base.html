@@ -1,0 +1,28 @@
+{% load static tailwind_tags %}
+<!DOCTYPE html>
+<html lang="fr" class="scroll-smooth">
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<meta http-equiv="X-UA-Compatible" content="ie=edge">
+		{% tailwind_css %}
+		<link rel="preconnect" href="https://fonts.googleapis.com">
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+		<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+		
+		<title>{% block title %}Pastoral CHU - Accueil{% endblock %}</title>
+	</head>
+
+	<body class="min-h-screen bg-gradient-to-b from-emerald-900 via-emerald-950 to-emerald-900 flex items-center justify-center py-4 px-4">
+		<main class="w-full max-w-7xl bg-stone rounded-3xl shadow-soft overflow-hidden">
+			<header class="px-8 py-8 flex flex-col gap-4 md:gap-6">
+				{% include "partial/navbar.html" %}
+				{% block header %}{% endblock %}
+			</header>
+			{% block content %}{% endblock %}
+			{% include "partial/footer.html" %}
+		</main>
+
+		{% block script %}{% endblock %}
+	</body>
+</html>

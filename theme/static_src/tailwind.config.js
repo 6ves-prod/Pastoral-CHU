@@ -42,7 +42,20 @@ module.exports = {
         // '../../**/*.py'
     ],
     theme: {
-        extend: {},
+        extend: {
+            colors: {
+                brand: '#a7f3a0',
+                brandDark: '#22c55e',
+                brandMuted: '#e6fde0',
+                stone: '#f7f5f1',
+            },
+            fontFamily: {
+                sans: ['Inter', 'Helvetica Neue', 'Arial', 'sans-serif'],
+            },
+            boxShadow: {
+                soft: '0 25px 70px rgba(0,0,0,0.08)',
+            },
+        },
     },
     plugins: [
         /**

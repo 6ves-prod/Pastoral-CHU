@@ -18,12 +18,23 @@ Including another URLconf
 from django.contrib import admin
 from django.conf import settings
 from django.urls import path, include
-from app.views import index
+from app.views import index, actualites, services, evenements, formations, ressources, galerie, qui_sommes_nous, bible, bible_mediter, bible_reponses, contact
 
 
 urlpatterns = [
     path("admin/", admin.site.urls),
     path("", index, name="index"),
+    path("actualites/", actualites, name="actualites"),
+    path("services/", services, name="services"),
+    path("evenements/", evenements, name="evenements"),
+    path("formations/", formations, name="formations"),
+    path("ressources/", ressources, name="ressources"),
+    path("galerie/", galerie, name="galerie"),
+    path("qui-sommes-nous/", qui_sommes_nous, name="qui-sommes-nous"),
+    path("bible/", bible, name="bible"),
+    path("bible-mediter/", bible_mediter, name="bible-mediter"),
+    path("bible-reponses/", bible_reponses, name="bible-reponses"),
+    path("contact/", contact, name="contact"),
 ]
 
 if settings.DEBUG:

@@ -1,0 +1,183 @@
+{% extends "partial/base.html" %}
+
+{% block header %}
+    <div class="relative h-64 w-full overflow-hidden rounded-2xl shadow-soft">
+        <img src="https://images.unsplash.com/photo-1516321318423-f06f85e504b3?auto=format&fit=crop&w=1400&q=80" alt="Contact Pastoral CHU" class="h-full w-full object-cover">
+        <div class="absolute inset-0 bg-black/40"></div>
+        <div class="absolute inset-0 flex items-center px-6">
+            <div class="text-white space-y-2">
+                <p class="text-sm uppercase tracking-wide">Contact</p>
+                <h1 class="text-3xl md:text-4xl font-semibold">Nous contacter</h1>
+                <p class="text-sm max-w-xl text-white/80">Une question, une demande d'accompagnement, un besoin spirituel ? Nous sommes là pour vous écouter.</p>
+            </div>
+        </div>
+    </div>
+{% endblock %}
+
+{% block content %}
+    <section class="px-8 py-14 md:px-12">
+        <div class="max-w-6xl mx-auto">
+            <div class="flex items-center gap-2 text-sm text-gray-600 mb-6">
+            <span class="h-px w-8 bg-gray-400"></span>
+            <span>Nous joindre</span>
+            </div>
+
+            <div class="grid gap-8 lg:grid-cols-2">
+            <!-- Formulaire de contact -->
+            <div class="space-y-6">
+                <div>
+                <h2 class="text-2xl font-semibold text-gray-900 mb-4">Envoyer un message</h2>
+                <p class="text-gray-700 mb-6">
+                    Que ce soit pour une demande de visite, une question spirituelle, ou simplement pour échanger, 
+                    n'hésitez pas à nous contacter. Nous vous répondrons dans les plus brefs délais.
+                </p>
+                </div>
+
+                <form class="space-y-6">
+                <div class="grid gap-4 md:grid-cols-2">
+                    <div>
+                    <label class="block text-sm font-semibold text-gray-900 mb-2">Prénom *</label>
+                    <input type="text" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-brandDark focus:border-brandDark" required>
+                    </div>
+                    <div>
+                    <label class="block text-sm font-semibold text-gray-900 mb-2">Nom *</label>
+                    <input type="text" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-brandDark focus:border-brandDark" required>
+                    </div>
+                </div>
+                
+                <div>
+                    <label class="block text-sm font-semibold text-gray-900 mb-2">Email *</label>
+                    <input type="email" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-brandDark focus:border-brandDark" required>
+                </div>
+                
+                <div>
+                    <label class="block text-sm font-semibold text-gray-900 mb-2">Téléphone</label>
+                    <input type="tel" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-brandDark focus:border-brandDark">
+                </div>
+
+                <div>
+                    <label class="block text-sm font-semibold text-gray-900 mb-2">Motif de contact</label>
+                    <select class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-brandDark focus:border-brandDark">
+                    <option value="">Sélectionner un motif</option>
+                    <option value="visite">Demande de visite</option>
+                    <option value="sacrement">Demande de sacrement</option>
+                    <option value="spiritual">Question spirituelle</option>
+                    <option value="formation">Formation/bénévolat</option>
+                    <option value="autre">Autre</option>
+                    </select>
+                </div>
+                
+                <div>
+                    <label class="block text-sm font-semibold text-gray-900 mb-2">Message *</label>
+                    <textarea rows="5" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-brandDark focus:border-brandDark" placeholder="Décrivez votre demande ou votre question..." required></textarea>
+                </div>
+
+                <div class="bg-yellow-50 border border-yellow-200 rounded-lg p-4">
+                    <p class="text-yellow-800 text-sm">
+                    <strong>Urgence :</strong> En cas d'urgence pastorale (derniers sacrements, accompagnement urgent), 
+                    appelez directement le 01 23 45 67 89 ou demandez l'aumônier de garde à l'accueil.
+                    </p>
+                </div>
+                
+                <button type="submit" class="w-full bg-black text-white px-6 py-3 rounded-full font-semibold shadow hover:scale-[1.02] transition">
+                    Envoyer le message
+                </button>
+                </form>
+            </div>
+
+            <!-- Informations de contact -->
+            <div class="space-y-6">
+                <div class="bg-brandMuted rounded-xl p-6 border border-green-100">
+                <h3 class="text-lg font-semibold text-gray-900 mb-4">Coordonnées</h3>
+                <div class="space-y-4">
+                    <div class="flex items-start gap-3">
+                    <div class="w-8 h-8 bg-brandDark rounded-full flex items-center justify-center flex-shrink-0 mt-1">
+                        <span class="text-white text-xs">📍</span>
+                    </div>
+                    <div>
+                        <p class="font-semibold text-gray-900">Adresse</p>
+                        <p class="text-sm text-gray-700">Pastorale du CHU<br>Chapelle - Bâtiment A, Niveau 0<br>Centre Hospitalier Universitaire<br>123 Avenue de la Santé<br>75000 Ville</p>
+                    </div>
+                    </div>
+
+                    <div class="flex items-start gap-3">
+                    <div class="w-8 h-8 bg-brandDark rounded-full flex items-center justify-center flex-shrink-0 mt-1">
+                        <span class="text-white text-xs">📞</span>
+                    </div>
+                    <div>
+                        <p class="font-semibold text-gray-900">Téléphone</p>
+                        <p class="text-sm text-gray-700">01 23 45 67 89<br><span class="text-gray-600">Du lundi au vendredi : 8h - 18h<br>Weekend et urgences : Aumônier de garde</span></p>
+                    </div>
+                    </div>
+
+                    <div class="flex items-start gap-3">
+                    <div class="w-8 h-8 bg-brandDark rounded-full flex items-center justify-center flex-shrink-0 mt-1">
+                        <span class="text-white text-xs">✉️</span>
+                    </div>
+                    <div>
+                        <p class="font-semibold text-gray-900">Email</p>
+                        <p class="text-sm text-gray-700">pastorale@chu.exemple</p>
+                    </div>
+                    </div>
+                </div>
+                </div>
+
+                <div class="bg-white rounded-xl p-6 border border-gray-200">
+                <h3 class="text-lg font-semibold text-gray-900 mb-4">Équipe pastorale</h3>
+                <div class="space-y-4">
+                    <div>
+                    <p class="font-semibold text-gray-900">Père Martin Durand</p>
+                    <p class="text-sm text-gray-600">Responsable de l'aumônerie</p>
+                    <p class="text-sm text-gray-700">martin.durand@chu.exemple</p>
+                    </div>
+                    <div>
+                    <p class="font-semibold text-gray-900">Sœur Marie-Claire</p>
+                    <p class="text-sm text-gray-600">Accompagnement et formations</p>
+                    <p class="text-sm text-gray-700">marie-claire@chu.exemple</p>
+                    </div>
+                    <div>
+                    <p class="font-semibold text-gray-900">Père Jean-Baptiste</p>
+                    <p class="text-sm text-gray-600">Aumônier des services pédiatriques</p>
+                    <p class="text-sm text-gray-700">jean-baptiste@chu.exemple</p>
+                    </div>
+                </div>
+                </div>
+
+                <div class="bg-blue-50 border border-blue-200 rounded-xl p-6">
+                <h3 class="text-lg font-semibold text-blue-900 mb-3">Horaires des permanences</h3>
+                <div class="space-y-2 text-sm text-blue-800">
+                    <div class="flex justify-between">
+                    <span>Lundi - Vendredi</span>
+                    <span class="font-semibold">8h00 - 18h00</span>
+                    </div>
+                    <div class="flex justify-between">
+                    <span>Samedi</span>
+                    <span class="font-semibold">9h00 - 17h00</span>
+                    </div>
+                    <div class="flex justify-between">
+                    <span>Dimanche</span>
+                    <span class="font-semibold">10h00 - 16h00</span>
+                    </div>
+                    <div class="pt-2 border-t border-blue-200">
+                    <p class="text-xs text-blue-700">En dehors de ces horaires, un aumônier de garde est joignable via l'accueil du CHU pour les urgences.</p>
+                    </div>
+                </div>
+                </div>
+
+                <div class="bg-gray-100 rounded-xl p-6">
+                <h3 class="text-lg font-semibold text-gray-900 mb-3">Accès & Stationnement</h3>
+                <div class="space-y-3 text-sm text-gray-700">
+                    <p><strong>En voiture :</strong> Parking visiteurs gratuit les 2 premières heures, puis 2€/heure.</p>
+                    <p><strong>En transport public :</strong> Métro ligne 4, arrêt "CHU Centre", bus 12 et 34.</p>
+                    <p><strong>À pied :</strong> La chapelle est accessible depuis l'entrée principale, suivre la signalétique "Chapelle/Aumônerie".</p>
+                </div>
+                </div>
+            </div>
+            </div>
+        </div>
+    </section>
+{% endblock %}
+
+{% block script %}
+    
+{% endblock %}
