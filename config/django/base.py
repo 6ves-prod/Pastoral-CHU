@@ -15,6 +15,9 @@ from django.urls import reverse_lazy
 
 from config.env import BASE_DIR, env
 
+import dj_database_url
+
+
 env.read_env(os.path.join(BASE_DIR, '.env'))
 
 # Quick-start development settings - unsuitable for production
@@ -28,6 +31,9 @@ DEBUG = env.bool('DJANGO_DEBUG', default=False)
 
 ALLOWED_HOSTS = [
     "Pastoral-chu.onrender.com",
+    ".onrender.com",
+    "localhost",
+    "127.0.0.1"
 ]
 
 # SEO — optional external service keys, blank disables the related tag/script
@@ -87,11 +93,11 @@ WSGI_APPLICATION = "config.wsgi.application"
 # Database
 # https://docs.djangoproject.com/en/4.2/ref/settings/#databases
 
+
 DATABASES = {
-    "default": {
-        "ENGINE": "django.db.backends.sqlite3",
-        "NAME": BASE_DIR / "db.sqlite3",
-    }
+    "default": dj_database_url.config(
+        default=os.environ.get("DATABASE_URL")
+    )
 }
 
 
