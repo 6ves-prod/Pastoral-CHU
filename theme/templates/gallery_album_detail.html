@@ -1,0 +1,152 @@
+{% extends "partial/base.html" %}
+
+{% block title %}{{ album.title }} | {{ site_settings.site_name|default:"Pastoral CHU" }}{% endblock %}
+{% block meta_description %}{{ album.description|default:'Album photo de la pastorale du CHU.'|truncatewords:30 }}{% endblock %}
+{% block og_title %}{{ album.title }}{% endblock %}
+{% block og_description %}{{ album.description|default:'Album photo de la pastorale du CHU.'|truncatewords:30 }}{% endblock %}
+{% block og_image %}{% if album.cover_image %}<meta property="og:image" content="{{ request.scheme }}://{{ request.get_host }}{{ album.cover_image.url }}">{% elif album.cover %}<meta property="og:image" content="{{ album.cover }}">{% endif %}{% endblock %}
+
+{% block header %}
+    <div class="relative h-64 w-full overflow-hidden rounded-2xl shadow-soft">
+        {% if album.cover %}
+            <img src="{{ album.cover }}" alt="{{ album.title }}" class="h-full w-full object-cover">
+        {% else %}
+            <div class="absolute inset-0 bg-gradient-to-r from-emerald-800 to-emerald-950"></div>
+        {% endif %}
+        <div class="absolute inset-0 bg-black/40"></div>
+        <div class="absolute inset-0 flex items-end px-6 pb-6">
+            <div class="text-white space-y-2">
+                <div class="flex flex-wrap items-center gap-2 text-xs uppercase tracking-wide">
+                    <a href="{% url 'galerie' %}" class="underline decoration-white/50 hover:decoration-white">Photothèque</a>
+                    <span>·</span><span>{{ album_images|length }} photo{{ album_images|length|pluralize }}</span>
+                </div>
+                <h1 class="text-3xl md:text-4xl font-semibold">{{ album.title }}</h1>
+                {% if album.description %}<p class="text-sm max-w-xl text-white/80">{{ album.description }}</p>{% endif %}
+            </div>
+        </div>
+    </div>
+{% endblock %}
+
+{% block content %}
+    <section class="px-8 py-14 md:px-12">
+        <a href="{% url 'galerie' %}" class="inline-flex items-center gap-1 text-sm font-semibold text-emerald-800 hover:underline">← Retour à la galerie</a>
+
+        <div class="mt-6 columns-2 sm:columns-3 gap-4">
+            {% for image in album_images %}
+            <figure class="group relative mb-4 break-inside-avoid overflow-hidden rounded-xl shadow-soft bg-white">
+                <button type="button" data-lightbox-open data-index="{{ forloop.counter0 }}" class="block w-full cursor-zoom-in">
+                    <img src="{% if image.image %}{{ image.image.url }}{% else %}{{ image.image_url }}{% endif %}" alt="{{ image.title }}" class="w-full h-auto object-cover">
+                </button>
+                {% if image.title or image.caption %}
+                <figcaption class="absolute inset-x-0 bottom-0 bg-gradient-to-t from-black/70 via-black/10 to-transparent px-4 py-3 opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none">
+                    <p class="font-semibold text-white text-sm">{{ image.title }}</p>
+                    {% if image.caption %}<p class="text-xs text-white/80 mt-1">{{ image.caption }}</p>{% endif %}
+                </figcaption>
+                {% endif %}
+            </figure>
+            {% empty %}
+            <p class="text-gray-600 text-sm">Aucune photo publiée dans cet album pour le moment.</p>
+            {% endfor %}
+        </div>
+    </section>
+
+    <div id="lightbox" class="hidden fixed inset-0 z-50 bg-black/90 items-center justify-center px-4 py-8">
+        <button type="button" id="lightbox-close" aria-label="Fermer" class="absolute top-4 right-4 flex h-10 w-10 items-center justify-center rounded-full bg-white/10 text-white text-xl hover:bg-white/20 transition">✕</button>
+
+        <button type="button" id="lightbox-prev" aria-label="Photo précédente" class="absolute left-2 md:left-6 flex h-11 w-11 items-center justify-center rounded-full bg-white/10 text-white text-xl hover:bg-white/20 transition">❮</button>
+        <button type="button" id="lightbox-next" aria-label="Photo suivante" class="absolute right-2 md:right-6 flex h-11 w-11 items-center justify-center rounded-full bg-white/10 text-white text-xl hover:bg-white/20 transition">❯</button>
+
+        <figure class="max-w-4xl w-full flex flex-col items-center">
+            <img id="lightbox-image" src="" alt="" class="max-h-[75vh] w-auto max-w-full object-contain rounded-lg shadow-soft">
+            <figcaption class="mt-4 text-center text-white">
+                <p id="lightbox-title" class="font-semibold"></p>
+                <p id="lightbox-caption" class="text-sm text-white/70 mt-1"></p>
+                <p id="lightbox-counter" class="text-xs text-white/50 mt-2"></p>
+            </figcaption>
+        </figure>
+    </div>
+
+    {% if related_albums %}
+    <section class="px-8 py-14 md:px-12 bg-white">
+        <div class="flex items-center gap-2 text-sm text-gray-600 mb-6">
+            <span class="h-px w-8 bg-gray-400"></span>
+            <span>Autres albums</span>
+        </div>
+        <div class="grid gap-4 md:grid-cols-3">
+            {% for related in related_albums %}
+            <a href="{% url 'gallery_album_detail' related.slug %}" class="block rounded-xl overflow-hidden shadow-soft hover:shadow-lg transition-shadow group">
+                <div class="relative h-40 w-full overflow-hidden bg-gray-200">
+                    {% if related.cover %}<img src="{{ related.cover }}" alt="{{ related.title }}" class="h-full w-full object-cover group-hover:scale-105 transition-transform duration-300">{% endif %}
+                </div>
+                <div class="p-4 bg-white">
+                    <p class="font-semibold text-gray-900">{{ related.title }}</p>
+                </div>
+            </a>
+            {% endfor %}
+        </div>
+    </section>
+    {% endif %}
+{% endblock %}
+
+{% block script %}
+    <script>
+        (() => {
+            const images = [
+                {% for image in album_images %}
+                { url: "{% if image.image %}{{ image.image.url|escapejs }}{% else %}{{ image.image_url|escapejs }}{% endif %}", title: "{{ image.title|escapejs }}", caption: "{{ image.caption|escapejs }}" }{% if not forloop.last %},{% endif %}
+                {% endfor %}
+            ];
+            if (!images.length) return;
+
+            const overlay = document.getElementById('lightbox');
+            const imgEl = document.getElementById('lightbox-image');
+            const titleEl = document.getElementById('lightbox-title');
+            const captionEl = document.getElementById('lightbox-caption');
+            const counterEl = document.getElementById('lightbox-counter');
+            let current = 0;
+
+            const render = (index) => {
+                current = (index + images.length) % images.length;
+                const item = images[current];
+                imgEl.src = item.url;
+                imgEl.alt = item.title;
+                titleEl.textContent = item.title;
+                captionEl.textContent = item.caption;
+                captionEl.classList.toggle('hidden', !item.caption);
+                counterEl.textContent = `${current + 1} / ${images.length}`;
+            };
+
+            const open = (index) => {
+                render(index);
+                overlay.classList.remove('hidden');
+                overlay.classList.add('flex');
+                document.body.classList.add('overflow-hidden');
+            };
+
+            const close = () => {
+                overlay.classList.add('hidden');
+                overlay.classList.remove('flex');
+                document.body.classList.remove('overflow-hidden');
+            };
+
+            document.querySelectorAll('[data-lightbox-open]').forEach((btn) => {
+                btn.addEventListener('click', () => open(parseInt(btn.dataset.index, 10)));
+            });
+
+            document.getElementById('lightbox-close').addEventListener('click', close);
+            document.getElementById('lightbox-prev').addEventListener('click', () => render(current - 1));
+            document.getElementById('lightbox-next').addEventListener('click', () => render(current + 1));
+
+            overlay.addEventListener('click', (event) => {
+                if (event.target === overlay) close();
+            });
+
+            document.addEventListener('keydown', (event) => {
+                if (overlay.classList.contains('hidden')) return;
+                if (event.key === 'Escape') close();
+                if (event.key === 'ArrowRight') render(current + 1);
+                if (event.key === 'ArrowLeft') render(current - 1);
+            });
+        })();
+    </script>
+{% endblock %}

@@ -1,0 +1,118 @@
+{% extends "partial/base.html" %}
+
+{% block title %}{{ resource.title }} | {{ site_settings.site_name|default:"Pastoral CHU" }}{% endblock %}
+{% block meta_description %}{{ resource.summary|truncatewords:30 }}{% endblock %}
+{% block og_title %}{{ resource.title }}{% endblock %}
+{% block og_description %}{{ resource.summary|truncatewords:30 }}{% endblock %}
+{% block og_image %}{% if resource.image %}<meta property="og:image" content="{{ request.scheme }}://{{ request.get_host }}{{ resource.image.url }}">{% elif resource.image_url %}<meta property="og:image" content="{{ resource.image_url }}">{% endif %}{% endblock %}
+
+{% block header %}
+    <div class="relative h-80 w-full overflow-hidden rounded-2xl shadow-soft">
+        {% if resource.image %}
+            <img src="{{ resource.image.url }}" alt="{{ resource.title }}" class="h-full w-full object-cover">
+        {% elif resource.image_url %}
+            <img src="{{ resource.image_url }}" alt="{{ resource.title }}" class="h-full w-full object-cover">
+        {% else %}
+            <div class="absolute inset-0 bg-gradient-to-r from-emerald-800 to-emerald-950"></div>
+        {% endif %}
+        <div class="absolute inset-0 bg-gradient-to-t from-black/70 via-black/10 to-transparent"></div>
+        <div class="absolute inset-0 flex items-end px-8 pb-8">
+            <div class="text-white space-y-3 max-w-3xl">
+                <div class="flex flex-wrap items-center gap-2 text-xs uppercase tracking-wide text-white/80">
+                    <a href="{% url 'ressources' %}" class="underline decoration-white/50 hover:decoration-white">Ressources spirituelles</a>
+                    <span>·</span><span class="rounded-full bg-white/15 px-3 py-1">{{ resource.get_resource_type_display }}</span>
+                </div>
+                <h1 class="text-3xl md:text-5xl font-semibold leading-tight">{{ resource.title }}</h1>
+                {% if resource.summary %}<p class="text-sm text-white/70 max-w-xl">{{ resource.summary }}</p>{% endif %}
+            </div>
+        </div>
+    </div>
+{% endblock %}
+
+{% block content %}
+    <section class="px-8 py-14 md:px-12">
+        <div class="grid gap-8 lg:grid-cols-3 items-start">
+            <article class="lg:col-span-2">
+                <div class="rounded-2xl border border-gray-200 bg-white p-6 md:p-8 shadow-soft">
+                    {% if resource.content %}
+                        <div class="prose max-w-none text-gray-700 leading-relaxed">{{ resource.content|linebreaksbr }}</div>
+                    {% endif %}
+                    {% if resource.audio_url or resource.pdf_file or resource.external_url %}
+                    <div class="mt-8 flex flex-wrap gap-3 border-t border-gray-100 pt-6">
+                        {% if resource.audio_url %}
+                            <button type="button" data-audio-btn="#resource-audio" class="inline-flex items-center gap-2 rounded-full bg-brandDark px-4 py-2.5 text-sm font-semibold text-white shadow hover:scale-[1.01] transition">🎧 Écouter l’audio</button>
+                        {% endif %}
+                        {% if resource.pdf_file %}
+                            <a href="{{ resource.pdf_file.url }}" target="_blank" rel="noopener" class="inline-flex items-center gap-2 rounded-full bg-gray-900 px-4 py-2.5 text-sm font-semibold text-white shadow hover:scale-[1.01] transition">📄 Voir le PDF</a>
+                        {% endif %}
+                        {% if resource.external_url %}
+                            <a href="{{ resource.external_url }}" target="_blank" rel="noopener" class="inline-flex items-center gap-2 rounded-full border border-gray-300 px-4 py-2.5 text-sm font-semibold text-gray-700 hover:bg-gray-50">🔗 Lien externe</a>
+                        {% endif %}
+                    </div>
+                    {% if resource.audio_url %}
+                        <audio id="resource-audio" class="hidden mt-4 w-full" controls preload="none" src="{{ resource.audio_url }}"></audio>
+                    {% endif %}
+                    {% endif %}
+                </div>
+            </article>
+
+            <aside class="lg:sticky lg:top-6">
+                <div class="rounded-2xl border border-gray-200 bg-white shadow-soft overflow-hidden">
+                    <div class="p-6 space-y-4">
+                        <h2 class="text-xs font-semibold uppercase tracking-wide text-gray-500">À propos de cette ressource</h2>
+                        <ul class="space-y-3 text-sm text-gray-700">
+                            {% if resource.published_at %}
+                            <li class="flex items-start gap-3">
+                                <span class="flex h-9 w-9 items-center justify-center rounded-full bg-brandMuted text-base flex-shrink-0">📅</span>
+                                <div><p class="font-semibold text-gray-900">Publiée le</p><p>{{ resource.published_at|date:"d F Y" }}</p></div>
+                            </li>
+                            {% endif %}
+                            {% if resource.author %}
+                            <li class="flex items-start gap-3">
+                                <span class="flex h-9 w-9 items-center justify-center rounded-full bg-brandMuted text-base flex-shrink-0">✍️</span>
+                                <div><p class="font-semibold text-gray-900">Auteur</p><p>{{ resource.author }}</p></div>
+                            </li>
+                            {% endif %}
+                            <li class="flex items-start gap-3">
+                                <span class="flex h-9 w-9 items-center justify-center rounded-full bg-brandMuted text-base flex-shrink-0">🏷️</span>
+                                <div><p class="font-semibold text-gray-900">Type</p><p>{{ resource.get_resource_type_display }}</p></div>
+                            </li>
+                            {% if resource.file_size_label %}
+                            <li class="flex items-start gap-3">
+                                <span class="flex h-9 w-9 items-center justify-center rounded-full bg-brandMuted text-base flex-shrink-0">📄</span>
+                                <div><p class="font-semibold text-gray-900">Taille du fichier</p><p>{{ resource.file_size_label }}</p></div>
+                            </li>
+                            {% endif %}
+                        </ul>
+                    </div>
+                    <div class="border-t border-gray-100 bg-brandMuted/40 p-6">
+                        <p class="text-sm text-gray-700 mb-3">Découvrez d'autres prières, méditations et guides spirituels.</p>
+                        <a href="{% url 'ressources' %}" class="w-full inline-flex items-center justify-center gap-2 rounded-full bg-black text-white px-4 py-2.5 text-sm font-semibold shadow hover:scale-[1.01] transition">← Toutes les ressources</a>
+                    </div>
+                </div>
+            </aside>
+        </div>
+    </section>
+
+    {% if related_resources %}
+    <section class="px-8 pb-14 md:px-12">
+        <div class="flex items-center gap-2 text-sm text-gray-600 mb-6">
+            <span class="h-px w-8 bg-gray-400"></span>
+            <span>Autres ressources</span>
+        </div>
+        <div class="grid gap-4 md:grid-cols-3">
+            {% for related in related_resources %}
+            <a href="{% url 'spiritual_resource_detail' related.slug %}" class="block rounded-xl overflow-hidden border border-gray-100 bg-white shadow-soft hover:shadow-lg transition-shadow">
+                {% if related.image_url or related.image %}
+                    <img src="{% if related.image %}{{ related.image.url }}{% else %}{{ related.image_url }}{% endif %}" alt="{{ related.title }}" class="h-32 w-full object-cover">
+                {% endif %}
+                <div class="p-4">
+                    <p class="font-semibold text-gray-900">{{ related.title }}</p>
+                    <p class="text-xs text-gray-500 mt-1">{{ related.get_resource_type_display }}</p>
+                </div>
+            </a>
+            {% endfor %}
+        </div>
+    </section>
+    {% endif %}
+{% endblock %}

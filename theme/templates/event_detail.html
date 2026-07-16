@@ -1,0 +1,105 @@
+{% extends "partial/base.html" %}
+
+{% block title %}{{ event.title }} | {{ site_settings.site_name|default:"Pastoral CHU" }}{% endblock %}
+{% block meta_description %}{{ event.summary|truncatewords:30 }}{% endblock %}
+{% block og_title %}{{ event.title }}{% endblock %}
+{% block og_description %}{{ event.summary|truncatewords:30 }}{% endblock %}
+{% block og_image %}{% if event.image %}<meta property="og:image" content="{{ request.scheme }}://{{ request.get_host }}{{ event.image.url }}">{% elif event.image_url %}<meta property="og:image" content="{{ event.image_url }}">{% endif %}{% endblock %}
+
+{% block header %}
+    <div class="relative h-80 w-full overflow-hidden rounded-2xl shadow-soft">
+        {% if event.image %}
+            <img src="{{ event.image.url }}" alt="{{ event.title }}" class="h-full w-full object-cover">
+        {% elif event.image_url %}
+            <img src="{{ event.image_url }}" alt="{{ event.title }}" class="h-full w-full object-cover">
+        {% else %}
+            <div class="absolute inset-0 bg-gradient-to-r from-emerald-800 to-emerald-950"></div>
+        {% endif %}
+        <div class="absolute inset-0 bg-gradient-to-t from-black/70 via-black/10 to-transparent"></div>
+        <div class="absolute inset-0 flex items-end px-8 pb-8">
+            <div class="text-white space-y-3 max-w-3xl">
+                <div class="flex flex-wrap items-center gap-2 text-xs uppercase tracking-wide text-white/80">
+                    <a href="{% url 'evenements' %}" class="underline decoration-white/50 hover:decoration-white">Événements</a>
+                    {% if event.category %}<span>·</span><span class="rounded-full bg-white/15 px-3 py-1">{{ event.category.name }}</span>{% endif %}
+                </div>
+                <h1 class="text-3xl md:text-5xl font-semibold leading-tight">{{ event.title }}</h1>
+            </div>
+        </div>
+    </div>
+{% endblock %}
+
+{% block content %}
+    <section class="px-8 pt-14 md:px-12">
+        <div class="text-center max-w-2xl mx-auto mb-10">
+            <h2 class="text-2xl md:text-3xl font-semibold text-gray-900">Informations pratiques</h2>
+            <p class="text-gray-600 mt-2">Tout ce qu'il faut savoir pour participer à cet événement.</p>
+        </div>
+        <div class="grid grid-cols-2 md:grid-cols-4 gap-4 max-w-5xl mx-auto">
+            <div class="bg-brandMuted rounded-2xl p-6 border border-green-100 transition hover:shadow-soft">
+                <p class="text-3xl md:text-4xl font-bold text-gray-900">{{ event.start_date|date:"d M" }}</p>
+                <p class="text-sm font-semibold text-gray-900 mt-3">Date</p>
+                <p class="text-xs text-gray-500 mt-1 leading-relaxed">{{ event.start_date|date:"l Y" }}</p>
+            </div>
+            <div class="bg-brandMuted rounded-2xl p-6 border border-green-100 transition hover:shadow-soft">
+                <p class="text-3xl md:text-4xl font-bold text-gray-900">{{ event.start_date|date:"H\hi" }}</p>
+                <p class="text-sm font-semibold text-gray-900 mt-3">Horaire</p>
+                <p class="text-xs text-gray-500 mt-1 leading-relaxed">{% if event.end_date %}Jusqu'à {{ event.end_date|date:"H\hi" }}{% else %}Heure de début{% endif %}</p>
+            </div>
+            <div class="bg-brandMuted rounded-2xl p-6 border border-green-100 transition hover:shadow-soft">
+                <span class="flex h-10 w-10 items-center justify-center rounded-full bg-white text-lg">📍</span>
+                <p class="text-sm font-semibold text-gray-900 mt-3">Lieu</p>
+                <p class="text-xs text-gray-500 mt-1 leading-relaxed">{{ event.location|default:"À préciser" }}</p>
+            </div>
+            <div class="bg-brandMuted rounded-2xl p-6 border border-green-100 transition hover:shadow-soft">
+                <span class="flex h-10 w-10 items-center justify-center rounded-full bg-white text-lg">🏷️</span>
+                <p class="text-sm font-semibold text-gray-900 mt-3">Catégorie</p>
+                <p class="text-xs text-gray-500 mt-1 leading-relaxed">{{ event.category.name|default:"Tout public" }}</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="px-8 py-14 md:px-12">
+        <div class="grid gap-8 lg:grid-cols-3 items-start">
+            <article class="lg:col-span-2">
+                <div class="rounded-2xl border border-gray-200 bg-white p-6 md:p-8 shadow-soft">
+                    {% if event.summary %}
+                        <p class="text-lg text-gray-800 font-medium border-l-4 border-brand pl-4">{{ event.summary }}</p>
+                    {% endif %}
+                    {% if event.description %}
+                        <div class="prose max-w-none text-gray-700 mt-6 leading-relaxed">{{ event.description|linebreaksbr }}</div>
+                    {% endif %}
+                </div>
+            </article>
+
+            <aside class="lg:sticky lg:top-6">
+                <div class="rounded-2xl border border-green-100 bg-brandMuted p-6 shadow-soft">
+                    <h2 class="text-lg font-semibold text-gray-900">Une question sur cet événement ?</h2>
+                    <p class="mt-2 text-sm text-gray-700">Une question, une demande d'inscription ? L'équipe pastorale vous répond.</p>
+                    <a href="{% url 'contact' %}" class="mt-4 w-full inline-flex items-center justify-center gap-2 rounded-full bg-black text-white px-4 py-2.5 text-sm font-semibold shadow hover:scale-[1.01] transition">Nous contacter</a>
+                </div>
+            </aside>
+        </div>
+    </section>
+
+    {% if related_events %}
+    <section class="px-8 pb-14 md:px-12">
+        <div class="flex items-center gap-2 text-sm text-gray-600 mb-6">
+            <span class="h-px w-8 bg-gray-400"></span>
+            <span>Autres événements</span>
+        </div>
+        <div class="grid gap-4 md:grid-cols-3">
+            {% for related in related_events %}
+            <a href="{% url 'event_detail' related.slug %}" class="block rounded-xl overflow-hidden border border-gray-100 bg-white shadow-soft hover:shadow-lg transition-shadow">
+                {% if related.image_url or related.image %}
+                    <img src="{% if related.image %}{{ related.image.url }}{% else %}{{ related.image_url }}{% endif %}" alt="{{ related.title }}" class="h-32 w-full object-cover">
+                {% endif %}
+                <div class="p-4">
+                    <p class="font-semibold text-gray-900">{{ related.title }}</p>
+                    <p class="text-xs text-gray-500 mt-1">{{ related.start_date|date:"d F Y" }}</p>
+                </div>
+            </a>
+            {% endfor %}
+        </div>
+    </section>
+    {% endif %}
+{% endblock %}

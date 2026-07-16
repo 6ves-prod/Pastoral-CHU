@@ -11,6 +11,8 @@ https://docs.djangoproject.com/en/4.2/ref/settings/
 """
 
 import os
+from django.urls import reverse_lazy
+
 from config.env import BASE_DIR, env
 
 env.read_env(os.path.join(BASE_DIR, '.env'))
@@ -26,18 +28,24 @@ DEBUG = env.bool('DJANGO_DEBUG')
 
 ALLOWED_HOSTS = []
 
+# SEO — optional external service keys, blank disables the related tag/script
+GOOGLE_SITE_VERIFICATION = env('GOOGLE_SITE_VERIFICATION', default='')
+GA_MEASUREMENT_ID = env('GA_MEASUREMENT_ID', default='')
+
 
 # Application definition
 
 INSTALLED_APPS = [
+    "theme",
+    "unfold",
     "django.contrib.admin",
     "django.contrib.auth",
     "django.contrib.contenttypes",
     "django.contrib.sessions",
     "django.contrib.messages",
     "django.contrib.staticfiles",
+    "django.contrib.sitemaps",
     "tailwind",
-    "theme",
     "app",
 ]
 
@@ -64,6 +72,7 @@ TEMPLATES = [
                 "django.template.context_processors.request",
                 "django.contrib.auth.context_processors.auth",
                 "django.contrib.messages.context_processors.messages",
+                "app.context_processors.seo",
             ],
         },
     },
@@ -118,6 +127,8 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/4.2/howto/static-files/
 
 STATIC_URL = "static/"
+MEDIA_URL = "/media/"
+MEDIA_ROOT = BASE_DIR / "media"
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field
@@ -126,3 +137,140 @@ DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 
 
 TAILWIND_APP_NAME = "theme"
+
+
+# django-unfold admin dashboard
+# https://unfoldadmin.com/docs/configuration/settings/
+
+def _nav_link(model_name):
+    return reverse_lazy(f"admin:app_{model_name}_changelist")
+
+
+def _auth_link(model_name):
+    return reverse_lazy(f"admin:auth_{model_name}_changelist")
+
+
+UNFOLD = {
+    "SITE_TITLE": "Pastoral CHU",
+    "SITE_HEADER": "Pastoral CHU",
+    "SHOW_BACK_BUTTON": True,
+    "DASHBOARD_CALLBACK": "app.admin_dashboard.dashboard_callback",
+    "COLORS": {
+        "primary": {
+            "50": "#f0fdf4",
+            "100": "#dcfce7",
+            "200": "#bbf7d0",
+            "300": "#86efac",
+            "400": "#4ade80",
+            "500": "#22c55e",
+            "600": "#16a34a",
+            "700": "#15803d",
+            "800": "#166534",
+            "900": "#14532d",
+            "950": "#052e16",
+        },
+    },
+    "SIDEBAR": {
+        "show_search": True,
+        "show_all_applications": True,
+        "navigation": [
+            {
+                "title": "Général",
+                "separator": True,
+                "collapsible": False,
+                "items": [
+                    {"title": "Paramètres du site", "icon": "settings", "link": _nav_link("sitesettings")},
+                    {"title": "Sections de page", "icon": "dashboard_customize", "link": _nav_link("pagesection")},
+                    {"title": "Slides d'accueil", "icon": "view_carousel", "link": _nav_link("heroslide")},
+                    {"title": "Équipe", "icon": "groups", "link": _nav_link("teammember")},
+                    {"title": "Liens externes", "icon": "link", "link": _nav_link("externallink")},
+                ],
+            },
+            {
+                "title": "Actualités & Homélies",
+                "separator": True,
+                "collapsible": False,
+                "items": [
+                    {"title": "Articles", "icon": "article", "link": _nav_link("article")},
+                    {"title": "Catégories", "icon": "category", "link": _nav_link("category")},
+                    {"title": "Pères", "icon": "person", "link": _nav_link("father")},
+                    {"title": "Homélies", "icon": "menu_book", "link": _nav_link("homily")},
+                ],
+            },
+            {
+                "title": "Bible & Méditation",
+                "separator": True,
+                "collapsible": False,
+                "items": [
+                    {"title": "Versets bibliques", "icon": "auto_stories", "link": _nav_link("bibleverse")},
+                    {"title": "Questions bibliques", "icon": "quiz", "link": _nav_link("biblequestion")},
+                    {"title": "Méditations", "icon": "self_improvement", "link": _nav_link("meditationmethod")},
+                    {"title": "Temps liturgiques", "icon": "calendar_month", "link": _nav_link("liturgicalseason")},
+                ],
+            },
+            {
+                "title": "Événements & Formations",
+                "separator": True,
+                "collapsible": False,
+                "items": [
+                    {"title": "Événements", "icon": "event", "link": _nav_link("event")},
+                    {"title": "Formations", "icon": "school", "link": _nav_link("training")},
+                ],
+            },
+            {
+                "title": "Ressources spirituelles",
+                "separator": True,
+                "collapsible": False,
+                "items": [
+                    {"title": "Ressources", "icon": "library_books", "link": _nav_link("spiritualresource")},
+                ],
+            },
+            {
+                "title": "Galerie photo",
+                "separator": True,
+                "collapsible": False,
+                "items": [
+                    {"title": "Albums", "icon": "photo_library", "link": _nav_link("galleryalbum")},
+                    {"title": "Images", "icon": "image", "link": _nav_link("galleryimage")},
+                ],
+            },
+            {
+                "title": "Services & Vie paroissiale",
+                "separator": True,
+                "collapsible": False,
+                "items": [
+                    {"title": "Services proposés", "icon": "volunteer_activism", "link": _nav_link("serviceoffering")},
+                    {"title": "Horaires", "icon": "schedule", "link": _nav_link("schedule")},
+                    {"title": "Activités régulières", "icon": "event_repeat", "link": _nav_link("recurringactivity")},
+                    {"title": "Instructions d'accès", "icon": "directions", "link": _nav_link("accessinstruction")},
+                ],
+            },
+            {
+                "title": "Contact",
+                "separator": True,
+                "collapsible": False,
+                "items": [
+                    {"title": "Messages reçus", "icon": "mail", "link": _nav_link("contactmessage")},
+                    {"title": "Cartes de contact", "icon": "call", "link": _nav_link("contactchannel")},
+                ],
+            },
+            {
+                "title": "Témoignages",
+                "separator": True,
+                "collapsible": False,
+                "items": [
+                    {"title": "Témoignages", "icon": "format_quote", "link": _nav_link("testimonial")},
+                ],
+            },
+            {
+                "title": "Utilisateurs & Rôles",
+                "separator": True,
+                "collapsible": False,
+                "items": [
+                    {"title": "Utilisateurs", "icon": "person", "link": _auth_link("user")},
+                    {"title": "Rôles & permissions", "icon": "admin_panel_settings", "link": _auth_link("group")},
+                ],
+            },
+        ],
+    },
+}

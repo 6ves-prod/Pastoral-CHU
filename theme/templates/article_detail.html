@@ -1,0 +1,96 @@
+{% extends "partial/base.html" %}
+
+{% block title %}{{ article.title }} | {{ site_settings.site_name|default:"Pastoral CHU" }}{% endblock %}
+{% block meta_description %}{{ article.excerpt|default:article.content|truncatewords:30 }}{% endblock %}
+{% block og_type %}article{% endblock %}
+{% block og_title %}{{ article.title }}{% endblock %}
+{% block og_description %}{{ article.excerpt|default:article.content|truncatewords:30 }}{% endblock %}
+{% block og_image %}{% if article.image %}<meta property="og:image" content="{{ request.scheme }}://{{ request.get_host }}{{ article.image.url }}">{% elif article.image_url %}<meta property="og:image" content="{{ article.image_url }}">{% endif %}{% endblock %}
+
+{% block header %}
+    <div class="relative h-80 w-full overflow-hidden rounded-2xl shadow-soft">
+        {% if article.image %}
+            <img src="{{ article.image.url }}" alt="{{ article.title }}" class="h-full w-full object-cover">
+        {% elif article.image_url %}
+            <img src="{{ article.image_url }}" alt="{{ article.title }}" class="h-full w-full object-cover">
+        {% else %}
+            <div class="absolute inset-0 bg-gradient-to-r from-emerald-800 to-emerald-950"></div>
+        {% endif %}
+        <div class="absolute inset-0 bg-gradient-to-t from-black/70 via-black/10 to-transparent"></div>
+        <div class="absolute inset-0 flex items-end px-8 pb-8">
+            <div class="text-white space-y-3 max-w-3xl">
+                <div class="flex flex-wrap items-center gap-2 text-xs uppercase tracking-wide text-white/80">
+                    <a href="{% url 'actualites' %}" class="underline decoration-white/50 hover:decoration-white">Actualités</a>
+                    {% if article.category %}<span>·</span><span class="rounded-full bg-white/15 px-3 py-1">{{ article.category.name }}</span>{% endif %}
+                </div>
+                <h1 class="text-3xl md:text-5xl font-semibold leading-tight">{{ article.title }}</h1>
+                {% if article.published_at %}<p class="text-sm text-white/70">Publié le {{ article.published_at|date:"d F Y" }}</p>{% endif %}
+            </div>
+        </div>
+    </div>
+{% endblock %}
+
+{% block content %}
+    <section class="px-8 py-14 md:px-12">
+        <div class="grid gap-8 lg:grid-cols-3 items-start">
+            <article class="lg:col-span-2">
+                <div class="rounded-2xl border border-gray-200 bg-white p-6 md:p-8 shadow-soft">
+                    {% if article.excerpt %}
+                        <p class="text-lg text-gray-800 font-medium border-l-4 border-brand pl-4">{{ article.excerpt }}</p>
+                    {% endif %}
+                    <div class="prose max-w-none text-gray-700 mt-6 leading-relaxed">
+                        {{ article.content|linebreaksbr }}
+                    </div>
+                </div>
+            </article>
+
+            <aside class="lg:sticky lg:top-6">
+                <div class="rounded-2xl border border-gray-200 bg-white shadow-soft overflow-hidden">
+                    <div class="p-6 space-y-4">
+                        <h2 class="text-xs font-semibold uppercase tracking-wide text-gray-500">À propos de cet article</h2>
+                        <ul class="space-y-3 text-sm text-gray-700">
+                            {% if article.published_at %}
+                            <li class="flex items-start gap-3">
+                                <span class="flex h-9 w-9 items-center justify-center rounded-full bg-brandMuted text-base flex-shrink-0">📅</span>
+                                <div><p class="font-semibold text-gray-900">Date de publication</p><p>{{ article.published_at|date:"d F Y" }}</p></div>
+                            </li>
+                            {% endif %}
+                            {% if article.category %}
+                            <li class="flex items-start gap-3">
+                                <span class="flex h-9 w-9 items-center justify-center rounded-full bg-brandMuted text-base flex-shrink-0">🏷️</span>
+                                <div><p class="font-semibold text-gray-900">Catégorie</p><p>{{ article.category.name }}</p></div>
+                            </li>
+                            {% endif %}
+                        </ul>
+                    </div>
+                    <div class="border-t border-gray-100 bg-brandMuted/40 p-6">
+                        <p class="text-sm text-gray-700 mb-3">Retrouvez toutes nos actualités et annonces.</p>
+                        <a href="{% url 'actualites' %}" class="w-full inline-flex items-center justify-center gap-2 rounded-full bg-black text-white px-4 py-2.5 text-sm font-semibold shadow hover:scale-[1.01] transition">← Toutes les actualités</a>
+                    </div>
+                </div>
+            </aside>
+        </div>
+    </section>
+
+    {% if related_articles %}
+    <section class="px-8 pb-14 md:px-12">
+        <div class="flex items-center gap-2 text-sm text-gray-600 mb-6">
+            <span class="h-px w-8 bg-gray-400"></span>
+            <span>À lire aussi</span>
+        </div>
+        <div class="grid gap-4 md:grid-cols-3">
+            {% for related in related_articles %}
+            <a href="{% url 'article_detail' related.slug %}" class="block rounded-xl overflow-hidden border border-gray-100 bg-white shadow-soft hover:shadow-lg transition-shadow">
+                {% if related.image_url or related.image %}
+                    <img src="{% if related.image %}{{ related.image.url }}{% else %}{{ related.image_url }}{% endif %}" alt="{{ related.title }}" class="h-32 w-full object-cover">
+                {% endif %}
+                <div class="p-4">
+                    <p class="font-semibold text-gray-900">{{ related.title }}</p>
+                    {% if related.published_at %}<p class="text-xs text-gray-500 mt-1">{{ related.published_at|date:"d F Y" }}</p>{% endif %}
+                </div>
+            </a>
+            {% endfor %}
+        </div>
+    </section>
+    {% endif %}
+{% endblock %}

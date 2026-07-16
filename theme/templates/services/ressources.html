@@ -1,4 +1,7 @@
-{% extends "../partial/base.html" %}
+{% extends "partial/base.html" %}
+
+{% block title %}Ressources spirituelles | {{ site_settings.site_name|default:"Pastoral CHU" }}{% endblock %}
+{% block meta_description %}Textes, prières, méditations et documents pour nourrir la foi et l'espérance au quotidien.{% endblock %}
 
 {% block header %}
     <div class="relative h-64 w-full overflow-hidden rounded-2xl shadow-soft">
@@ -22,63 +25,15 @@
         </div>
         
         <div class="grid gap-6 md:grid-cols-2">
-            <div class="bg-brandMuted rounded-xl p-6 border border-green-100">
-            <h3 class="text-lg font-semibold text-gray-900 mb-4">Prière du matin</h3>
-            <div class="text-sm text-gray-800 leading-relaxed italic mb-4">
-                "Seigneur, en commençant cette journée,<br>
-                je confie entre tes mains tous ceux qui souffrent,<br>
-                tous ceux qui soignent, tous ceux qui accompagnent.<br>
-                Que ta lumière guide nos pas et nos gestes,<br>
-                que ta paix habite nos cœurs inquiets.<br>
-                Donne-nous la force d'être des instruments de ton amour.<br>
-                Amen."
+            {% for prayer in prayers %}
+            <div class="{% cycle 'bg-brandMuted border border-green-100' 'bg-white shadow-soft border border-gray-100' 'bg-blue-50 border border-blue-100' 'bg-purple-50 border border-purple-100' %} rounded-xl p-6">
+            <h3 class="text-lg font-semibold text-gray-900 mb-4">{{ prayer.title }}</h3>
+            <div class="text-sm text-gray-800 leading-relaxed italic mb-4">{{ prayer.content|linebreaksbr }}</div>
+            {% if prayer.author %}<div class="text-xs text-gray-600">{{ prayer.author }}</div>{% endif %}
             </div>
-            <div class="text-xs text-gray-600">Prière composée par la Pastorale du CHU</div>
-            </div>
-            
-            <div class="bg-white rounded-xl p-6 shadow-soft border border-gray-100">
-            <h3 class="text-lg font-semibold text-gray-900 mb-4">Prière du soir</h3>
-            <div class="text-sm text-gray-700 leading-relaxed italic mb-4">
-                "Seigneur, la journée s'achève,<br>
-                merci pour ta présence fidèle à nos côtés.<br>
-                Nous te confions les joies et les peines de ce jour,<br>
-                les guérisons et les souffrances,<br>
-                les espoirs et les inquiétudes.<br>
-                Veille sur notre sommeil et donne-nous ta paix.<br>
-                Amen."
-            </div>
-            <div class="text-xs text-gray-600">Adaptée des Complies</div>
-            </div>
-            
-            <div class="bg-blue-50 rounded-xl p-6 border border-blue-100">
-            <h3 class="text-lg font-semibold text-gray-900 mb-4">Prière pour les malades</h3>
-            <div class="text-sm text-gray-800 leading-relaxed italic mb-4">
-                "Père de miséricorde,<br>
-                tu connais la souffrance de tes enfants.<br>
-                Donne à ceux qui sont malades<br>
-                la certitude de ton amour et de ta proximité.<br>
-                Accompagne les familles dans l'épreuve,<br>
-                soutiens les soignants dans leur dévouement.<br>
-                Que l'espérance chrétienne illumine nos cœurs.<br>
-                Par Jésus le Christ, notre Seigneur. Amen."
-            </div>
-            <div class="text-xs text-gray-600">Inspirée du rituel des sacrements</div>
-            </div>
-            
-            <div class="bg-purple-50 rounded-xl p-6 border border-purple-100">
-            <h3 class="text-lg font-semibold text-gray-900 mb-4">Prière pour les soignants</h3>
-            <div class="text-sm text-gray-800 leading-relaxed italic mb-4">
-                "Seigneur Jésus,<br>
-                toi qui as guéri les malades et consolé les affligés,<br>
-                bénis tous ceux qui se consacrent au soin.<br>
-                Donne-leur sagesse dans leurs décisions,<br>
-                compassion dans leurs gestes,<br>
-                force dans les moments difficiles.<br>
-                Qu'ils soient pour tous des signes de ton amour.<br>
-                Amen."
-            </div>
-            <div class="text-xs text-gray-600">Bénédiction des soignants</div>
-            </div>
+            {% empty %}
+            <p class="text-gray-600 text-sm">Aucune prière publiée pour le moment.</p>
+            {% endfor %}
         </div>
     </section>
 
@@ -87,61 +42,27 @@
             <span class="h-px w-8 bg-gray-400"></span>
             <span>Méditations & Réflexions</span>
         </div>
-        
+
         <div class="space-y-6">
-            <article class="bg-stone rounded-xl p-6 shadow-soft">
-            <div class="flex items-start gap-4 mb-4">
-                <div class="w-12 h-12 bg-brand rounded-lg flex items-center justify-center flex-shrink-0">
-                <span class="text-xl">✝️</span>
+            {% for resource in resources %}
+                <a href="{% url 'spiritual_resource_detail' resource.slug %}" class="block rounded-xl p-6 shadow-soft border border-gray-100 bg-stone-50 transition hover:-translate-y-0.5 hover:shadow-lg">
+                    <div class="flex items-start gap-4 mb-4">
+                        <div class="w-12 h-12 rounded-lg flex items-center justify-center flex-shrink-0 {% if resource.resource_type == 'meditation' %}bg-brand{% elif resource.resource_type == 'reflection' %}bg-blue-100{% elif resource.resource_type == 'prayer' %}bg-purple-100{% else %}bg-yellow-100{% endif %}">
+                            <span class="text-xl">{% if resource.resource_type == 'meditation' %}✝️{% elif resource.resource_type == 'reflection' %}🕊️{% elif resource.resource_type == 'prayer' %}🙏{% else %}🌿{% endif %}</span>
+                        </div>
+                        <div>
+                            <h3 class="text-lg font-semibold text-gray-900 mb-1">{{ resource.title }}</h3>
+                            <p class="text-xs text-gray-600">{{ resource.get_resource_type_display }}{% if resource.author %} · {{ resource.author }}{% endif %}</p>
+                        </div>
+                    </div>
+                    <p class="text-sm text-gray-700 leading-relaxed mb-4">{{ resource.summary }}</p>
+                    <span class="text-sm font-semibold text-brandDark underline">Lire la suite →</span>
+                </a>
+            {% empty %}
+                <div class="rounded-xl border border-dashed border-gray-300 bg-gray-50 p-6 text-gray-600">
+                    Aucune ressource spirituelle disponible pour le moment.
                 </div>
-                <div>
-                <h3 class="text-lg font-semibold text-gray-900 mb-1">La compassion du Christ</h3>
-                <p class="text-xs text-gray-600">Méditation · Père Emmanuel · 5 min de lecture</p>
-                </div>
-            </div>
-            <p class="text-sm text-gray-700 leading-relaxed mb-4">
-                "Jésus parcourait toutes les villes et tous les villages... Voyant les foules, il fut saisi de compassion envers elles" (Mt 9,35-36). 
-                Cette compassion du Christ éclaire notre mission d'accompagnement. Dans chaque visage souffrant, nous sommes appelés à reconnaître 
-                le Christ lui-même, présent dans le mystère de la souffrance humaine...
-            </p>
-            <button class="text-sm font-semibold text-brandDark underline">Lire la suite →</button>
-            </article>
-            
-            <article class="bg-stone rounded-xl p-6 shadow-soft">
-            <div class="flex items-start gap-4 mb-4">
-                <div class="w-12 h-12 bg-blue-100 rounded-lg flex items-center justify-center flex-shrink-0">
-                <span class="text-xl">🕊️</span>
-                </div>
-                <div>
-                <h3 class="text-lg font-semibold text-gray-900 mb-1">L'espérance dans l'épreuve</h3>
-                <p class="text-xs text-gray-600">Réflexion · Sœur Marie-Claire · 3 min de lecture</p>
-                </div>
-            </div>
-            <p class="text-sm text-gray-700 leading-relaxed mb-4">
-                L'épreuve de la maladie peut ébranler nos certitudes et nous faire douter. Comment garder l'espérance ? 
-                Saint Paul nous dit : "L'espérance ne déçoit point, car l'amour de Dieu a été répandu dans nos cœurs" (Rm 5,5). 
-                Cette espérance n'est pas naive, elle s'enracine dans l'amour inconditionnel de Dieu...
-            </p>
-            <button class="text-sm font-semibold text-brandDark underline">Lire la suite →</button>
-            </article>
-            
-            <article class="bg-stone rounded-xl p-6 shadow-soft">
-            <div class="flex items-start gap-4 mb-4">
-                <div class="w-12 h-12 bg-yellow-100 rounded-lg flex items-center justify-center flex-shrink-0">
-                <span class="text-xl">🌟</span>
-                </div>
-                <div>
-                <h3 class="text-lg font-semibold text-gray-900 mb-1">La lumière de Noël à l'hôpital</h3>
-                <p class="text-xs text-gray-600">Méditation · Père François · 4 min de lecture</p>
-                </div>
-            </div>
-            <p class="text-sm text-gray-700 leading-relaxed mb-4">
-                À Noël, nous célébrons la venue de Dieu parmi nous, Emmanuel, "Dieu-avec-nous". Cette proximité divine prend 
-                un sens particulier dans les murs de l'hôpital. Car c'est là, dans la vulnérabilité et la souffrance, 
-                que se révèle le plus clairement l'amour de Dieu pour l'humanité...
-            </p>
-            <button class="text-sm font-semibold text-brandDark underline">Lire la suite →</button>
-            </article>
+            {% endfor %}
         </div>
     </section>
 
@@ -152,89 +73,30 @@
         </div>
         
         <div class="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
+            {% for document in documents %}
             <div class="bg-white rounded-xl p-5 shadow-soft border border-gray-100">
             <div class="flex items-center gap-3 mb-3">
                 <div class="w-10 h-10 bg-red-100 rounded-lg flex items-center justify-center">
-                <span class="text-sm">📄</span>
+                <span class="text-sm">{% if document.audio_url %}🎧{% elif document.external_url %}💻{% else %}📄{% endif %}</span>
                 </div>
                 <div>
-                <h4 class="font-semibold text-gray-900">Guide de l'accompagnement</h4>
-                <p class="text-xs text-gray-600">PDF · 2.1 MB</p>
+                <h4 class="font-semibold text-gray-900">{{ document.title }}</h4>
+                {% if document.file_size_label %}<p class="text-xs text-gray-600">{{ document.file_size_label }}</p>{% endif %}
                 </div>
             </div>
-            <p class="text-sm text-gray-700 mb-3">Manuel pratique pour l'accompagnement spirituel en milieu hospitalier</p>
-            <button class="text-sm font-semibold text-brandDark underline">Télécharger</button>
+            <p class="text-sm text-gray-700 mb-3">{{ document.summary }}</p>
+            {% if document.pdf_file %}
+                <a href="{{ document.pdf_file.url }}" class="text-sm font-semibold text-brandDark underline">Télécharger</a>
+            {% elif document.audio_url %}
+                <button type="button" data-audio-btn="#document-audio-{{ forloop.counter }}" class="text-sm font-semibold text-brandDark underline">Écouter</button>
+                <audio id="document-audio-{{ forloop.counter }}" class="hidden mt-3 w-full" controls preload="none" src="{{ document.audio_url }}"></audio>
+            {% elif document.external_url %}
+                <a href="{{ document.external_url }}" class="text-sm font-semibold text-brandDark underline">Consulter</a>
+            {% endif %}
             </div>
-            
-            <div class="bg-white rounded-xl p-5 shadow-soft border border-gray-100">
-            <div class="flex items-center gap-3 mb-3">
-                <div class="w-10 h-10 bg-blue-100 rounded-lg flex items-center justify-center">
-                <span class="text-sm">🎵</span>
-                </div>
-                <div>
-                <h4 class="font-semibold text-gray-900">Recueil de chants</h4>
-                <p class="text-xs text-gray-600">PDF · 1.8 MB</p>
-                </div>
-            </div>
-            <p class="text-sm text-gray-700 mb-3">Chants liturgiques adaptés aux célébrations hospitalières</p>
-            <button class="text-sm font-semibold text-brandDark underline">Télécharger</button>
-            </div>
-            
-            <div class="bg-white rounded-xl p-5 shadow-soft border border-gray-100">
-            <div class="flex items-center gap-3 mb-3">
-                <div class="w-10 h-10 bg-green-100 rounded-lg flex items-center justify-center">
-                <span class="text-sm">📖</span>
-                </div>
-                <div>
-                <h4 class="font-semibold text-gray-900">Livret de prières</h4>
-                <p class="text-xs text-gray-600">PDF · 980 KB</p>
-                </div>
-            </div>
-            <p class="text-sm text-gray-700 mb-3">Collection de prières pour différents moments et situations</p>
-            <button class="text-sm font-semibold text-brandDark underline">Télécharger</button>
-            </div>
-            
-            <div class="bg-white rounded-xl p-5 shadow-soft border border-gray-100">
-            <div class="flex items-center gap-3 mb-3">
-                <div class="w-10 h-10 bg-purple-100 rounded-lg flex items-center justify-center">
-                <span class="text-sm">🎧</span>
-                </div>
-                <div>
-                <h4 class="font-semibold text-gray-900">Méditations audio</h4>
-                <p class="text-xs text-gray-600">MP3 · Playlist</p>
-                </div>
-            </div>
-            <p class="text-sm text-gray-700 mb-3">Méditations guidées pour la détente et la prière</p>
-            <button class="text-sm font-semibold text-brandDark underline">Écouter</button>
-            </div>
-            
-            <div class="bg-white rounded-xl p-5 shadow-soft border border-gray-100">
-            <div class="flex items-center gap-3 mb-3">
-                <div class="w-10 h-10 bg-yellow-100 rounded-lg flex items-center justify-center">
-                <span class="text-sm">📚</span>
-                </div>
-                <div>
-                <h4 class="font-semibold text-gray-900">Textes liturgiques</h4>
-                <p class="text-xs text-gray-600">PDF · 1.5 MB</p>
-                </div>
-            </div>
-            <p class="text-sm text-gray-700 mb-3">Lectures et prières pour les temps liturgiques</p>
-            <button class="text-sm font-semibold text-brandDark underline">Télécharger</button>
-            </div>
-            
-            <div class="bg-white rounded-xl p-5 shadow-soft border border-gray-100">
-            <div class="flex items-center gap-3 mb-3">
-                <div class="w-10 h-10 bg-indigo-100 rounded-lg flex items-center justify-center">
-                <span class="text-sm">💻</span>
-                </div>
-                <div>
-                <h4 class="font-semibold text-gray-900">App "Prière Hospitalière"</h4>
-                <p class="text-xs text-gray-600">Application mobile</p>
-                </div>
-            </div>
-            <p class="text-sm text-gray-700 mb-3">Application avec prières quotidiennes et lectionnaire</p>
-            <button class="text-sm font-semibold text-brandDark underline">Télécharger</button>
-            </div>
+            {% empty %}
+            <p class="text-gray-600 text-sm">Aucun document publié pour le moment.</p>
+            {% endfor %}
         </div>
     </section>
 
@@ -248,64 +110,37 @@
             <div>
             <h3 class="text-lg font-semibold text-gray-900 mb-4">Sites web recommandés</h3>
             <div class="space-y-3">
-                <a href="ressources.html" class="block bg-brandMuted rounded-lg p-4 border border-green-100 hover:border-green-200 transition-colors">
+                {% for link in external_links %}
+                <a href="{{ link.url }}" target="_blank" rel="noopener" class="{% cycle 'bg-brandMuted border border-green-100' 'bg-white border border-gray-100' %} block rounded-lg p-4 hover:border-gray-300 transition-colors">
                 <div class="flex items-center gap-3">
                     <div class="w-8 h-8 bg-brand rounded-lg flex items-center justify-center">
-                    <span class="text-sm">⛪</span>
+                    <span class="text-sm">🔗</span>
                     </div>
                     <div>
-                    <div class="font-semibold text-gray-900">Vatican.va</div>
-                    <div class="text-xs text-gray-600">Textes officiels du Vatican</div>
+                    <div class="font-semibold text-gray-900">{{ link.title }}</div>
+                    {% if link.description %}<div class="text-xs text-gray-600">{{ link.description }}</div>{% endif %}
                     </div>
                 </div>
                 </a>
-                
-                <a href="ressources.html" class="block bg-white rounded-lg p-4 border border-gray-100 hover:border-gray-200 transition-colors">
-                <div class="flex items-center gap-3">
-                    <div class="w-8 h-8 bg-blue-100 rounded-lg flex items-center justify-center">
-                    <span class="text-sm">📖</span>
-                    </div>
-                    <div>
-                    <div class="font-semibold text-gray-900">Aelf.org</div>
-                    <div class="text-xs text-gray-600">Lectures liturgiques quotidiennes</div>
-                    </div>
-                </div>
-                </a>
-                
-                <a href="ressources.html" class="block bg-white rounded-lg p-4 border border-gray-100 hover:border-gray-200 transition-colors">
-                <div class="flex items-center gap-3">
-                    <div class="w-8 h-8 bg-purple-100 rounded-lg flex items-center justify-center">
-                    <span class="text-sm">🙏</span>
-                    </div>
-                    <div>
-                    <div class="font-semibold text-gray-900">Prionseneglise.fr</div>
-                    <div class="text-xs text-gray-600">Prières et méditations quotidiennes</div>
-                    </div>
-                </div>
-                </a>
+                {% empty %}
+                <p class="text-gray-600 text-sm">Aucun lien publié pour le moment.</p>
+                {% endfor %}
             </div>
             </div>
-            
+
             <div>
             <h3 class="text-lg font-semibold text-gray-900 mb-4">Contacts spécialisés</h3>
             <div class="space-y-3">
+                {% for contact in specialized_contacts %}
                 <div class="bg-white rounded-lg p-4 border border-gray-100">
-                <div class="font-semibold text-gray-900 mb-1">Pastorale de la Santé diocésaine</div>
-                <div class="text-sm text-gray-600 mb-2">Accompagnement et formation</div>
-                <div class="text-xs text-gray-500">📞 01 23 45 67 90</div>
+                <div class="font-semibold text-gray-900 mb-1">{{ contact.title }}</div>
+                {% if contact.description %}<div class="text-sm text-gray-600 mb-2">{{ contact.description }}</div>{% endif %}
+                {% if contact.phone %}<div class="text-xs text-gray-500">📞 {{ contact.phone }}</div>{% endif %}
+                {% if contact.email %}<div class="text-xs text-gray-500">📧 {{ contact.email }}</div>{% endif %}
                 </div>
-                
-                <div class="bg-white rounded-lg p-4 border border-gray-100">
-                <div class="font-semibold text-gray-900 mb-1">Service d'écoute téléphonique</div>
-                <div class="text-sm text-gray-600 mb-2">SOS Amitié · 24h/24</div>
-                <div class="text-xs text-gray-500">📞 09 72 39 40 50</div>
-                </div>
-                
-                <div class="bg-white rounded-lg p-4 border border-gray-100">
-                <div class="font-semibold text-gray-900 mb-1">Centre spirituel régional</div>
-                <div class="text-sm text-gray-600 mb-2">Retraites et accompagnement</div>
-                <div class="text-xs text-gray-500">📧 accueil@centre-spirituel.fr</div>
-                </div>
+                {% empty %}
+                <p class="text-gray-600 text-sm">Aucun contact publié pour le moment.</p>
+                {% endfor %}
             </div>
             </div>
         </div>

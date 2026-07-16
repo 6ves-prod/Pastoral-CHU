@@ -1,5 +1,8 @@
 {% extends "partial/base.html" %}
 
+{% block title %}Qui sommes-nous | {{ site_settings.site_name|default:"Pastoral CHU" }}{% endblock %}
+{% block meta_description %}Découvrez l'équipe pastorale du CHU : pères, sœurs, bénévoles et employés au service des patients, des familles et des soignants.{% endblock %}
+
 {% block header %}
     <div class="relative h-40 w-full overflow-hidden rounded-2xl shadow-soft">
         <img src="https://images.unsplash.com/photo-1517832207067-4c4d58f0cc94?auto=format&fit=crop&w=1400&q=80" alt="Qui sommes-nous" class="h-full w-full object-cover">
@@ -14,6 +17,21 @@
 {% endblock %}
 
 {% block content %}
+    {% for section in page_sections %}
+        {% if section.page_key == 'about' %}
+            <section class="px-8 py-14 md:px-12 {% if forloop.counter0|divisibleby:2 %}bg-white{% else %}bg-gray-50{% endif %}">
+                <div class="max-w-6xl mx-auto">
+                    {% if section.subtitle %}<p class="text-sm uppercase tracking-wide text-gray-600">{{ section.subtitle }}</p>{% endif %}
+                    <h2 class="text-2xl md:text-4xl font-semibold text-gray-900 mt-2">{{ section.title }}</h2>
+                    {% if section.body %}<p class="text-gray-700 mt-3 max-w-3xl">{{ section.body|linebreaksbr }}</p>{% endif %}
+                    {% if section.tags.all %}<div class="mt-4 flex flex-wrap gap-3">{% for tag in section.tags.all %}<span class="px-4 py-2 rounded-full border border-gray-300 text-sm font-semibold">{{ tag.label }}</span>{% endfor %}</div>{% endif %}
+                    {% if section.image or section.image_url %}<img src="{% if section.image %}{{ section.image.url }}{% else %}{{ section.image_url }}{% endif %}" alt="{{ section.title }}" class="mt-6 h-64 w-full rounded-2xl object-cover shadow-soft">{% endif %}
+                    {% if section.button_text and section.button_url %}<a href="{{ section.button_url }}" class="mt-6 inline-flex items-center gap-2 rounded-full bg-black text-white px-6 py-3 text-sm font-semibold shadow hover:scale-[1.01] transition">{{ section.button_text }}<span class="flex h-5 w-5 items-center justify-center rounded-full bg-white text-black text-xs">❯</span></a>{% endif %}
+                </div>
+            </section>
+        {% endif %}
+    {% endfor %}
+
     <section class="px-8 pb-14 md:px-12">
         <div class="flex flex-col gap-6">
             <div class="flex items-center gap-2 text-sm text-gray-600">
@@ -58,26 +76,15 @@
             <h2 class="text-2xl md:text-4xl font-semibold text-gray-900">Notre équipe</h2>
             <p class="text-gray-600 max-w-3xl">Une équipe dévouée de prêtres, employés et bénévoles au service des patients et de leurs familles.</p>
             <div class="grid gap-4 md:grid-cols-2">
-            <article class="bg-brand rounded-xl p-6 shadow-soft hover:shadow-lg transition-shadow">
-                <p class="text-xs uppercase tracking-wide text-gray-800">Pères</p>
-                <h3 class="text-lg font-semibold text-gray-900 mt-1">P. Emmanuel · Responsable</h3>
-                <p class="text-sm text-gray-800 mt-2">Coordination sacramentelle, homélies, accompagnement des familles et direction pastorale.</p>
+            {% for member in team_members %}
+            <article class="{% cycle 'bg-brand' 'bg-white border border-gray-100' 'bg-white border border-gray-100' 'bg-brandMuted border border-green-100' %} rounded-xl p-6 shadow-soft hover:shadow-lg transition-shadow">
+                <p class="text-xs uppercase tracking-wide text-gray-800">{{ member.get_category_display }}</p>
+                <h3 class="text-lg font-semibold text-gray-900 mt-1">{{ member.full_name }}{% if member.role_title %} · {{ member.role_title }}{% endif %}</h3>
+                {% if member.bio %}<p class="text-sm text-gray-800 mt-2">{{ member.bio }}</p>{% endif %}
             </article>
-            <article class="bg-white rounded-xl p-6 shadow-soft border border-gray-100 hover:shadow-lg transition-shadow">
-                <p class="text-xs uppercase tracking-wide text-gray-700">Pères</p>
-                <h3 class="text-lg font-semibold text-gray-900 mt-1">P. Augustin · Aumônier</h3>
-                <p class="text-sm text-gray-800 mt-2">Visites quotidiennes, confessions, bénédictions et préparation aux sacrements.</p>
-            </article>
-            <article class="bg-white rounded-xl p-6 shadow-soft border border-gray-100 hover:shadow-lg transition-shadow">
-                <p class="text-xs uppercase tracking-wide text-gray-700">Équipe</p>
-                <h3 class="text-lg font-semibold text-gray-900 mt-1">Responsable solidarité</h3>
-                <p class="text-sm text-gray-800 mt-2">Collectes, soutien matériel, coordination des bénévoles et actions caritatives.</p>
-            </article>
-            <article class="bg-brandMuted rounded-xl p-6 shadow-soft border border-green-100 hover:shadow-lg transition-shadow">
-                <p class="text-xs uppercase tracking-wide text-gray-700">Employés & bénévoles</p>
-                <h3 class="text-lg font-semibold text-gray-900 mt-1">Visiteurs hospitaliers</h3>
-                <p class="text-sm text-gray-800 mt-2">Équipe de présence quotidienne auprès des patients, formation continue et écoute.</p>
-            </article>
+            {% empty %}
+            <p class="text-gray-600 text-sm">Aucun membre d'équipe publié pour le moment.</p>
+            {% endfor %}
             </div>
         </div>
     </section>
@@ -91,18 +98,14 @@
             <h2 class="text-2xl md:text-4xl font-semibold text-gray-900">Partenariats</h2>
             <p class="text-gray-600 max-w-3xl">Travail en collaboration avec les différents services du CHU pour un accompagnement global.</p>
             <div class="grid gap-4 md:grid-cols-3">
-            <article class="bg-white rounded-xl p-5 shadow-soft border border-gray-100 hover:shadow-lg transition-shadow">
-                <p class="text-lg font-semibold text-gray-900">Pôle Soins Palliatifs</p>
-                <p class="text-sm text-gray-700 mt-2">Présence rituelle, accompagnement spirituel et soutien des familles en fin de vie.</p>
+            {% for partner in partners %}
+            <article class="{% cycle 'bg-white border border-gray-100' 'bg-white border border-gray-100' 'bg-brand' %} rounded-xl p-5 shadow-soft hover:shadow-lg transition-shadow">
+                <p class="text-lg font-semibold text-gray-900">{{ partner.title }}</p>
+                {% if partner.description %}<p class="text-sm text-gray-700 mt-2">{{ partner.description }}</p>{% endif %}
             </article>
-            <article class="bg-white rounded-xl p-5 shadow-soft border border-gray-100 hover:shadow-lg transition-shadow">
-                <p class="text-lg font-semibold text-gray-900">Service de Psychologie</p>
-                <p class="text-sm text-gray-700 mt-2">Accompagnement croisé, groupes de parole et travail en complémentarité.</p>
-            </article>
-            <article class="bg-brand rounded-xl p-5 shadow-soft hover:shadow-lg transition-shadow">
-                <p class="text-lg font-semibold text-gray-900">Formation des soignants</p>
-                <p class="text-sm text-gray-800 mt-2">Interventions sur l'éthique, la spiritualité et l'approche globale du soin.</p>
-            </article>
+            {% empty %}
+            <p class="text-gray-600 text-sm">Aucun partenariat publié pour le moment.</p>
+            {% endfor %}
             </div>
         </div>
     </section>
@@ -117,41 +120,31 @@
             <h2 class="text-2xl md:text-4xl font-semibold text-gray-900 mt-2">Nous joindre</h2>
             <p class="text-gray-600 mt-3 max-w-xl">Notre équipe est disponible pour vous accueillir et vous accompagner. N'hésitez pas à nous contacter.</p>
             <div class="mt-4 space-y-2">
-                <p class="text-gray-700 font-medium">📍 Chapelle du CHU · Bâtiment A</p>
-                <p class="text-gray-700 font-medium">📞 01 23 45 67 89</p>
-                <p class="text-gray-700 font-medium">✉️ pastorale@chu.exemple</p>
+                {% if site_settings.address %}<p class="text-gray-700 font-medium">📍 {{ site_settings.address }}</p>{% endif %}
+                {% if site_settings.phone %}<p class="text-gray-700 font-medium">📞 {{ site_settings.phone }}</p>{% endif %}
+                {% if site_settings.contact_email %}<p class="text-gray-700 font-medium">✉️ {{ site_settings.contact_email }}</p>{% endif %}
             </div>
             </div>
+            {% if presence_schedule %}
             <div class="bg-white rounded-xl p-6 shadow-soft border border-gray-100">
-            <p class="text-sm font-semibold text-gray-900">Horaires de présence</p>
+            <p class="text-sm font-semibold text-gray-900">{{ presence_schedule.title }}</p>
             <ul class="text-sm text-gray-800 mt-4 space-y-3">
+                {% for slot in presence_schedule.slots.all %}
                 <li class="flex items-center gap-3">
                 <span class="w-2 h-2 rounded-full bg-brandDark"></span>
                 <div>
-                    <p class="font-semibold">Lundi - Vendredi</p>
-                    <p class="text-gray-600">8h - 19h</p>
+                    <p class="font-semibold">{{ slot.day_label }}</p>
+                    <p class="text-gray-600">{{ slot.time_label }}</p>
                 </div>
                 </li>
-                <li class="flex items-center gap-3">
-                <span class="w-2 h-2 rounded-full bg-brandDark"></span>
-                <div>
-                    <p class="font-semibold">Samedi</p>
-                    <p class="text-gray-600">9h - 12h</p>
-                </div>
-                </li>
-                <li class="flex items-center gap-3">
-                <span class="w-2 h-2 rounded-full bg-brandDark"></span>
-                <div>
-                    <p class="font-semibold">Messe dominicale</p>
-                    <p class="text-gray-600">Dimanche 10h</p>
-                </div>
-                </li>
+                {% endfor %}
             </ul>
-            <button class="mt-6 w-full inline-flex items-center justify-center gap-2 rounded-full bg-black text-white px-6 py-3 text-sm font-semibold shadow hover:scale-[1.01] transition">
+            <a href="{% url 'contact' %}" class="mt-6 w-full inline-flex items-center justify-center gap-2 rounded-full bg-black text-white px-6 py-3 text-sm font-semibold shadow hover:scale-[1.01] transition">
                 Prendre rendez-vous
                 <span class="flex h-5 w-5 items-center justify-center rounded-full bg-white text-black text-xs">❯</span>
-            </button>
+            </a>
             </div>
+            {% endif %}
         </div>
     </section>
 {% endblock %}

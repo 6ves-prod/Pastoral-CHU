@@ -1,4 +1,7 @@
-{% extends "../partial/base.html" %}
+{% extends "partial/base.html" %}
+
+{% block title %}La Bible et vous | {{ site_settings.site_name|default:"Pastoral CHU" }}{% endblock %}
+{% block meta_description %}Découvrez la Bible à travers des méditations guidées, des questions-réponses et des versets commentés.{% endblock %}
 
 {% block header %}
     <div class="relative h-40 w-full overflow-hidden rounded-2xl shadow-soft">
@@ -41,24 +44,18 @@
             <h2 class="text-2xl md:text-4xl font-semibold text-gray-900">Réponses aux questions de foi</h2>
             <p class="text-gray-600 max-w-3xl">Éclairages bibliques sur les grandes questions qui se posent dans le contexte hospitalier.</p>
             <div class="grid gap-4 md:grid-cols-2">
-            <article class="bg-brand rounded-xl p-6 shadow-soft hover:shadow-lg transition-shadow relative overflow-hidden">
-                <img src="https://images.unsplash.com/photo-1532629345422-7515f3d16bb6?auto=format&fit=crop&w=400&q=80" alt="Espérance" class="absolute top-0 right-0 w-32 h-32 object-cover opacity-20 rounded-bl-full">
-            <h3 class="text-lg font-semibold text-gray-900 relative z-10">Pourquoi la souffrance ?</h3>
-            <p class="text-sm text-gray-800 mt-2 relative z-10">Repères bibliques pour accompagner la douleur et l'espérance dans les moments difficiles.</p>
-            <a href="bible-reponses.html" class="inline-flex items-center gap-1 text-sm font-semibold mt-4 underline text-gray-900 relative z-10">
+            {% for bible_question in featured_questions %}
+            <article class="{% if forloop.first %}bg-brand{% else %}bg-white border border-gray-100{% endif %} rounded-xl p-6 shadow-soft hover:shadow-lg transition-shadow relative overflow-hidden">
+            <h3 class="text-lg font-semibold text-gray-900 relative z-10">{{ bible_question.question }}</h3>
+            <p class="text-sm text-gray-800 mt-2 relative z-10">{{ bible_question.answer|truncatewords:25 }}</p>
+            <a href="{% url 'bible_reponses' %}" class="inline-flex items-center gap-1 text-sm font-semibold mt-4 underline text-gray-900 relative z-10">
             Lire la réponse
             <span aria-hidden="true">→</span>
             </a>
         </article>
-        <article class="bg-white rounded-xl p-6 shadow-soft border border-gray-100 hover:shadow-lg transition-shadow relative overflow-hidden">
-            <img src="https://images.unsplash.com/photo-1516450360452-9312f5e86fc7?auto=format&fit=crop&w=400&q=80" alt="Prière" class="absolute top-0 right-0 w-32 h-32 object-cover opacity-10 rounded-bl-full">
-            <h3 class="text-lg font-semibold text-gray-900 relative z-10">Comment prier pour un proche malade ?</h3>
-            <p class="text-sm text-gray-800 mt-2 relative z-10">Formes simples de prière et de bénédiction au chevet, inspirées de la tradition biblique.</p>
-            <a href="bible-reponses.html" class="inline-flex items-center gap-1 text-sm font-semibold mt-4 underline relative z-10">
-            Découvrir
-            <span aria-hidden="true">→</span>
-            </a>
-        </article>
+        {% empty %}
+        <p class="text-gray-600 text-sm">Aucune question publiée pour le moment.</p>
+        {% endfor %}
         </div>
     </div>
     </section>
@@ -72,33 +69,19 @@
         <h2 class="text-2xl md:text-4xl font-semibold text-gray-900">Versets pour aujourd'hui</h2>
         <p class="text-gray-600 max-w-3xl">Méditations sur des passages bibliques qui parlent au cœur du soin et de l'accompagnement.</p>
         <div class="grid gap-4 md:grid-cols-3">
-        <article class="bg-white rounded-xl p-5 shadow-soft border border-gray-100 hover:shadow-lg transition-shadow">
-            <p class="text-xs uppercase tracking-wide text-gray-700">Isaïe 43, 1</p>
-            <p class="text-lg font-semibold text-gray-900 mt-1">« Je t'ai appelé par ton nom »</p>
-            <p class="text-sm text-gray-700 mt-2">Dieu présent dans l'épreuve, proche de chacun personnellement.</p>
-            <a href="ressources.html" class="inline-flex items-center gap-1 text-sm font-semibold mt-4 underline">
+        {% for verse in daily_verses %}
+        <article class="{% cycle 'bg-white border border-gray-100' 'bg-brandMuted border border-green-100' %} rounded-xl p-5 shadow-soft hover:shadow-lg transition-shadow">
+            <p class="text-xs uppercase tracking-wide text-gray-700">{{ verse.reference }}</p>
+            <p class="text-lg font-semibold text-gray-900 mt-1">« {{ verse.quote }} »</p>
+            {% if verse.context %}<p class="text-sm text-gray-700 mt-2">{{ verse.context }}</p>{% endif %}
+            <a href="{% url 'bible_mediter' %}" class="inline-flex items-center gap-1 text-sm font-semibold mt-4 underline">
             Méditer
             <span aria-hidden="true">→</span>
             </a>
         </article>
-        <article class="bg-brandMuted rounded-xl p-5 shadow-soft border border-green-100 hover:shadow-lg transition-shadow">
-            <p class="text-xs uppercase tracking-wide text-gray-700">Mt 11, 28</p>
-            <p class="text-lg font-semibold text-gray-900 mt-1">« Venez à moi, vous tous qui peinez »</p>
-            <p class="text-sm text-gray-700 mt-2">Repos et consolation en Christ pour les soignants et les patients.</p>
-            <a href="bible-decouvrir.html" class="inline-flex items-center gap-1 text-sm font-semibold mt-4 underline text-gray-900">
-            Méditer
-            <span aria-hidden="true">→</span>
-            </a>
-        </article>
-        <article class="bg-white rounded-xl p-5 shadow-soft border border-gray-100 hover:shadow-lg transition-shadow">
-            <p class="text-xs uppercase tracking-wide text-gray-700">Lc 10, 33</p>
-            <p class="text-lg font-semibold text-gray-900 mt-1">Le Bon Samaritain</p>
-            <p class="text-sm text-gray-700 mt-2">Modèle de proximité, de compassion et de soin pour autrui.</p>
-            <a href="bible-decouvrir.html" class="inline-flex items-center gap-1 text-sm font-semibold mt-4 underline">
-            Méditer
-            <span aria-hidden="true">→</span>
-            </a>
-        </article>
+        {% empty %}
+        <p class="text-gray-600 text-sm">Aucun verset publié pour le moment.</p>
+        {% endfor %}
         </div>
     </div>
     </section>
@@ -112,32 +95,23 @@
         <h2 class="text-2xl md:text-4xl font-semibold text-gray-900">Formation & parcours</h2>
         <p class="text-gray-600 max-w-3xl">Apprendre et approfondir la Parole de Dieu dans un contexte d'écoute et de partage.</p>
         <div class="grid gap-4 md:grid-cols-2">
-        <article class="bg-white rounded-xl p-6 shadow-soft border border-gray-100 hover:shadow-lg transition-shadow">
-            <p class="text-xs uppercase tracking-wide text-gray-700">Parcours</p>
-            <h3 class="text-lg font-semibold text-gray-900 mt-1">L'Évangile selon Marc</h3>
-            <p class="text-sm text-gray-800 mt-2">6 rencontres mensuelles pour une lecture continue et un partage en petits groupes.</p>
+        {% for course in bible_courses %}
+        <article class="{% if forloop.first %}bg-white border border-gray-100{% else %}bg-brand{% endif %} rounded-xl p-6 shadow-soft hover:shadow-lg transition-shadow">
+            <p class="text-xs uppercase tracking-wide text-gray-700">{{ course.get_type_display }}</p>
+            <h3 class="text-lg font-semibold text-gray-900 mt-1">{{ course.title }}</h3>
+            <p class="text-sm text-gray-800 mt-2">{{ course.summary }}</p>
             <div class="mt-4 flex flex-wrap gap-2">
-            <span class="px-3 py-1 rounded-full bg-gray-100 text-xs font-semibold text-gray-700">6 séances</span>
-            <span class="px-3 py-1 rounded-full bg-gray-100 text-xs font-semibold text-gray-700">Groupe limité</span>
+            {% if course.capacity %}<span class="px-3 py-1 rounded-full bg-gray-100 text-xs font-semibold text-gray-700">{{ course.capacity }}</span>{% endif %}
+            {% if course.duration %}<span class="px-3 py-1 rounded-full bg-gray-100 text-xs font-semibold text-gray-700">{{ course.duration }}</span>{% endif %}
             </div>
-            <a href="bible-mediter.html" class="inline-flex items-center gap-1 text-sm font-semibold mt-4 underline">
+            <a href="{% url 'training_detail' course.slug %}" class="inline-flex items-center gap-1 text-sm font-semibold mt-4 underline">
             En savoir plus
             <span aria-hidden="true">→</span>
             </a>
         </article>
-        <article class="bg-brand rounded-xl p-6 shadow-soft hover:shadow-lg transition-shadow">
-            <p class="text-xs uppercase tracking-wide text-gray-800">Atelier</p>
-            <h3 class="text-lg font-semibold text-gray-900 mt-1">Psaumes de consolation</h3>
-            <p class="text-sm text-gray-800 mt-2">Découvrir les psaumes pour prier dans l'épreuve et accompagner ceux qui souffrent.</p>
-            <div class="mt-4 flex flex-wrap gap-2">
-            <span class="px-3 py-1 rounded-full bg-white/50 text-xs font-semibold text-gray-800">3h d'atelier</span>
-            <span class="px-3 py-1 rounded-full bg-white/50 text-xs font-semibold text-gray-800">Tous publics</span>
-            </div>
-            <a href="bible-mediter.html" class="inline-flex items-center gap-2 rounded-full bg-black text-white px-6 py-3 text-sm font-semibold shadow hover:scale-[1.01] transition mt-4">
-            S'inscrire
-            <span class="flex h-5 w-5 items-center justify-center rounded-full bg-white text-black text-xs">❯</span>
-            </a>
-        </article>
+        {% empty %}
+        <p class="text-gray-600 text-sm">Aucun cours biblique publié pour le moment.</p>
+        {% endfor %}
         </div>
     </div>
     </section>

@@ -1,0 +1,97 @@
+{% extends "unfold/change_list.html" %}
+{% load dict_filter %}
+
+{% block content %}
+    {{ block.super }}
+
+    <div class="mt-8 space-y-6">
+        <div class="rounded-xl border border-gray-200 bg-white p-5 shadow-sm">
+            <h2 class="text-lg font-semibold text-gray-900">Ordre des sections par page</h2>
+            <p class="mt-2 text-sm text-gray-600">Glissez les sections pour changer leur position. L’ordre est enregistré automatiquement.</p>
+        </div>
+
+        {% for page_key, sections in grouped_sections.items %}
+            <div class="rounded-xl border border-gray-200 bg-white p-5 shadow-sm" data-section-group data-page-key="{{ page_key }}">
+                <div class="mb-4 flex items-center justify-between">
+                    <h3 class="text-base font-semibold text-gray-900">{{ page_key_labels|get_item:page_key }}</h3>
+                    <span class="text-sm text-gray-500">{{ sections|length }} section{{ sections|length|pluralize }}</span>
+                </div>
+                <ul class="space-y-2" data-section-list>
+                    {% for section in sections %}
+                        <li class="flex cursor-move items-center justify-between rounded-lg border border-gray-200 bg-gray-50 px-4 py-3" draggable="true" data-section-id="{{ section.pk }}">
+                            <div>
+                                <p class="font-medium text-gray-900">{{ section.title }}</p>
+                                {% if section.subtitle %}<p class="text-sm text-gray-600">{{ section.subtitle }}</p>{% endif %}
+                            </div>
+                            <span class="rounded-full bg-white px-3 py-1 text-xs font-medium text-gray-600">#{{ forloop.counter }}</span>
+                        </li>
+                    {% empty %}
+                        <li class="rounded-lg border border-dashed border-gray-300 bg-gray-50 px-4 py-3 text-sm text-gray-500">Aucune section pour cette page.</li>
+                    {% endfor %}
+                </ul>
+            </div>
+        {% empty %}
+            <div class="rounded-xl border border-dashed border-gray-300 bg-white p-5 text-sm text-gray-500">Aucune section disponible pour le moment.</div>
+        {% endfor %}
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const groups = document.querySelectorAll('[data-section-group]');
+            groups.forEach(function (group) {
+                const pageKey = group.getAttribute('data-page-key');
+                const list = group.querySelector('[data-section-list]');
+                if (!list) return;
+
+                let draggedItem = null;
+
+                Array.from(list.querySelectorAll('li[draggable="true"]')).forEach(function (item) {
+                    item.addEventListener('dragstart', function () {
+                        draggedItem = item;
+                        item.classList.add('opacity-60');
+                    });
+
+                    item.addEventListener('dragend', function () {
+                        item.classList.remove('opacity-60');
+                        draggedItem = null;
+                    });
+
+                    item.addEventListener('dragover', function (event) {
+                        event.preventDefault();
+                    });
+
+                    item.addEventListener('drop', function () {
+                        if (!draggedItem || draggedItem === item) return;
+                        const items = Array.from(list.children);
+                        const draggedIndex = items.indexOf(draggedItem);
+                        const targetIndex = items.indexOf(item);
+                        if (draggedIndex < 0 || targetIndex < 0) return;
+                        const [moved] = items.splice(draggedIndex, 1);
+                        items.splice(targetIndex, 0, moved);
+                        items.forEach(function (child) {
+                            list.appendChild(child);
+                        });
+                        saveOrder(pageKey, list);
+                    });
+                });
+
+                const saveOrder = function (pageKeyValue, currentList) {
+                    const ids = Array.from(currentList.querySelectorAll('[data-section-id]')).map(function (item) {
+                        return item.getAttribute('data-section-id');
+                    });
+                    const formData = new FormData();
+                    formData.append('page_key', pageKeyValue);
+                    formData.append('ids', ids.join(','));
+
+                    fetch('{% url "admin:app_pagesection_reorder" %}', {
+                        method: 'POST',
+                        headers: { 'X-CSRFToken': document.querySelector('[name=csrfmiddlewaretoken]')?.value || '' },
+                        body: formData
+                    }).catch(function () {
+                        console.warn('Impossible de sauvegarder l’ordre des sections.');
+                    });
+                };
+            });
+        });
+    </script>
+{% endblock %}

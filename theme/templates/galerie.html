@@ -1,5 +1,8 @@
 {% extends "partial/base.html" %}
 
+{% block title %}Galerie photo | {{ site_settings.site_name|default:"Pastoral CHU" }}{% endblock %}
+{% block meta_description %}Albums photos des célébrations, formations et temps forts de la pastorale du CHU.{% endblock %}
+
 {% block header %}
     <div class="relative h-40 w-full overflow-hidden rounded-2xl shadow-soft">
         <img src="https://images.unsplash.com/photo-1509099836639-18ba02e2e1ba?auto=format&fit=crop&w=1400&q=80" alt="Galerie pastorale" class="h-full w-full object-cover">
@@ -14,6 +17,21 @@
 {% endblock %}
 
 {% block content %}
+    {% for section in page_sections %}
+        {% if section.page_key == 'gallery' %}
+            <section class="px-8 py-14 md:px-12 {% if forloop.counter0|divisibleby:2 %}bg-white{% else %}bg-gray-50{% endif %}">
+                <div class="max-w-6xl mx-auto">
+                    {% if section.subtitle %}<p class="text-sm uppercase tracking-wide text-gray-600">{{ section.subtitle }}</p>{% endif %}
+                    <h2 class="text-2xl md:text-4xl font-semibold text-gray-900 mt-2">{{ section.title }}</h2>
+                    {% if section.body %}<p class="text-gray-700 mt-3 max-w-3xl">{{ section.body|linebreaksbr }}</p>{% endif %}
+                    {% if section.tags.all %}<div class="mt-4 flex flex-wrap gap-3">{% for tag in section.tags.all %}<span class="px-4 py-2 rounded-full border border-gray-300 text-sm font-semibold">{{ tag.label }}</span>{% endfor %}</div>{% endif %}
+                    {% if section.image or section.image_url %}<img src="{% if section.image %}{{ section.image.url }}{% else %}{{ section.image_url }}{% endif %}" alt="{{ section.title }}" class="mt-6 h-64 w-full rounded-2xl object-cover shadow-soft">{% endif %}
+                    {% if section.button_text and section.button_url %}<a href="{{ section.button_url }}" class="mt-6 inline-flex items-center gap-2 rounded-full bg-black text-white px-6 py-3 text-sm font-semibold shadow hover:scale-[1.01] transition">{{ section.button_text }}<span class="flex h-5 w-5 items-center justify-center rounded-full bg-white text-black text-xs">❯</span></a>{% endif %}
+                </div>
+            </section>
+        {% endif %}
+    {% endfor %}
+
     <section class="px-8 pb-14 md:px-12">
         <div class="flex flex-col gap-6">
             <div class="flex items-center gap-2 text-sm text-gray-600">
@@ -32,32 +50,26 @@
             <span>Photothèque</span>
             </div>
             <h2 class="text-2xl md:text-4xl font-semibold text-gray-900">Moments de vie pastorale</h2>
-            <p class="text-gray-600 max-w-3xl">Retrouvez les célébrations, visites et temps forts de la pastorale hospitalière en images.</p>
+            <p class="text-gray-600 max-w-3xl">Retrouvez les célébrations, visites et temps forts de la pastorale hospitalière, classés par album.</p>
             <div class="grid gap-4 md:grid-cols-3">
-            <article class="rounded-xl overflow-hidden shadow-soft hover:shadow-lg transition-shadow cursor-pointer">
-                <img src="https://images.unsplash.com/photo-1529156069898-49953e39b3ac?auto=format&fit=crop&w=800&q=80" alt="Chapelle" class="h-48 w-full object-cover">
-                <div class="p-5 bg-white">
-                <p class="text-xs uppercase tracking-wide text-gray-700">Célébration</p>
-                <h3 class="text-lg font-semibold text-gray-900 mt-1">Messe à la chapelle du CHU</h3>
-                <p class="text-sm text-gray-700 mt-2">Célébrations dominicales et temps de prière communautaire.</p>
+            {% for album in albums %}
+            <a href="{% url 'gallery_album_detail' album.slug %}" class="block rounded-xl overflow-hidden shadow-soft hover:shadow-lg transition-shadow group">
+                <div class="relative h-48 w-full overflow-hidden bg-gray-200">
+                    {% if album.cover %}<img src="{{ album.cover }}" alt="{{ album.title }}" class="h-full w-full object-cover group-hover:scale-105 transition-transform duration-300">{% endif %}
+                    <span class="absolute bottom-3 right-3 rounded-full bg-black/70 text-white text-xs font-semibold px-3 py-1">{{ album.images.count }} photo{{ album.images.count|pluralize }}</span>
                 </div>
-            </article>
-            <article class="rounded-xl overflow-hidden shadow-soft hover:shadow-lg transition-shadow cursor-pointer">
-                <img src="https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?auto=format&fit=crop&w=800&q=80" alt="Enfants" class="h-48 w-full object-cover">
                 <div class="p-5 bg-white">
-                <p class="text-xs uppercase tracking-wide text-gray-700">Catéchèse</p>
-                <h3 class="text-lg font-semibold text-gray-900 mt-1">Atelier avec les enfants hospitalisés</h3>
-                <p class="text-sm text-gray-700 mt-2">Activités pastorales adaptées pour les plus jeunes.</p>
+                <h3 class="text-lg font-semibold text-gray-900">{{ album.title }}</h3>
+                {% if album.description %}<p class="text-sm text-gray-700 mt-2">{{ album.description|truncatewords:18 }}</p>{% endif %}
+                <span class="inline-flex items-center gap-1 text-sm font-semibold mt-4 underline text-gray-900">
+                Voir l'album
+                <span aria-hidden="true">→</span>
+                </span>
                 </div>
-            </article>
-            <article class="rounded-xl overflow-hidden shadow-soft hover:shadow-lg transition-shadow cursor-pointer">
-                <img src="https://images.unsplash.com/photo-1469474968028-56623f02e42e?auto=format&fit=crop&w=800&q=80" alt="Service" class="h-48 w-full object-cover">
-                <div class="p-5 bg-white">
-                <p class="text-xs uppercase tracking-wide text-gray-700">Visites</p>
-                <h3 class="text-lg font-semibold text-gray-900 mt-1">Accompagnement des patients</h3>
-                <p class="text-sm text-gray-700 mt-2">Présence bienveillante au chevet des malades.</p>
-                </div>
-            </article>
+            </a>
+            {% empty %}
+            <p class="text-gray-600 text-sm">Aucun album publié pour le moment.</p>
+            {% endfor %}
             </div>
         </div>
         </section>
@@ -71,40 +83,29 @@
             <h2 class="text-2xl md:text-4xl font-semibold text-gray-900">Ressources pastorales</h2>
             <p class="text-gray-600 max-w-3xl">Livrets de prière, guides d'accompagnement et ressources spirituelles pour tous les moments.</p>
             <div class="grid gap-4 md:grid-cols-2">
-            <article class="bg-brandMuted rounded-xl p-6 shadow-soft border border-green-100 hover:shadow-lg transition-shadow">
-                <p class="text-xs uppercase tracking-wide text-gray-700">Livret</p>
-                <h3 class="text-lg font-semibold text-gray-900 mt-1">Prier au chevet</h3>
-                <p class="text-sm text-gray-800 mt-2">Prières courtes et psalmodies pour accompagner les patients dans leur épreuve.</p>
-                <a href="galerie.html" class="inline-flex items-center gap-1 text-sm font-semibold mt-4 underline text-gray-900">
+            {% for document in library_documents %}
+            <a href="{% url 'spiritual_resource_detail' document.slug %}" class="{% cycle 'bg-brandMuted border border-green-100' 'bg-white border border-gray-100' %} block rounded-xl p-6 shadow-soft hover:shadow-lg transition-shadow">
+                <div class="flex items-center gap-2">
+                <span class="text-lg">{% if document.audio_url %}🎧{% elif document.external_url %}💻{% else %}📄{% endif %}</span>
+                <p class="text-xs uppercase tracking-wide text-gray-700">{{ document.get_resource_type_display }}{% if document.file_size_label %} · {{ document.file_size_label }}{% endif %}</p>
+                </div>
+                <h3 class="text-lg font-semibold text-gray-900 mt-2">{{ document.title }}</h3>
+                <p class="text-sm text-gray-800 mt-2">{{ document.summary }}</p>
+                <span class="inline-flex items-center gap-1 text-sm font-semibold mt-4 underline text-gray-900">
                 Consulter
                 <span aria-hidden="true">→</span>
-                </a>
-            </article>
-            <article class="bg-white rounded-xl p-6 shadow-soft border border-gray-100 hover:shadow-lg transition-shadow">
-                <p class="text-xs uppercase tracking-wide text-gray-700">Guide</p>
-                <h3 class="text-lg font-semibold text-gray-900 mt-1">Accompagner en fin de vie</h3>
-                <p class="text-sm text-gray-800 mt-2">Parcours de présence, rites et soutien aux familles dans les moments difficiles.</p>
-                <a href="galerie.html" class="inline-flex items-center gap-1 text-sm font-semibold mt-4 underline">
-                Télécharger
-                <span aria-hidden="true">→</span>
-                </a>
-            </article>
-            <article class="bg-white rounded-xl p-6 shadow-soft border border-gray-100 hover:shadow-lg transition-shadow">
-                <p class="text-xs uppercase tracking-wide text-gray-700">Chant</p>
-                <h3 class="text-lg font-semibold text-gray-900 mt-1">Chants de consolation</h3>
-                <p class="text-sm text-gray-800 mt-2">Sélection audio de chants et prières pour les temps de méditation.</p>
-                <a href="galerie.html" class="inline-flex items-center gap-1 text-sm font-semibold mt-4 underline">
-                Écouter
-                <span aria-hidden="true">→</span>
-                </a>
-            </article>
+                </span>
+            </a>
+            {% empty %}
+            <p class="text-gray-600 text-sm">Aucun document publié pour le moment.</p>
+            {% endfor %}
             <article class="bg-brand rounded-xl p-6 shadow-soft hover:shadow-lg transition-shadow">
                 <div>
-                <p class="text-3xl font-semibold text-gray-900">+50</p>
+                <p class="text-3xl font-semibold text-gray-900">+{{ resources_count|default:"0" }}</p>
                 <p class="text-lg font-semibold text-gray-900 mt-1">ressources disponibles</p>
                 <p class="text-sm text-gray-800 mt-2">Classées par thème et par événement liturgique.</p>
                 </div>
-                <a href="galerie.html" class="inline-flex items-center gap-2 rounded-full bg-black text-white px-6 py-3 text-sm font-semibold shadow hover:scale-[1.01] transition mt-6">
+                <a href="{% url 'ressources' %}" class="inline-flex items-center gap-2 rounded-full bg-black text-white px-6 py-3 text-sm font-semibold shadow hover:scale-[1.01] transition mt-6">
                 Voir le catalogue
                 <span class="flex h-5 w-5 items-center justify-center rounded-full bg-white text-black text-xs">❯</span>
                 </a>
@@ -115,5 +116,4 @@
 {% endblock %}
 
 {% block script %}
-    
 {% endblock %}

@@ -1,0 +1,101 @@
+{% extends 'admin/base.html' %}
+{% load i18n %}
+
+{% block title %}{% if subtitle %}{{ subtitle }} | {% endif %}{{ title }} | {{ site_title|default:_('Django site admin') }}{% endblock %}
+
+{% block branding %}
+    {% include "unfold/helpers/site_branding.html" %}
+{% endblock %}
+
+{% block content %}
+    <div class="flex flex-col gap-6">
+        <div class="flex flex-wrap items-center justify-between gap-3">
+            <div>
+                <h1 class="font-semibold text-2xl text-font-important-light tracking-tight dark:text-font-important-dark">
+                    Tableau de bord
+                </h1>
+                <p class="leading-relaxed mb-0 text-sm text-font-subtle-light dark:text-font-subtle-dark mt-1">
+                    Aperçu de l’activité de la pastorale du CHU.
+                </p>
+            </div>
+            <a href="#repertoire" class="flex items-center gap-2 rounded-default bg-primary-600 px-4 py-2.5 text-sm font-semibold text-white shadow-xs transition hover:bg-primary-700">
+                <span class="material-symbols-outlined text-lg">apps</span>
+                Toutes les classes modifiables
+            </a>
+        </div>
+
+        <div class="grid gap-4 grid-cols-2 lg:grid-cols-3 xl:grid-cols-6">
+            {% for card in kpi_cards %}
+            <a href="{{ card.link }}" class="bg-white flex flex-col gap-2 p-5 rounded-default shadow-xs border border-base-200 transition-all hover:border-base-300 hover:shadow-md dark:bg-base-900 dark:border-base-800 dark:hover:border-base-700">
+                <span class="material-symbols-outlined text-primary-600 dark:text-primary-500 text-2xl">{{ card.icon }}</span>
+                <span class="font-semibold text-3xl text-font-important-light dark:text-font-important-dark">{{ card.value }}</span>
+                <span class="text-font-subtle-light dark:text-font-subtle-dark text-sm">{{ card.title }}</span>
+            </a>
+            {% endfor %}
+        </div>
+
+        <div id="repertoire" class="scroll-mt-6">
+            <div class="flex items-center justify-between mb-4">
+                <h2 class="font-semibold text-lg text-font-important-light dark:text-font-important-dark">Répertoire complet</h2>
+                <span class="text-font-subtle-light dark:text-font-subtle-dark text-sm">Tout ce qui peut être modifié dans l’administration</span>
+            </div>
+            <div class="grid gap-4 md:grid-cols-2 xl:grid-cols-3">
+                {% for group in dashboard_groups %}
+                <div class="bg-white rounded-default shadow-xs border border-base-200 p-5 dark:bg-base-900 dark:border-base-800">
+                    <h3 class="font-semibold text-[15px] text-font-important-light dark:text-font-important-dark mb-3">{{ group.title }}</h3>
+                    <ul class="flex flex-col gap-1">
+                        {% for item in group.items %}
+                        <li class="flex items-center justify-between gap-2 rounded-default px-2 py-1.5 -mx-2 hover:bg-primary-50 dark:hover:bg-primary-500/10">
+                            <a href="{{ item.link }}" class="flex items-center gap-2 min-w-0 grow text-font-default-light dark:text-font-default-dark hover:text-primary-600 dark:hover:text-primary-500">
+                                <span class="material-symbols-outlined text-primary-600 dark:text-primary-500 text-lg flex-shrink-0">{{ item.icon }}</span>
+                                <span class="text-sm truncate">{{ item.title }}</span>
+                            </a>
+                            <span class="flex items-center gap-2 flex-shrink-0">
+                                <span class="text-xs font-semibold text-font-subtle-light dark:text-font-subtle-dark bg-base-100 dark:bg-base-800 rounded-full px-2 py-0.5">{{ item.count }}</span>
+                                <a href="{{ item.link }}add/" title="Ajouter" class="material-symbols-outlined text-base text-font-subtle-light dark:text-font-subtle-dark hover:text-primary-600 dark:hover:text-primary-500">add</a>
+                            </span>
+                        </li>
+                        {% endfor %}
+                    </ul>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+
+        <div class="flex flex-col lg:flex-row lg:gap-6">
+            <div class="grow">
+                <div class="bg-white rounded-default shadow-xs border border-base-200 p-6 dark:bg-base-900 dark:border-base-800">
+                    <div class="flex items-center justify-between mb-4">
+                        <h2 class="font-semibold text-[15px] text-font-important-light dark:text-font-important-dark">Derniers messages de contact</h2>
+                        <a href="{% url 'admin:app_contactmessage_changelist' %}" class="text-primary-600 dark:text-primary-500 text-sm hover:underline">{% translate "Voir tout" %}</a>
+                    </div>
+
+                    {% if recent_messages %}
+                    <ul class="flex flex-col gap-3">
+                        {% for message in recent_messages %}
+                        <li class="border border-base-400/10 bg-base-50 flex items-center justify-between p-3 rounded-default dark:bg-base-800">
+                            <div class="overflow-hidden">
+                                <a href="{% url 'admin:app_contactmessage_change' message.pk %}" class="font-medium text-font-important-light dark:text-font-important-dark hover:text-primary-600 dark:hover:text-primary-500">
+                                    {{ message.full_name }}
+                                </a>
+                                <p class="text-font-subtle-light dark:text-font-subtle-dark text-sm overflow-hidden text-ellipsis whitespace-nowrap">{{ message.subject }}</p>
+                            </div>
+                            <div class="flex items-center gap-2 flex-shrink-0 ml-3">
+                                {% if not message.is_read %}
+                                    <span class="bg-red-600 font-semibold px-1.5 py-0.5 rounded-xs text-white text-xs">{% translate "Non lu" %}</span>
+                                {% endif %}
+                                <span class="text-font-subtle-light dark:text-font-subtle-dark text-xs whitespace-nowrap">{{ message.created_at|date:"d/m/Y" }}</span>
+                            </div>
+                        </li>
+                        {% endfor %}
+                    </ul>
+                    {% else %}
+                    <p class="text-font-subtle-light dark:text-font-subtle-dark text-sm">{% translate "Aucun message pour le moment." %}</p>
+                    {% endif %}
+                </div>
+            </div>
+
+            {% include "unfold/helpers/history.html" %}
+        </div>
+    </div>
+{% endblock %}

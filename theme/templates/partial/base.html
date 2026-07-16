@@ -5,12 +5,34 @@
 		<meta charset="UTF-8">
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
 		<meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+		<title>{% block title %}{{ site_settings.site_name|default:"Pastoral CHU" }}{% endblock %}</title>
+		<meta name="description" content="{% block meta_description %}{{ site_settings.tagline|default:'Pastorale du CHU — actualités, événements, formations et ressources spirituelles pour accompagner patients, familles et soignants.' }}{% endblock %}">
+		<link rel="canonical" href="{% block canonical_url %}{{ request.scheme }}://{{ request.get_host }}{{ request.path }}{% endblock %}">
+
+		<meta property="og:type" content="{% block og_type %}website{% endblock %}">
+		<meta property="og:site_name" content="{{ site_settings.site_name|default:'Pastoral CHU' }}">
+		<meta property="og:title" content="{% block og_title %}{{ site_settings.site_name|default:'Pastoral CHU' }}{% endblock %}">
+		<meta property="og:description" content="{% block og_description %}{{ site_settings.tagline|default:'Pastorale du CHU — actualités, événements, formations et ressources spirituelles.' }}{% endblock %}">
+		<meta property="og:url" content="{{ request.scheme }}://{{ request.get_host }}{{ request.path }}">
+		{% block og_image %}{% endblock %}
+		<meta name="twitter:card" content="summary_large_image">
+		{% if google_site_verification %}<meta name="google-site-verification" content="{{ google_site_verification }}">{% endif %}
+
 		{% tailwind_css %}
 		<link rel="preconnect" href="https://fonts.googleapis.com">
 		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 		<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
-		
-		<title>{% block title %}Pastoral CHU - Accueil{% endblock %}</title>
+
+		{% if ga_measurement_id %}
+		<script async src="https://www.googletagmanager.com/gtag/js?id={{ ga_measurement_id }}"></script>
+		<script>
+			window.dataLayer = window.dataLayer || [];
+			function gtag(){dataLayer.push(arguments);}
+			gtag('js', new Date());
+			gtag('config', '{{ ga_measurement_id }}');
+		</script>
+		{% endif %}
 	</head>
 
 	<body class="min-h-screen bg-gradient-to-b from-emerald-900 via-emerald-950 to-emerald-900 flex items-center justify-center py-4 px-4">
@@ -23,6 +45,17 @@
 			{% include "partial/footer.html" %}
 		</main>
 
+		<script>
+			document.querySelectorAll('[data-audio-btn]').forEach((btn) => {
+				btn.addEventListener('click', () => {
+					const audio = document.querySelector(btn.dataset.audioBtn);
+					if (!audio) return;
+					audio.classList.remove('hidden');
+					audio.play();
+					btn.classList.add('hidden');
+				});
+			});
+		</script>
 		{% block script %}{% endblock %}
 	</body>
 </html>

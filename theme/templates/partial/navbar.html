@@ -50,15 +50,15 @@
             </div>
         </div>
         <div class="relative group">
-            <button class="{% if url_name == 'bible' or url_name == 'bible-mediter' or url_name == 'bible-reponses' %}font-semibold text-black inline-flex items-center gap-1 relative after:absolute after:bottom-0 after:left-0 after:w-full after:h-0.5 after:bg-black
+            <button class="{% if url_name == 'bible' or url_name == 'bible_mediter' or url_name == 'bible_reponses' %}font-semibold text-black inline-flex items-center gap-1 relative after:absolute after:bottom-0 after:left-0 after:w-full after:h-0.5 after:bg-black
                 {% else %}hover:text-black transition-colors duration-200 inline-flex items-center gap-1 relative after:absolute after:bottom-0 after:left-0 after:w-0 after:h-0.5 after:bg-black after:transition-all after:duration-200 group-hover:after:w-full
                 {% endif %}">La bible et vous
                 <span class="text-xs transition-transform duration-200 group-hover:rotate-180">▼</span>
             </button>
             <div class="absolute top-full left-0 mt-2 bg-white text-gray-800 rounded-lg shadow-lg p-3 w-56 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-50 border border-gray-100">
                 <a href="{% url 'bible' %}" class="block py-2 px-2 rounded-md hover:bg-brandMuted hover:text-black transition-colors duration-150">Questions bibliques</a>
-                <a href="{% url 'bible-mediter' %}" class="block py-2 px-2 rounded-md hover:bg-brandMuted hover:text-black transition-colors duration-150">Que veulent dire ces versets ?</a>
-                <a href="{% url 'bible-reponses' %}" class="block py-2 px-2 rounded-md hover:bg-brandMuted hover:text-black transition-colors duration-150">Cours biblique</a>
+                <a href="{% url 'bible_mediter' %}" class="block py-2 px-2 rounded-md hover:bg-brandMuted hover:text-black transition-colors duration-150">Que veulent dire ces versets ?</a>
+                <a href="{% url 'bible_reponses' %}" class="block py-2 px-2 rounded-md hover:bg-brandMuted hover:text-black transition-colors duration-150">Cours biblique</a>
             </div>
         </div>
         <a href="{% url 'contact' %}" class="{% if url_name == 'contact' %}font-semibold text-black relative after:absolute after:bottom-0 after:left-0 after:w-full after:h-0.5 after:bg-black
