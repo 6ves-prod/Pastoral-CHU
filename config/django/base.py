@@ -30,8 +30,6 @@ ALLOWED_HOSTS = [
     "Pastoralchu.onrender.com",
 ]
 
-BASE_DIR = Path(__file__).resolve().parent.parent
-
 # SEO — optional external service keys, blank disables the related tag/script
 GOOGLE_SITE_VERIFICATION = env('GOOGLE_SITE_VERIFICATION', default='')
 GA_MEASUREMENT_ID = env('GA_MEASUREMENT_ID', default='')
