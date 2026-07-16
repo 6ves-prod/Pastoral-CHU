@@ -27,7 +27,7 @@ SECRET_KEY = env('SECRET_KEY', default="Secret")
 DEBUG = env.bool('DJANGO_DEBUG', default=False)
 
 ALLOWED_HOSTS = [
-    "Pastoralchu.onrender.com",
+    "Pastoral-chu.onrender.com",
 ]
 
 # SEO — optional external service keys, blank disables the related tag/script
