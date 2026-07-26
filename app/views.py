@@ -101,6 +101,14 @@ def training_detail(request, slug):
     context["related_trainings"] = Training.objects.filter(is_published=True).exclude(pk=training.pk).order_by("start_date", "title")[:3]
     return render(request, "services/training_detail.html", context)
 
+def homelie_detail(request, slug):
+    homily = Homily.objects.filter(is_published=True, slug=slug).first()
+    if not homily:
+        return render(request, "404.html", status=404)
+    context = _base_context()
+    context["homily"] = homily
+    return render(request, "homelie_detail.html", context)
+
 
 def ressources(request):
     context = _base_context()

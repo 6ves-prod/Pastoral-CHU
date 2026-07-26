@@ -20,7 +20,7 @@ from django.contrib.sitemaps.views import sitemap
 from django.conf import settings
 from django.conf.urls.static import static
 from django.urls import path, include
-from app.views import article_detail, contact, event_detail, gallery_album_detail, index, actualites, services, evenements, formations, ressources, galerie, qui_sommes_nous, bible, bible_mediter, bible_reponses, spiritual_resource_detail, training_detail, robots_txt
+from app.views import article_detail, contact, event_detail, gallery_album_detail, index, actualites, services, evenements, formations, ressources, galerie, qui_sommes_nous, bible, bible_mediter, bible_reponses, spiritual_resource_detail, training_detail, homelie_detail, robots_txt
 from app.sitemaps import ArticleSitemap, EventSitemap, GalleryAlbumSitemap, SpiritualResourceSitemap, StaticViewSitemap, TrainingSitemap
 
 sitemaps = {
@@ -54,6 +54,7 @@ urlpatterns = [
     path("contact/", contact, name="contact"),
     path("article/<slug:slug>/", article_detail, name="article_detail"),
     path("event/<slug:slug>/", event_detail, name="event_detail"),
+    path("homelie/<slug:slug>/", homelie_detail, name="homelie_detail")
 ]
 
 if settings.DEBUG:

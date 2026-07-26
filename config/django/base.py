@@ -29,12 +29,7 @@ SECRET_KEY = env('SECRET_KEY', default="Secret")
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = env.bool('DJANGO_DEBUG', default=False)
 
-ALLOWED_HOSTS = [
-    "Pastoral-chu.onrender.com",
-    ".onrender.com",
-    "localhost",
-    "127.0.0.1"
-]
+ALLOWED_HOSTS = ["*"]
 
 # SEO — optional external service keys, blank disables the related tag/script
 GOOGLE_SITE_VERIFICATION = env('GOOGLE_SITE_VERIFICATION', default='')
@@ -93,12 +88,13 @@ WSGI_APPLICATION = "config.wsgi.application"
 # Database
 # https://docs.djangoproject.com/en/4.2/ref/settings/#databases
 
-
 DATABASES = {
-    "default": dj_database_url.config(
-        default=os.environ.get("DATABASE_URL")
-    )
+    "default": {
+        "ENGINE": "django.db.backends.sqlite3",
+        "NAME": BASE_DIR / "db.sqlite3",
+    }
 }
+
 
 
 # Password validation

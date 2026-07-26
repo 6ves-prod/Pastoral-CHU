@@ -1,0 +1,45 @@
+{% extends "partial/base.html" %}
+
+{% block title %}{{ event.title }} | {{ site_settings.site_name|default:"Pastoral CHU" }}{% endblock %}
+{% block meta_description %}{{ event.summary|truncatewords:30 }}{% endblock %}
+{% block og_title %}{{ event.title }}{% endblock %}
+{% block og_description %}{{ event.summary|truncatewords:30 }}{% endblock %}
+{% block og_image %}{% if event.image %}<meta property="og:image" content="{{ request.scheme }}://{{ request.get_host }}{{ event.image.url }}">{% elif event.image_url %}<meta property="og:image" content="{{ event.image_url }}">{% endif %}{% endblock %}
+
+
+{% block content %}
+    <section class="px-8 pt-14 md:px-12">
+        <div class="text-left pl-6 ">
+            {% if homily.father %}
+            <h2 class="text-2xl md:text-3xl font-semibold text-gray-900">Parole du jour : << {{ homily.title }} >> </h2>
+            <p class="text-gray-600 mt-2">{{ homily.father.full_name }}</p>
+            {% endif %}
+        </div>
+    </section>
+
+    <section class="px-8 py-14 md:px-12">
+        <div class="grid gap-8 lg:grid-cols-3 items-start">
+            <article class="lg:col-span-2">
+                <div class="rounded-2xl border border-gray-200 bg-white p-6 md:p-8 shadow-soft">
+                    <p class="text-lg text-gray-800 font-medium border-l-4 border-brand pl-4">{{ homily.title }}</p>
+                    <div class="prose max-w-none text-gray-700 mt-6 leading-relaxed">{{ homily.content|linebreaksbr }}</div>
+                    {% if homily.audio_file %}
+                        <button type="button" data-audio-btn="#meditation-audio-{{ forloop.counter }}" class="inline-flex items-center gap-2 rounded-full bg-brandDark text-white px-4 py-2 text-sm font-semibold shadow hover:scale-[1.01] transition">
+                            Écouter
+                            <span class="flex h-5 w-5 items-center justify-center rounded-full bg-white text-brandDark text-xs">▶</span>
+                        </button>
+                        <audio id="meditation-audio-{{ forloop.counter }}" class="hidden w-full" controls preload="none" src="{{ homily.audio_file.url }}"></audio>
+                    {% endif %}
+                </div>
+            </article>
+
+            <aside class="lg:sticky lg:top-6">
+                <div class="rounded-2xl border border-green-100 bg-brandMuted p-6 shadow-soft">
+                    <h2 class="text-lg font-semibold text-gray-900">Une question sur cette parole ?</h2>
+                    <p class="mt-2 text-sm text-gray-700">Une question, voulez-vous approfondir dans la parole ? L'équipe pastorale vous répond.</p>
+                    <a href="{% url 'contact' %}" class="mt-4 w-full inline-flex items-center justify-center gap-2 rounded-full bg-black text-white px-4 py-2.5 text-sm font-semibold shadow hover:scale-[1.01] transition">Nous contacter</a>
+                </div>
+            </aside>
+        </div>
+    </section>
+{% endblock %}
